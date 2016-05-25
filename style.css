@@ -907,6 +907,9 @@ article a:hover, article a:focus, article a:active {
 .site-top {
   width: 100%; }
 
+.aligncenter .site-logo {
+  margin: auto; }
+
 /*--------------------------------------------------------------
 # Mobile Menu toggle button
 --------------------------------------------------------------*/

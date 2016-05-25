@@ -34,7 +34,7 @@ var api = wp.customize;
 	   
 	   case 'nav-centered':
 	   
-	   api.instance('manual_layout').set('[logo] \n <div class="center-items" id="mobilize"> [primary_nav] </div>');
+	   api.instance('manual_layout').set('<div class="center-text aligncenter">[logo]</div> \n <div class="center-items" id="mobilize"> [primary_nav] </div>');
 	   
 	   break;
 	   
