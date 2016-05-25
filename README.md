@@ -53,12 +53,14 @@ You will probably still need to play around and make changes to get it working t
 Found under the identity panel. 
 **Using logo() or [logo]**
 
-[logo] is a shortcode and you can use it anywhere! Even in a menu, so you can have a logo inside and centered in a menu.
+[logo] is a shortcode and you can use it anywhere! 
 use echo logo() to output in theme files.
 
 logo() will also output h1 or p tags depending on if its the front page or not.
 
 And if its an svg, which you can upload, it will be output inline so you can style with css!
+
+You can also add [logo] to a menu items description which will effectivley output the logo as the nav item. So you can have a logo inside and centered in a menu!
 
 
 ####Footer widgets
@@ -73,5 +75,8 @@ All things inside div#mobilize will be put into the mobile menu area when the mo
 You can change the mobile query variable under vairables.
 Changes especially to the nav can be made under sass/navigation/seasaltpress_nav.scss
 mixins have been created at the top so you can easily style parts without having to scroll down and add it into the code all over.
+
+You also can see in the manual settings, you have access to primary_nav() or [primary_nav]
+You can also use [site_description]
 
 
