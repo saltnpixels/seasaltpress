@@ -24,10 +24,13 @@
   }		
   
  
-
-  .dashboard-menu + .archive-header, .dashboard-menu ~ #primary, .dashboard-menu ~ .wrap, .dashboard-menu ~ .entry-header{
+  <?php
+  	if(get_theme_mod('top_layout') == 'dashboard-nav'){ ?>
+  .archive-header, #primary, .entry-header{
 	margin-left:  <?php echo get_theme_mod('dashboard_width', '200px'); ?>;
 	}
+	
+	<?php } ?>
 
 
 
