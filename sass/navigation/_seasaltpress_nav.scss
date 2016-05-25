@@ -26,6 +26,11 @@
 }
 
 
+@mixin dashboard(){
+	background: teal;
+	padding-top: 100px;
+}
+
 
 //the popout starting position of #mobilize
 @mixin mobile-pop-out(){
@@ -403,6 +408,7 @@ aside .widget_nav_menu, .dashboard-menu .main-navigation{
 #mobilize.dashboard-menu{
 		@include mobilize();
 		
+		@include dashboard();
 		.site-menu>li{
 			@include site-menu-li-mobile();
 		}

@@ -1113,7 +1113,9 @@ aside .widget_nav_menu .dropdown-toggle, .dashboard-menu .main-navigation .dropd
   padding: 0;
   top: 0;
   height: 100vh;
-  z-index: 97; }
+  z-index: 97;
+  background: teal;
+  padding-top: 100px; }
   #mobilize.dashboard-menu .site-menu {
     text-align: left; }
   #mobilize.dashboard-menu .menu-item-has-children > a:after {

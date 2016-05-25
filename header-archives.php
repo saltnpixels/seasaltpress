@@ -25,7 +25,7 @@ case is_search():
 
 
 <?php
-//when blog is not the front show a header.
+//when blog is not the front page.
 case (is_home() && ! is_front_page() ):
 ?>
 <header>
@@ -35,7 +35,7 @@ case (is_home() && ! is_front_page() ):
 <?php break; ?>
 
 
-<?php case is_front_page(): //front of your site.  ?>
+<?php case is_front_page(): //if blog is front page  ?>
 <header>
 	
 </header>

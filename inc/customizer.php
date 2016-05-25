@@ -39,10 +39,10 @@ function seasaltpress_customize_register( $wp_customize ) {
 
 
 
- 	//add new section for site top presets and options
-	$wp_customize->add_section( 'seasaltpress_presets', array(
+ 	//add new section for site top options and options
+	$wp_customize->add_section( 'seasaltpress_options', array(
   'title' => __( 'Site Top Options' ),
-  'description' => __( 'Options and Quick Presets that also help you understand how it works. NOTE: Make sure to also set the sass variables in sass/style.scss for grid options as they cannot be set here.', 'seasaltpress' ),
+  'description' => __( 'Options. NOTE: Make sure to also set the sass variables in sass/style.scss for grid options as they cannot be set here.', 'seasaltpress' ),
   'panel' => '', // Not typically needed.
   'priority' => 160,
   'capability' => 'edit_theme_options',
@@ -54,8 +54,8 @@ function seasaltpress_customize_register( $wp_customize ) {
 
 	//add new section for site layout manual
 	$wp_customize->add_section( 'seasaltpress_manual', array(
-  'title' => __( 'site top manual', 'seasaltpress' ),
-  'description' => __( 'Manually set the top layout here.' ),
+  'title' => __( 'site top layouts', 'seasaltpress' ),
+  'description' => __( 'Preset or Manually set the top layout here.' ),
   'panel' => '', // Not typically needed.
   'priority' => 160,
   'capability' => 'edit_theme_options',
@@ -108,7 +108,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('site_top_height',
 	array(
 	'label' => __('Site top pixel height'),
-	'section' => 'seasaltpress_presets',
+	'section' => 'seasaltpress_options',
 	'type' => 'number',
 	'description' => 'Typically holds the logo and primary nav. Enter number.',
 	'input_attrs' => array(
@@ -128,7 +128,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('logo_width',
 	array(
 	'label' => __('Logo container width'),
-	'section' => 'seasaltpress_presets',
+	'section' => 'seasaltpress_options',
 	'type' => 'text',
 	'description' => 'Enter Number with px or %. You can add logo image under Identity.',
 	'input_attrs' => array(
@@ -146,7 +146,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('wrap_nav',
 	array(
 	'label' => __('containt site top in wrap'),
-	'section' => 'seasaltpress_presets',
+	'section' => 'seasaltpress_options',
 	'type' => 'select',
 	'choices' => array(
 		'yes' => 'yes',
@@ -158,7 +158,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	   
 
 
-//the presets
+//the options
  $wp_customize->add_setting('top_layout',
  	array(
 	 
@@ -169,7 +169,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('top_layout',
 	array(
 	'label' => __('Layout Presets'),
-	'section' => 'seasaltpress_presets',
+	'section' => 'seasaltpress_manual',
 	'type' => 'select',
 	'description' => 'Quick presets that change the layout. Check Manual Layout to see the changes it makes.',
 	'choices' => array(
@@ -192,7 +192,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('dashboard_width',
 	array(
 	'label' => __('Mobile and Dashboard Width'),
-	'section' => 'seasaltpress_nav',
+	'section' => 'seasaltpress_options',
 	'type' => 'text',
 	'description' => 'Width of mobile and dashboard menu.',
 		'input_attrs' => array(
