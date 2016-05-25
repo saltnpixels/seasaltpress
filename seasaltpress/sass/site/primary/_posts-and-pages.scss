@@ -1,0 +1,34 @@
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin-top: 1.5em;
+}
+
+.byline,
+.updated:not(.published){
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: auto;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+
+
+.entry-meta, .entry-footer{
+	@include font-size(.8);
+}

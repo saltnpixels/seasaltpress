@@ -1,0 +1,29 @@
+@import "buttons";
+
+@import "fields";
+
+
+//search-form quick styling
+
+
+.search-form{
+	position: relative;	
+	
+	label{
+		display: block;
+		
+		.search-field{
+			width: 100%;
+			padding-right: 40px;
+			
+		}
+	}
+}
+
+.search-submit{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+}
+

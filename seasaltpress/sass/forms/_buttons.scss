@@ -1,0 +1,30 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 1px solid;
+	border-color: $color__border-button;
+	border-radius: 3px;
+	color: rgba(0, 0, 0, .8);
+	@include font-size(0.75);
+	line-height: 1.5;
+	padding: .6em 1em .4em;
+	
+  outline: none;
+  
+	&:hover {
+		
+	}
+
+	&:active,
+	&:focus {
+		
+		
+	}
+}
+
+
+
+.search-submit{
+	margin-left: -6px; 
+}

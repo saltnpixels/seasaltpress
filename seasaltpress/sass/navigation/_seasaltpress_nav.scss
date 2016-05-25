@@ -1,0 +1,455 @@
+//size of mobile nav or dashboard nav can be changed via variables structure
+
+
+//.site-top
+@mixin site-top-styles(){
+	
+}
+
+//li's mobile and desktop
+@mixin site-menu-li(){
+	color: white;
+	@extend .transitions;
+	&:hover{
+		background: #780f0f;
+	}
+}
+
+
+
+@mixin site-menu-li-desktop(){
+	padding: 5px;
+}
+
+@mixin site-menu-li-mobile(){
+	
+}
+
+
+
+//the popout starting position of #mobilize
+@mixin mobile-pop-out(){
+	background: teal;
+	padding-top: 100px;
+	transition: transform .5s;
+	transform: translate(-100%, 0%);
+	
+}
+
+//applied on button.menu-toggle in mobile
+@mixin mobile-menu-toggle(){
+	 background: transparent;
+	 color: white;
+	 box-shadow: none;
+	 @include font-size(1.1);
+	 &:hover{
+		 background: transparent;
+		 box-shadow: none;
+	 }
+}
+
+//when that toggle button is clicked
+@mixin mobile-menu-toggle-on(){
+	
+}
+
+//sub-menus everywhere.
+@mixin sub-menu(){
+ @include font-size(.9)
+}
+
+//.sub-menu on desktop
+@mixin sub-menu-on-desktop(){
+	box-shadow: none; //underscore shadow removed
+	background: #780f0f; 
+	li{ padding: 5px 0; }
+}
+
+
+//.sub-menu on mobile
+@mixin sub-menu-on-mobile(){
+	background: transparent;
+}
+
+
+
+/*--------------------------------------------------------------
+# logo and nav basic layout
+--------------------------------------------------------------*/
+
+//any items inside site-top gets flexed
+.site-top > div, #mobilize{
+	display: flex;
+	align-items: center; //vertically aligned
+	flex-wrap: wrap; //? necessary
+}
+
+.site-top > div{
+	height: 100%;  //so the items inside can be vertically centered to the site top height set by customizer
+}
+
+
+//flex items 
+.site-top > div > *, #mobilize > *{
+	padding: 0 15px;
+	clear: none; 
+	float: none;
+	flex-grow: 1;
+  
+	img, svg{ display: block; }
+	p, h1{ margin: 0 auto; }
+
+}
+
+#mobilize{
+	padding: 0;
+}
+
+
+
+#mobilize.center-items{
+	width: 100%;
+	
+	.site-menu > ul{
+		justify-content: center;
+	}
+	
+}
+
+
+.site-top{
+	@include site-top-styles();
+	width: 100%;
+} 
+
+
+/*--------------------------------------------------------------
+# Mobile Menu toggle button
+--------------------------------------------------------------*/
+
+.menu-toggle, .menu-toggle:focus, .menu-toggle:hover{
+	border: none;
+	position: absolute;
+	left: 15px;
+	top: 9px;
+	z-index: 99;
+	padding: 3px 10px;
+	outline: none;
+	box-shadow: none;
+	background: none;
+  
+	@include mobile-menu-toggle();
+
+}
+
+//when the button is toggled and the menu shows
+.menu-toggle.toggled{
+	position: fixed;
+	
+	@include mobile-menu-toggle-on()
+	.admin-bar &{
+		top: 46px + 9px;
+	}
+  
+	 
+}  
+
+
+
+/*--------------------------------------------------------------
+# Desktop basic nav li styling
+--------------------------------------------------------------*/
+
+//any menu up top that has .site-menu will get this li styling
+.site-top .site-menu>ul{ 
+	@extend .clear;
+	
+	display: flex;
+	align-items: center; //align vertically
+	flex-wrap: wrap;
+}
+
+.site-menu>ul>li{ 
+  @include site-menu-li();
+  
+	//all a's inside li's.
+	a{
+		color: inherit;
+		@extend .transitions;
+		outline: none;
+	}
+} 
+
+.sub-menu{
+	@include sub-menu();
+	left: 0;
+}
+
+
+/*--------------------------------------------------------------
+# desktop only menu stuff
+--------------------------------------------------------------*/				
+
+@media screen and (min-width: $mobile-nav-menu) {
+   
+	.site-top:not(.dashboard-menu) .site-menu{
+
+	  li{
+			@include site-menu-li-desktop();
+			float: none;
+		}
+
+
+
+	 .sub-menu{
+		 position:absolute;
+		 left: 0;
+		 z-index: 1;
+		 visibility:hidden;
+		 opacity: 0;
+		 max-height: 0;
+		 transition: all .4s ease;
+		 text-align: left;
+		  
+		 @include sub-menu-on-desktop()
+		}
+	
+}
+
+
+/*--------------------------------------------------------------
+## desktop submenus
+--------------------------------------------------------------*/
+	.site-top *:not(.dashboard-menu) .sub-menu{
+		//just in case they toggle it closed in mobile view and then go to desktop view
+	  display: block !important; 
+	}
+	
+	.site-menu .sub-menu .sub-menu{
+		left: 100%;
+	}
+	
+	//leave it open for a few seconds even when someone hovers off
+
+	.site-menu .sub-menu{  		
+		transition-delay: .3s;
+		padding: 5px;
+	} 
+	
+	
+		.site-top .site-menu
+			li:hover > .sub-menu,
+			.site-top .site-menu li.focus > .sub-menu{
+	    visibility: visible;
+	    opacity: 1;
+	    transition-delay: 0;
+	    max-height: 1000px;
+		}
+		
+
+		.dropdown-toggle{
+			display: none;
+		} 
+		
+		.menu-item-has-children > a:after{  //set with dropdown-toggle for icon down below
+			transition: all .7s;
+			line-height: 1;
+			display: inline-block;
+			transition-delay: .3s;
+		}
+		
+		.menu-item-has-children:hover > a:after{
+			transform: rotate(180deg);
+			transition-delay: 0;
+		}
+		
+}
+
+
+/*--------------------------------------------------------------
+# styles for dashboard, mobile, and widget menus. they go straight down and have dropdown toggle capabilities
+--------------------------------------------------------------*/
+
+
+@mixin list-menu(){
+	
+	//if it was centred, uncenter the menu	
+	.site-menu{
+		text-align: left;
+	}	
+	.menu-item-has-children > a:after{  //dropdown toggle button takes over
+		display: none;
+	}
+	
+	//becomes block not flex
+	.site-menu>ul{
+		display: block;
+	}
+	
+		li{
+			//already has position relative
+			float: none;
+			margin: 0;
+			padding: 5px 0;
+			
+			a{
+				width: 80%;
+				padding-left: 10px;
+			}
+		}
+		
+		
+		//submenus remain out. no hover
+		 ul.sub-menu{
+			position: static;
+			transition-delay: 0;
+			opacity: 1;
+			visibility: visible;
+			transition: all 1s ease;
+			transition: none;  //using jQuery slidetoggle instead
+			box-shadow: none;
+			float: none;
+			overflow: visible;
+			max-height: none;  //using jQuery slidetoggle instead
+			display: none;
+			padding: 5px 0;
+			
+			@include font-size(.9);
+		}
+		
+		.dropdown-toggle{
+			display: block;
+		}
+}
+
+
+
+/*--------------------------------------------------------------
+# mobilize menu popout
+--------------------------------------------------------------*/
+
+ @mixin mobilize(){
+	 position: fixed;
+	 left: 0;
+	 display: block;
+	 padding: 0;
+	 top: 0;
+	 height: 100vh;
+	 z-index: 97;
+
+	@include list-menu();
+	  	
+ 	& > *{ //take padding off nav or anything directly in mobilize
+	 	padding: 0;
+ 	}
+ }	
+
+
+
+/*--------------------------------------------------------------
+# Basic mobile styling 
+--------------------------------------------------------------*/
+
+@media screen and (max-width: $mobile-nav-menu){
+	
+	.site-top{
+		padding: 15px 0;
+	}
+	
+	//centering logo and anything else not in mobilize
+	.site-top > div > *{
+		min-width: 80%;
+		text-align: center;
+		margin: auto;
+	}
+	
+	.site-content .site-top{
+		height: auto;
+	}
+	
+			
+	.site-menu ul>li{
+		@include site-menu-li-mobile();
+	}
+
+
+	#mobilize{
+		@include mobilize();
+		@include mobile-pop-out();
+		
+	}
+	
+	#mobilize.toggled{
+		transform: translate(0, 0);
+	}
+
+	
+}
+
+
+aside .widget_nav_menu, .dashboard-menu .main-navigation{
+	@include list-menu();
+	
+}
+
+//more widgets stuff under site secondary
+
+/*--------------------------------------------------------------
+# Dashboard Menu | mobile menu
+--------------------------------------------------------------*/
+
+
+
+#mobilize.dashboard-menu{
+		@include mobilize();
+		
+		.site-menu>li{
+			@include site-menu-li-mobile();
+		}
+	}
+
+
+
+/*--------------------------------------------------------------
+# Mobile Menu sub menu toggle buttons. See navigation.js where button is appended
+--------------------------------------------------------------*/
+
+
+    
+//sub-menu clickable arrow button when on mobile
+.dropdown-toggle, .dropdown-toggle:hover, .dropdown-toggle:focus{
+	border: none;
+	box-shadow: none;
+	color: inherit;
+	background: transparent;
+	font-size: inherit;
+	font-weight: inherit;
+	padding: 3px 0 0 0;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	z-index: 50;
+	outline: none;
+	right: 10px;
+	//seperator after text before toggle angle
+	&:before{
+		content: '';
+		border-left: 1px solid white;
+		opacity: .5;
+	}
+}
+
+
+//add the button for submenus after li text using font awesome angle down icon
+.menu-item-has-children > a:after, .dropdown-toggle:after {
+    content: "\f107";
+    margin-left: 5px;
+    font-family: 'fontAwesome';
+}
+
+.dropdown-toggle.toggled-on:after{ //angle up icon
+	content: '\f106';
+}
+
+
+	

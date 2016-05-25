@@ -1,0 +1,44 @@
+.widget {
+	margin: 0 0 1.5em;
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+}
+
+
+
+.widget_nav_menu li a{
+	padding-left: 0;
+}
+
+.widget_nav_menu ul li{
+	margin-bottom: 0;
+}
+
+
+
+
+
+//seasaltpress
+.widget ul{
+	@extend .no-list;
+	display: block; //for menu widgets dont hide on mobile
+	li{
+		margin-bottom: 10px;
+	}
+}
+
+footer .widget{
+	margin: auto;
+}
+
+footer .site-info{
+	display: flex;
+	
+	.widget{
+		flex-grow: 1;
+		padding: 0 15px;
+	}
+}

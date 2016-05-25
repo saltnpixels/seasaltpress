@@ -1,0 +1,27 @@
+//links outside of article dont have visited and focus...
+a {
+	color: $color__link;
+	
+  &:focus {
+		outline: none;
+	}
+		&:hover,
+	&:active {
+		outline: 0;
+	}
+}
+
+
+article a{
+	
+	&:visited {
+		color: $color__link-visited;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__link-hover;
+	}
+	
+
+}

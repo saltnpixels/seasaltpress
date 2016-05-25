@@ -1,0 +1,819 @@
+/*
+	Created by Shamai Greenfield.
+	Normalize included. Normalize.css is a project by Nicolas Gallagher, co-created with Jonathan Neal.
+
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# How to use
+# Things already set by underscores.
+# The Sea Salt Grid
+## Setup Settings
+## Page
+## Content Column
+## Grid
+### Wrap
+### Column Set Up
+### Mobile Columns
+### Column helper classes
+# Text
+# Unstyled Lists
+
+
+
+/*--------------------------------------------------------------
+# How to use
+--------------------------------------------------------------*/
+// Take this file (sea-salt-grid.scss) and copy it into your projects sass folder.
+// Change any variables found a few lines below
+// Then open style.scss in your project and type:
+// $vars to change
+// @import 'sea-salt-grid';
+
+
+
+/*--------------------------------------------------------------
+# Things already set by underscores. If your not using underscores, make sure to use @include no-underscores;
+--------------------------------------------------------------*/
+
+@mixin no-underscores(){
+ @include normalize; 
+ @include elements;
+ @include clearings;
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# variables you may override. Don't override here! Do it in another file like style.scss or _structure.scss
+--------------------------------------------------------------*/
+$wrap: 1200px !default;
+$gutters: 15px !default;
+$footer-height: 25px !default;
+$content-column: 600px !default;
+$mobile-width: 500px !default;
+$baseline: 1.5rem !default;
+
+
+
+
+
+/*--------------------------------------------------------------
+# The Sea Salt Grid
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Setup settings
+--------------------------------------------------------------*/
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+
+//choose to hide scroll bars on an overflowed div in windows?
+body *{
+ -ms-overflow-style: none;
+}
+
+body *::-webkit-scrollbar {
+   display: none;
+}
+
+
+//ios tap highlight. Set to no color.
+html *{
+	 -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea{
+	
+	@include font-size(1);
+	line-height: 1.5;	
+	
+	-webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-smoothing: antialiased;
+}
+
+
+
+
+/*--------------------------------------------------------------
+## page: holds everything inside body. This will allow us to have break out areas that are 500% wide but the window wont scroll. 
+         //Note: This is not good for horizontal websites.
+--------------------------------------------------------------*/
+#page{
+	overflow: hidden;
+	position: relative;
+}
+
+
+/*--------------------------------------------------------------
+## sticky footer
+--------------------------------------------------------------*/
+
+//holds the footer at bottom of page when the page isnt very long in height
+//for this to work footer must have a set height.
+
+//Therefore, everything inside body must be in #page. Then it is in either .site-content, which holds everything till footer and has a min-height of 100vh - footer height
+//or it's in .site-footer
+
+
+
+body .site-content{
+  min-height:  calc(100vh - #{$footer-height});
+  padding-bottom: 0;
+}
+
+body .site-footer{
+  margin-top: 0;
+  min-height: $footer-height;
+  overflow: hidden;
+}
+
+//remember in wp when admin is signed in and can see admin bar, its a bit off at the top... by 32px
+.admin-bar .site-content{
+	min-height:  calc(100vh - #{$footer-height} - 32px);
+}
+
+
+
+@media screen and (max-width: 782px){
+.admin-bar .site-content{
+	min-height:  calc(100vh - #{$footer-height} - 46px);
+	}
+}
+
+
+
+
+/*--------------------------------------------------------------
+## break out areas
+--------------------------------------------------------------*/
+
+//based on http://modusagency.com/css-trick-expanding-a-div-beyond-a-parent-container/
+//inside content column, if you use .break-out it will go full width. 
+//break-out will only have the background go full width, then whatever is inside will be centered and continue with a max-width of content-column
+//while full-area will go a real full width including everything inside.
+//wrap also has the same abilities
+
+
+
+//anything you want to go full, use classes below starting with pre... only works on a centered column
+.break-out{
+			width: 500%; //wont cause horizontal scrolling because #page has an overflow of hidden. 
+			margin: auto;
+			margin-left: -200%; //now 100vw is centered;
+			.inside-break-out, >*{ //the very first child divs inside  . you might want to add class and style.
+				margin: auto;
+				max-width: 100vw;
+				display: block;
+			 }
+		}
+
+
+
+
+/*--------------------------------------------------------------
+## The Grid
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+### Wrap
+--------------------------------------------------------------*/
+
+//cols can go inside a wrap. But wraps cannot go inside cols.... well they can… but it can mess up the grid.
+.wrap{
+  width:100%;
+  max-width: $wrap; 
+  margin:auto;
+  clear:both;
+  
+  @extend .clear !optional;
+}
+
+
+/*--------------------------------------------------------------
+### Column Set Up
+--------------------------------------------------------------*/
+
+
+
+//all classes that have col- in them get floated and get gutters and a margin bottom of the baseline (default 24px).
+//the 15px gutters on both sides of each column meet to make 30px gutters. The outside also has gutters for proper real similar sized columns. 
+//one sided gutters doesnt do that.  | col | col | col | vs.  |col |col |col |  not centered and if you get rid of last-childs gutter your just making that child bigger.
+
+/*
+	
+	.col-full
+[class*="col-"], .col{
+	
+	*/
+.col-1-2,
+.col-1-3,
+.col-2-3,
+.col-1-4,
+.col-3-4,
+.col-1-5,
+.col-2-5,
+.col-3-5,
+.col-4-5,
+.col-1-6,
+.col-5-6,
+.col-full{
+
+  float: left;
+  @extend %gutters;
+  @extend .clear !optional;
+  
+}
+
+.flex{
+	display: flex;
+	
+	> [class*="col"]{
+		float: none;
+	}
+}
+
+.center-flex{
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.col-1-2 { width: 50%; }
+.col-1-3 { width: 33.3333%; }
+.col-2-3 { width: 66.6666%; }
+.col-1-4 { width: 25%; }
+.col-3-4 { width: 75%; }
+.col-1-5 { width: 20%; }
+.col-2-5 { width: 40%; }
+.col-3-5 { width: 60%; }
+.col-4-5 { width: 80%; }
+.col-1-6 { width: 16.6666%; }
+.col-5-6 { width: 83.3333%; }
+.col-full{ width: 100%;  float: none; clear: both;}
+
+
+
+.content-column{
+		max-width: $content-column; 
+		margin: auto;
+		@extend .gutters;
+}
+
+/*--------------------------------------------------------------
+### Mobile Columns
+--------------------------------------------------------------*/
+@media only screen 
+and (max-width : $mobile-width) {
+
+//here is where columns go full size unless they have class .stay-on-mobile. content columns with break outs only go to full width of viewport.
+   
+   [class*="col-"]:not(.stay-on-mobile){
+	   width: 100%;
+   }
+   
+  #page .hide-on-mobile{
+	   display: none;
+   }
+   
+}
+
+
+
+/*--------------------------------------------------------------
+### desktop only
+--------------------------------------------------------------*/
+@media only screen 
+and (min-width : $mobile-width) {
+
+      
+   #page .hide-on-desktop{
+	   display: none;
+   }
+   
+}
+
+
+/*--------------------------------------------------------------
+### Column Helper Classes
+--------------------------------------------------------------*/
+
+
+.row{
+	@extend .clear !optional;
+	clear: both;
+}
+
+[class*="col-"] .row, .content-column .row{  //if your inside a column and you make a row it will probably want no outter gutters
+	 margin: 0 -15px;
+}
+
+#page .no-outer-gutters, #page .has-outer-cols{  //pushes columns so the outer gutters of first and last child appear to be gone. keeps columns the same size. typically used on .row
+	margin: 0 -15px;
+}
+
+
+
+body .m0{
+	margin-bottom: 0;
+}
+
+.m1{
+	margin-bottom: $baseline;
+}
+
+#page .m2{
+	margin-bottom: $baseline * 2;
+}
+
+%gutters, 
+#page .gutters{ 
+  padding: 0 15px; 
+}
+
+.double-gutters{
+  padding: 0 30px;
+}
+
+.full-double-gutters{
+  padding: 30px; 
+}
+
+.full-gutters{ 
+  padding: 15px;
+}
+
+
+#page .hasinnercols,
+#page .has-inner-cols, 
+#page .nogutters,
+#page .no-gutters{ 
+  padding: 0;
+}
+
+body .hasinnercols,
+body .has-inner-cols{
+ margin-bottom: 0; 
+}
+
+
+.right-col{
+	float: right;
+}
+
+
+.alignnone, .aligncenter{
+	margin: auto;
+	float: none;
+	display: block;
+}
+
+[class*="col-"]{
+	&.alignnone, &.aligncenter{
+		margin-bottom: $baseline;
+	}
+}
+
+/*--------------------------------------------------------------
+# Text
+--------------------------------------------------------------*/
+.center-text{
+	text-align: center;
+}
+
+.right-text{
+	text-align: right;
+}
+
+.left-text{
+	text-align: left;
+}
+
+a{
+	outline: none;
+}
+
+
+p{
+	margin: 0 0 $baseline 0;
+}
+
+/*--------------------------------------------------------------
+# Unstyled Lists
+--------------------------------------------------------------*/
+
+//use this class on menus or any list you dont want to have defualt styles and bullets.
+ul.no-list{
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Helper Classes
+--------------------------------------------------------------*/
+
+.full-inputs{
+	input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea{
+	width: 100%;
+}
+}
+
+
+.hide, .hidden{
+	display: none;
+}
+
+
+.transitions {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; 
+  }
+ 
+
+ 
+ @mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+
+
+@mixin deep-shadow($size, $color){
+	
+	//add layers of text shadow to $text-shadow
+	$text-shadow: '1px 1px #{$color}';
+	$comma: ',';
+	@for $i from 2 through $size {
+		$text-shadow: #{$text-shadow} #{$comma} #{$i}px #{$i}px 0 $color; 
+		}
+		
+ text-shadow: $text-shadow;
+	
+}
+
+body .no-clear:before, body .no-clear:after{
+	content: none;
+}
+
+
+//helpful mixins
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# // If not using underscores this stuff is Added.
+--------------------------------------------------------------*/
+
+
+@mixin elements(){
+		html {
+		box-sizing: border-box;
+		}
+		
+		*,
+		*:before,
+		*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+		box-sizing: inherit;
+		}
+		
+		
+		img {
+		height: auto; /* Make sure images are scaled correctly. */
+		max-width: 100%; /* Adhere to container width. */
+		}
+		
+
+}
+
+
+
+@mixin normalize(){
+		html {
+		font-family: sans-serif;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust:     100%;
+	}
+	
+	body {
+		margin: 0;
+	}
+	
+	article,
+	aside,
+	details,
+	figcaption,
+	figure,
+	footer,
+	header,
+	main,
+	menu,
+	nav,
+	section,
+	summary {
+		display: block;
+	}
+	
+	audio,
+	canvas,
+	progress,
+	video {
+		display: inline-block;
+		vertical-align: baseline;
+	}
+	
+	audio:not([controls]) {
+		display: none;
+		height: 0;
+	}
+	
+	[hidden],
+	template {
+		display: none;
+	}
+	
+	a {
+		background-color: transparent;
+	}
+	
+	a:active,
+	a:hover {
+		outline: 0;
+	}
+	
+	abbr[title] {
+		border-bottom: 1px dotted;
+	}
+	
+	b,
+	strong {
+		font-weight: bold;
+	}
+	
+	dfn {
+		font-style: italic;
+	}
+	
+	h1 {
+		font-size: 2em;
+		margin: 0.67em 0;
+	}
+	
+	mark {
+		background: #ff0;
+		color: #000;
+	}
+	
+	small {
+		font-size: 80%;
+	}
+	
+	sub,
+	sup {
+		font-size: 75%;
+		line-height: 0;
+		position: relative;
+		vertical-align: baseline;
+	}
+	
+	sup {
+		top: -0.5em;
+	}
+	
+	sub {
+		bottom: -0.25em;
+	}
+	
+	img {
+		border: 0;
+	}
+	
+	svg:not(:root) {
+		overflow: hidden;
+	}
+	
+	figure {
+		margin: 1em 40px;
+	}
+	
+	hr {
+		box-sizing: content-box;
+		height: 0;
+	}
+	
+	pre {
+		overflow: auto;
+	}
+	
+	code,
+	kbd,
+	pre,
+	samp {
+		font-family: monospace, monospace;
+		font-size: 1em;
+	}
+	
+	button,
+	input,
+	optgroup,
+	select,
+	textarea {
+		color: inherit;
+		font: inherit;
+		margin: 0;
+	}
+	
+	button {
+		overflow: visible;
+	}
+	
+	button,
+	select {
+		text-transform: none;
+	}
+	
+	button,
+	html input[type="button"],
+	input[type="reset"],
+	input[type="submit"] {
+		-webkit-appearance: button;
+		cursor: pointer;
+	}
+	
+	button[disabled],
+	html input[disabled] {
+		cursor: default;
+	}
+	
+	button::-moz-focus-inner,
+	input::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+	
+	input {
+		line-height: normal;
+	}
+	
+	input[type="checkbox"],
+	input[type="radio"] {
+		box-sizing: border-box;
+		padding: 0;
+	}
+	
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		height: auto;
+	}
+	
+	input[type="search"] {
+		-webkit-appearance: textfield;
+		box-sizing: content-box;
+	}
+	
+	input[type="search"]::-webkit-search-cancel-button,
+	input[type="search"]::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+	
+	fieldset {
+		border: 1px solid #c0c0c0;
+		margin: 0 2px;
+		padding: 0.35em 0.625em 0.75em;
+	}
+	
+	legend {
+		border: 0;
+		padding: 0;
+	}
+	
+	textarea {
+		overflow: auto;
+	}
+	
+	optgroup {
+		font-weight: bold;
+	}
+	
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	
+	td,
+	th {
+		padding: 0;
+	}
+
+}
+
+
+
+@mixin clearings(){
+	
+	
+	.clear:before,
+	.clear:after,
+	.entry-content:before,
+	.entry-content:after,
+	.comment-content:before,
+	.comment-content:after,
+	.site-header:before,
+	.site-header:after,
+	.site-content:before,
+	.site-content:after,
+	.site-footer:before,
+	.site-footer:after {
+		@include snp-clearfix;
+	}
+	
+	.clear:after,
+	.entry-content:after,
+	.comment-content:after,
+	.site-header:after,
+	.site-content:after,
+	.site-footer:after {
+		@include snp-clearfix-after;
+	}
+
+
+
+}
+
+	// Clearfix
+	@mixin snp-clearfix() {
+		content: "";
+		display: table;
+	}
+	
+	// Clear after (not all clearfix need this also)
+	@mixin snp-clearfix-after() {
+		clear: both;
+	}
+	
+	
