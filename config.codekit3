@@ -2178,26 +2178,6 @@
 		"oAP": "\/download_plugin.php",
 		"oF": 0
 		},
-	"\/editor-style copy-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/editor-style copy-min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/editor-style copy.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/editor-style copy-min.css",
-		"oF": 0,
-		"oS": 0
-		},
 	"\/editor-style.css": {
 		"aP": 1,
 		"bl": 0,
@@ -2349,12 +2329,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/page.php",
-		"oF": 0
-		},
-	"\/README.txt": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/README.txt",
 		"oF": 0
 		},
 	"\/rtl-min.css": {

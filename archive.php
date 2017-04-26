@@ -12,15 +12,16 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
 					
 	<?php
-			$template = '';
-			$template_class = '';
-			$post_type = get_post_type();
-			//show page header if it exists for this archive
-			$archive_header_page = (int) get_theme_mod( 'seasaltpress_archive_header_' . $post_type );
+		$template = '';  //template file name
+		$template_class = ''; //class to apply to post list. This allows for a sidebar if wanted.
+		$post_type = get_post_type();
+		
+		//show page as header if it exists for this archive. Set in customizer.
+		$archive_header_page = (int) get_theme_mod( 'seasaltpress_archive_header_' . $post_type );
 			
 			if( $archive_header_page != '' ){
 				if(file_exists( locate_template( 'template-parts/' . $post_type . '/archive-header.php' ) ) ){
