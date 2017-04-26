@@ -17,16 +17,18 @@
 
 get_header(); ?>
 
-<?php get_template_part('template-parts/content', 'header'); ?>	
+<?php 
+   //header outside loop. above article and sidebar.
+   get_template_part('template-parts/content', 'header'); ?>	
 
-<div class="wrap">
-	<div id="primary" class="content-area col-3-4">
+<div class="wrap flex content-sidebar-holder">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 			<?php
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'page-sidebar' );
+				get_template_part( 'template-parts/content', 'page' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :
@@ -40,8 +42,10 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 
-	<?php get_sidebar();	?>
+<?php get_sidebar();  ?>	
 	
 </div> <!-- .wrap -->
-<?
-get_footer();
+
+
+<?php
+  get_footer();

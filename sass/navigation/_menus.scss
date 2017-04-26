@@ -89,20 +89,75 @@
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
-
+   
+   background: $color__blog_alt;
+   padding: 15px;
+   border: 1px solid $light-border;
+   border-right: none;
+   border-left: none;
+   
+   a{ @include font-size(.8); }
+   .nav-links{
+	  
+	   display: flex;
+	   justify-content: space-between;
+   }
 	.site-main & {
-		margin: 0 0 1.5em;
+		margin: auto;
 		overflow: hidden;
 	}
 
 	.nav-previous {
-		float: left;
-		width: 50%;
+		flex: 1;
+		text-align: left;
+		@extend .link;
+		
+		a:before{
+			content: '\f060 ';
+			font-family: $fa;
+			margin-right: 5px;
+		}
 	}
 
 	.nav-next {
-		float: right;
+		flex: 1;
 		text-align: right;
-		width: 50%;
+		
+		@extend .link;
+		
+		a:after{
+			content: '\f061 ';
+			font-family: $fa;
+			margin-left: 5px;
+		}
+		
+	}
+}
+
+//archives
+.posts-navigation{
+	background: transparent;
+	border: none;
+	max-width: 630px;
+	
+   .nav-links{
+	   padding: 0;
+	   align-items: center;
+   }
+	
+	
+	.nav-previous, .nav-next{
+		background: $color__blog_alt;
+		padding: 15px;
+		border: 1px solid $light-border;
+		max-width: 250px;
+		text-align: center;
+		margin: 0 15px;
+	}
+}
+
+@media screen and (min-width: $mobile-width){
+	.nav-links{
+		padding: 0 30px;
 	}
 }

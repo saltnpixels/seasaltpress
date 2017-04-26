@@ -28,55 +28,63 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<div id="content" class="site-content">
-		<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'seasaltpress' ); ?></a>
-		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars"></i></button>
+		<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'snp' ); ?></a>
+		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="bar-one">–</span><span class="bar-two">–</span></button>
+	
 	<?php
-	
-	//check out wp customizer for these options.
-	//for manual change the settings under else:
-	
-
-	/*--------------------------------------------------------------
-	 # sea salt press customizer styles
-	 --------------------------------------------------------------*/
-	 	require get_template_directory() . '/inc/customizer_styles.php';
-	 //site top alt is if you want a menu area on side and top. like a dashboard area and a top area.
-	 //if you want it show on desktop remove the class hide-on-desktop
-	 ?>
-	
-	  
-	 <div class="site-top">
-   <?php echo get_theme_mod('wrap_nav', 'yes') == 'yes' ? '<div class="wrap">' : '<div class="nav-holder">';	
-	 	
-	 	if( get_theme_mod('use_customizer') === 'yes'){
-		 	echo do_shortcode(get_theme_mod('manual_layout'));
-		}
-	 	
-  	else{  
-		 
-		 
-		 	//REAPLACE BELOW WITH YOUR OWN MANUAL SITE TOP
-	 	
-	 		echo logo();
-	 		?>
-	 		<div id="mobilize">
+		//get theme mod checking if a wrap is included. if yes output div with class wrap and flex. else just site top
+		$wrap_nav = get_theme_mod('wrap_nav', 'yes');
+		
+   ?>
+   
+	<div class="site-top <?php if($wrap_nav == 'no'){ echo 'flex'; } ?>">
+		<?php if($wrap_nav == 'yes'){ echo '<div class="wrap flex">'; } ?>
+		
+			<?php
+				//if using customizer output from there. else do your own thing in here!
+				if(get_theme_mod('use_customizer', 'yes') == 'yes'):
+					echo do_shortcode(get_theme_mod('manual_layout', '[logo] <div id="mobilize">[primary_nav]</div>'));
+					
+				
+				else:
+			?>
+			
+			
+			
+			
+			
+			<?php
+			
+			//YOUR OWN CODE GOES HERE
+			
+				echo logo();
+			?>
+			
+			<div id="mobilize">
+				
 		 	<?php
 		 		echo	primary_nav(); 
 		 	?>
+		 	
 	 		</div>
-					
-	
-	<?php
-	 	}
-	 ?>
+	 		
+	 		
+	 		
+	 	
+	 							
+
 	 
 	 
 	 
-	 
-		</div>
+		<?php 
+			//END OF YOUR OWN CODE
+			endif;
+			
+			if($wrap_nav == 'yes'){ echo '</div> <!-- .wrap-->'; } 
+			?>
 	</div>	<!-- end .site-top -->
 	 	
 	 <?php 	
-	 	if(is_post_type_archive() || is_home() || is_search()){
+	 	if(is_post_type_archive() || is_home() || is_search() || is_archive()){
 	 		get_header('archives'); 
 		}

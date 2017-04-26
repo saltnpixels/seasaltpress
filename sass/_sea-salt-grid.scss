@@ -57,8 +57,8 @@ $gutters: 15px !default;
 $footer-height: 25px !default;
 $content-column: 600px !default;
 $mobile-width: 500px !default;
-$baseline: 1.5rem !default;
-
+$baseline: 30px !default;
+$root-font-size: 18 !default;
 
 
 
@@ -73,7 +73,7 @@ $baseline: 1.5rem !default;
 
 // Rem output with px fallback
 @mixin font-size($sizeValue: 1) {
-	font-size: ($sizeValue * 16) * 1px;
+	font-size: ($sizeValue * $root-font-size) * 1px;
 	font-size: $sizeValue * 1rem;
 }
 
@@ -100,7 +100,7 @@ input,
 select,
 textarea{
 	
-	@include font-size(1);
+	@include font-size(1);  //upped from 16 to 18
 	line-height: 1.5;	
 	
 	-webkit-font-smoothing: antialiased;
@@ -108,6 +108,10 @@ textarea{
    font-smoothing: antialiased;
 }
 
+
+html{
+	font-size: $root-font-size * 1px;
+}
 
 
 
@@ -165,25 +169,24 @@ body .site-footer{
 --------------------------------------------------------------*/
 
 //based on http://modusagency.com/css-trick-expanding-a-div-beyond-a-parent-container/
-//inside content column, if you use .break-out it will go full width. 
-//break-out will only have the background go full width, then whatever is inside will be centered and continue with a max-width of content-column
-//while full-area will go a real full width including everything inside.
-//wrap also has the same abilities
 
-
-
-//anything you want to go full, use classes below starting with pre... only works on a centered column
+//only works on centered columns
 .break-out{
 			width: 500%; //wont cause horizontal scrolling because #page has an overflow of hidden. 
 			margin: auto;
 			margin-left: -200%; //now 100vw is centered;
+			margin-bottom: $baseline;
+			
 			.inside-break-out, >*{ //the very first child divs inside  . you might want to add class and style.
 				margin: auto;
 				max-width: 100vw;
 				display: block;
+				
+				>.row{
+					margin: 0;
+				}
 			 }
 		}
-
 
 
 
@@ -195,9 +198,9 @@ body .site-footer{
 ### Wrap
 --------------------------------------------------------------*/
 
-//cols can go inside a wrap. But wraps cannot go inside cols.... well they can… but it can mess up the grid.
+//cols can go inside a wrap. But wraps should not go inside cols.... well they can… but it can mess up the grids gutters.
 .wrap{
-  width:100%;
+  width: 100%;
   max-width: $wrap; 
   margin:auto;
   clear:both;
@@ -206,22 +209,23 @@ body .site-footer{
 }
 
 
+
 /*--------------------------------------------------------------
 ### Column Set Up
 --------------------------------------------------------------*/
 
 
 
-//all classes that have col- in them get floated and get gutters and a margin bottom of the baseline (default 24px).
-//the 15px gutters on both sides of each column meet to make 30px gutters. The outside also has gutters for proper real similar sized columns. 
-//one sided gutters doesnt do that.  | col | col | col | vs.  |col |col |col |  not centered and if you get rid of last-childs gutter your just making that child bigger.
+//all classes that have col- in them get floated  or flexed and get gutters and a margin bottom of the baseline (default 30px).
+//the 15px gutters on both sides of each column meet to make 30px gutters.
 
 /*
 	
 	.col-full
 [class*="col-"], .col{
 	
-	*/
+*/
+
 .col-1-2,
 .col-1-3,
 .col-2-3,
@@ -237,21 +241,10 @@ body .site-footer{
 
   float: left;
   @extend %gutters;
-  @extend .clear !optional;
   
-}
-
-.flex{
-	display: flex;
-	
-	> [class*="col"]{
-		float: none;
-	}
-}
-
-.center-flex{
-	justify-content: center;
-	align-items: center;
+  *:not(.flex) > &{
+  @extend .clear !optional;
+  }
 }
 
 
@@ -277,6 +270,48 @@ body .site-footer{
 		@extend .gutters;
 }
 
+//if inside flex. dont use margin auto. let flex control it
+.flex .content-column{
+   margin: 0;
+   flex-basis: $content-column;
+   flex-grow: 0;
+}
+
+
+
+/*--------------------------------------------------------------
+# Flex
+--------------------------------------------------------------*/
+
+
+.flex{
+	display: flex;
+	
+	> [class*="col-"]{
+		float: none;
+	}
+}
+
+//a flexible column that grows and shrinks by default. perfect for items in a flex that can grow and shrink.
+//use flex-basis for min-width because safari and IE have issue with this.
+.col{
+	flex: 1;
+	@extend %gutters;
+}
+
+
+.flex-column{
+	display: flex;
+	flex-direction: column;
+}
+
+.grid{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+
 /*--------------------------------------------------------------
 ### Mobile Columns
 --------------------------------------------------------------*/
@@ -284,6 +319,9 @@ body .site-footer{
 and (max-width : $mobile-width) {
 
 //here is where columns go full size unless they have class .stay-on-mobile. content columns with break outs only go to full width of viewport.
+   .flex:not(.stay-on-mobile){
+	   flex-wrap: wrap;
+   }
    
    [class*="col-"]:not(.stay-on-mobile){
 	   width: 100%;
@@ -291,6 +329,12 @@ and (max-width : $mobile-width) {
    
   #page .hide-on-mobile{
 	   display: none;
+   }
+   
+   .flex:not(.stay-on-mobile){
+	   .col{
+		   flex-basis: 100%;
+	   }
    }
    
 }
@@ -379,7 +423,7 @@ body .has-inner-cols{
 }
 
 
-.alignnone, .aligncenter{
+.aligncenter{
 	margin: auto;
 	float: none;
 	display: block;
@@ -412,7 +456,7 @@ a{
 
 
 p{
-	margin: 0 0 $baseline 0;
+	margin: 0 0 1.5rem 0;
 }
 
 /*--------------------------------------------------------------
@@ -420,7 +464,7 @@ p{
 --------------------------------------------------------------*/
 
 //use this class on menus or any list you dont want to have defualt styles and bullets.
-ul.no-list{
+ul.no-list, ol.no-list, .no-list{
 	margin: 0;
 	list-style: none;
 	padding: 0;
@@ -459,7 +503,6 @@ textarea{
 
 
 .transitions {
-  -webkit-transition: all 0.5s;
   transition: all 0.5s; 
   }
  

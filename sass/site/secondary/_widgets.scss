@@ -21,7 +21,7 @@
 
 
 
-//seasaltpress
+//snp
 .widget ul{
 	@extend .no-list;
 	display: block; //for menu widgets dont hide on mobile
@@ -30,15 +30,9 @@
 	}
 }
 
-footer .widget{
-	margin: auto;
-}
 
 footer .site-info{
 	display: flex;
 	
-	.widget{
-		flex-grow: 1;
-		padding: 0 15px;
-	}
+	
 }

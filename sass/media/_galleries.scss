@@ -1,14 +1,23 @@
 .gallery {
-	margin-bottom: 1.5em;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.break-out .gallery{
+	//margin-bottom: -30px;
 }
 
 .gallery-item {
-	display: inline-block;
+	padding: 0 15px;
+	flex: 1;
+	//display: inline-block;
 	text-align: center;
 	vertical-align: top;
 	width: 100%; 
 	margin: auto;
-	margin-bottom: $baseline;
+	margin-bottom: 0;
+	margin-top: 0;
 
 	.gallery-columns-2 & {
 		max-width: 50%;
@@ -45,4 +54,13 @@
 
 .gallery-caption {
 	display: block;
+}
+
+
+@media screen and (max-width: $mobile-width){
+	.gallery .gallery-item{
+		max-width: none;
+		flex: none;
+		margin-bottom: $baseline;
+	}
 }

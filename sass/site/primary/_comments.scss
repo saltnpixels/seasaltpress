@@ -10,3 +10,137 @@
 }
 
 
+
+/*--------------------------------------------------------------
+# comments area
+--------------------------------------------------------------*/
+.comments-title{
+	text-align: center;
+	color: white;
+}
+
+
+.comments-area{
+	background: $color__blog;
+	width: 100% !important;
+	overflow: hidden;
+	color: $light-neutral;
+}
+
+
+li.comment{
+	
+	article{ 
+		display: flex;
+		margin-bottom: 10px;
+		align-items: center;
+		flex-wrap: wrap;
+		position: relative;
+		 }
+		 
+	.comment-meta{ //holds avatar
+		width: 20%;
+		padding: 0 15px;
+		//position: absolute;
+		margin-left: -20%;
+		
+	
+	}
+	
+	.comment-content{
+		background: $color__blog_alt;
+		color: white;
+		padding: 15px;
+		padding-top: 5px;
+		border-radius: 3px;
+		width: 100%;
+			.fn{
+			@include font-size(.8);
+			margin-bottom: 15px;
+			display: block;
+			a{
+				color: $light-neutral; //author name
+			}
+			
+		}
+	}
+}
+
+.comment-metadata{
+	min-width: 100%;
+	text-align: right;
+	@include font-size(.7);
+	//a{color: $neutral; }  //date
+	
+	time span{
+		display: none;
+	}
+}
+
+.says{
+	display: none;
+}
+
+.avatar{
+	display: block;
+	margin: auto;
+	border-radius: 100%;
+}
+
+
+ol.comment-list, ol.comment-list ol{
+	@extend .no-list;
+	margin: auto;
+	max-width: $content-column;
+	
+}
+
+ol.comment-list .children{
+	margin-left: 20%;
+}
+
+ol.comment-list{
+	padding: 0 15px;
+	//transform: translate(-80px,0);
+}
+
+
+
+@media screen and (max-width: 930px){
+	li.comment .comment-meta{
+		right: 10px;
+		top: 10px;
+		padding: 0;
+		width: 7%;
+		left: auto;
+		position: absolute;
+	}
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+# comment form
+--------------------------------------------------------------*/
+
+.comment-respond{
+	max-width: $content-column;
+	margin: auto;
+	padding: 0 15px;
+	
+	.form-submit button{
+		@include font-size(1);
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+# epoch and postmatic
+--------------------------------------------------------------*/
+div #prompt-comment-subscribe{
+	margin: 15px 0 30px 0;
+	display: block;
+}

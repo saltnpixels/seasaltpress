@@ -86,7 +86,7 @@
 	
 	
 /*--------------------------------------------------------------
-# add dropdown ability on mobile. styles for this are in seasaltpress_nav
+# add dropdown ability on mobile. styles for this are in snp_nav
 --------------------------------------------------------------*/
 
 //added from twenty sixteen for mobile menu and dropdown of sub menus
@@ -128,7 +128,7 @@
 			_this.toggleClass( 'toggled-on' );
 			
 			
-				//added slide toggle at end. better than guessing with css max height on mobile menu. see seasaltpress_nav.scss
+				//added slide toggle at end. better than guessing with css max height on mobile menu. see snp_nav.scss
 			_this.next( '.children, .sub-menu' ).toggleClass( 'toggled-on' ).slideToggle();
 		
 			

@@ -10,33 +10,40 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package sea_salt_press
- * seasaltpress: if you dont want the sidebar remove classes col-3-4 and the sidebar.
+ * snp: if you dont want the sidebar remove classes col-3-4 and the sidebar.
  *
- * seasaltpress - a archive header is shown at top right before wrap.
+ * snp - a archive header is shown at top right before wrap.
  * For no sidebar simply remove col-3-4 and the get_sidebar call
  */
 
-get_header(); ?>
+get_header();
+//header archives is output here.
+ ?>
 
-<div class="wrap">
-	<div id="primary" class="content-area col-3-4">
+
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
+		<div class="archive-grid">
 		<?php
 		if ( have_posts() ) :
    
 						/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
+				 ?>
+				
+					 <?php
+					 
 				get_template_part( 'template-parts/content', get_post_format() );
-
+					?>
+			
+				
+			<?php
 			endwhile;
-
+				?> 
+		</div>
+		
+		<?php
 			the_posts_navigation();
 
 		else :
@@ -48,10 +55,6 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php
-get_sidebar();
 
-?>
-</div> <!-- wrap -->
 <?php
 get_footer();

@@ -1,8 +1,10 @@
 <?php
 /**
- * Template Name: Full Width
+ * Template Name: Full Width Content
  *
  * This is the template that displays pages with no wrap and gives you full width, but still has  a page header
+ 
+ it is the same as basic page but not content column restriction on the content.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *

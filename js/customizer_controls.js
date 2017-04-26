@@ -12,7 +12,7 @@ var api = wp.customize;
     
 
 			
-	 $(wp.customize.control('top_layout').selector).on('change', 'select', function() { 
+	 $(wp.customize.control('preset_layout').selector).on('change', 'select', function() { 
 		 
 		 switch($(this).val()){
 	
@@ -37,22 +37,15 @@ var api = wp.customize;
 	   api.instance('manual_layout').set('<div class="center-text aligncenter">[logo]</div> \n <div class="center-items" id="mobilize"> [primary_nav] </div>');
 	   
 	   break;
-	   
-	   
-	   case 'dashboard-nav':
-	   
-	   api.instance('manual_layout').set('<div class="dashboard-menu" id="mobilize"> [primary_nav] </div> [logo]');
-	   
-	   break;
+	  
 
 
 
 
-    
-    
+   
      default:
 	   
-	   api.instance('manual_layout').set('<div id="mobilize"> [primary_nav] </div>  [logo]');
+	   api.instance('manual_layout').set('[logo] <div id="mobilize"> [primary_nav] </div>');
 	   
 	   break;
 	   

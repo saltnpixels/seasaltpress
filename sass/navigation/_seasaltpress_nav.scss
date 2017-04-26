@@ -1,195 +1,224 @@
-//size of mobile nav or dashboard nav can be changed via variables structure
-
-
-//.site-top
-@mixin site-top-styles(){
-	
+svg{
+	max-width: 100%;
 }
 
-//li's mobile and desktop
-@mixin site-menu-li(){
-	color: white;
-	@extend .transitions;
-	&:hover{
-		background: #780f0f;
+.site-logo{
+	a{ 
+		display: flex; 
+		align-items: center;
+		color: inherit;
+		
+		span{
+			//opacity: 0;
+		}
+	}
+	
+	h1, p{
+		margin: 0;
+		display: flex;
+		align-items: center;
+		font-weight: normal;
+		@include font-size(1);
+		color: $neutral;
+		@extend .transitions;
+		height: 100%;
+		svg{
+			background: transparent;
+			border-radius: 100%;
+			padding: 5px;
+			width: 40px;
+			height: 40px;
+			@extend .transitions;
+			margin-right: 10px;
+		}
 	}
 }
 
-
-
-@mixin site-menu-li-desktop(){
-	padding: 5px;
-}
-
-@mixin site-menu-li-mobile(){
+.site-top.animate{
+	background: rgba($dark-blue, .95);
 	
-}
-
-
-@mixin dashboard(){
-	background: teal;
-	padding-top: 100px;
-}
-
-
-//the popout starting position of #mobilize
-@mixin mobile-pop-out(){
-	background: teal;
-	padding-top: 100px;
-	transition: transform .5s;
-	transform: translate(-100%, 0%);
-	
-}
-
-//applied on button.menu-toggle in mobile
-@mixin mobile-menu-toggle(){
-	 background: transparent;
-	 color: white;
-	 box-shadow: none;
-	 @include font-size(1.1);
-	 &:hover{
-		 background: transparent;
-		 box-shadow: none;
-	 }
-}
-
-//when that toggle button is clicked
-@mixin mobile-menu-toggle-on(){
-	
-}
-
-//sub-menus everywhere.
-@mixin sub-menu(){
- @include font-size(.9)
-}
-
-//.sub-menu on desktop
-@mixin sub-menu-on-desktop(){
-	box-shadow: none; //underscore shadow removed
-	background: #780f0f; 
-	li{ padding: 5px 0; }
-}
-
-
-//.sub-menu on mobile
-@mixin sub-menu-on-mobile(){
-	background: transparent;
-}
-
-
-
-/*--------------------------------------------------------------
-# logo and nav basic layout
---------------------------------------------------------------*/
-
-//any items inside site-top gets flexed
-.site-top > div, #mobilize{
-	display: flex;
-	align-items: center; //vertically aligned
-	flex-wrap: wrap; //? necessary
-}
-
-.site-top > div{
-	height: 100%;  //so the items inside can be vertically centered to the site top height set by customizer
-}
-
-
-//flex items 
-.site-top > div > *, #mobilize > *{
-	padding: 0 15px;
-	clear: none; 
-	float: none;
-	flex-grow: 1;
-  
-	img, svg{ display: block; }
-	p, h1{ margin: 0 auto; }
-
-}
-
-#mobilize{
-	padding: 0;
-}
-
-
-
-#mobilize.center-items{
-	width: 100%;
-	
-	.site-menu > ul{
-		justify-content: center;
+	.site-logo{
+		h1, p{ color: white; }
+	}
+	.site-menu>li{
+		color: white;
 	}
 	
+	.wrap{
+		border-color: transparent;
+	}
+	
+	
 }
+
+
+
+.site-top .wrap{
+	border-bottom: 1px solid rgba(129, 129, 129, 0.28);
+}
+
+
+	
+
 
 
 .site-top{
-	@include site-top-styles();
+	position: fixed;
 	width: 100%;
-} 
-
-.aligncenter .site-logo{
-	margin: auto;
+	z-index: 98;
+	
+	&:hover, &.toggled{
+		background: $dark-blue;
+		
+		.site-menu>li{
+			color: white;
+		}
+		
+	}
 }
+
+
+body:not(.home) .site-top{
+	@extend .transitions;
+	&:hover, &.toggled{
+		.site-logo{
+			h1, p{ color: white;}
+		}
+	}
+}
+
+
+
+//common settings for all sites
+
 /*--------------------------------------------------------------
 # Mobile Menu toggle button
 --------------------------------------------------------------*/
 
 .menu-toggle, .menu-toggle:focus, .menu-toggle:hover{
+	font-family: sans-serif;
+	font-weight: normal;
+	box-shadow: none;
 	border: none;
-	position: absolute;
+	position: fixed;
 	left: 15px;
 	top: 9px;
 	z-index: 99;
 	padding: 3px 10px;
 	outline: none;
-	box-shadow: none;
-	background: none;
-  
-	@include mobile-menu-toggle();
+	background: transparent;
+	color: $light-neutral;
+	text-shadow: none;
+	transition: none;
+	
+	.admin-bar &{
+		top: 46px + 9px;
+	}
 
+	.bar-one, .bar-two{
+		display: block;
+		@include font-size(1.7);
+		line-height: 7px;
+		@extend .transitions;
+	}
 }
 
 //when the button is toggled and the menu shows
 .menu-toggle.toggled{
 	position: fixed;
+  
+  .bar-one{
+	  transform: rotate(45deg) translate(5px, -1px);
+	  
+  }
+  
+  .bar-two{
+	  transform: rotate(-45deg) translate(4px, -2px);
+	  
+  }
 	
-	@include mobile-menu-toggle-on()
-	.admin-bar &{
-		top: 46px + 9px;
-	}
   
 	 
 }  
 
 
 
+
 /*--------------------------------------------------------------
-# Desktop basic nav li styling
+# basic nav layout using flex
 --------------------------------------------------------------*/
 
-//any menu up top that has .site-menu will get this li styling
-.site-top .site-menu>ul{ 
+//basic nav is inside site-top like this: .site-top>.wrap.flex>.site-logo+#mobilize
+
+.site-top .wrap{
+		padding: 0 15px;
+}
+
+//if site-top has a set height, the inner stuff should fill it so that you can align items centered with flex
+.main-navigation, #mobilize, .site-top .wrap, .site-top .site-menu{
+	height: 100%;
+}
+
+
+#mobilize{
+	flex: 1;
+}
+
+.center-menu{
+   flex-basis: 100%;
+}
+
+
+
+//any menu up top that has .site-menu will get this li styling. wp seems to give .site-menu to the ul, 
+//unless there is no menu chosen and its showing pages instead. then it applies .site-menu to a div before the ul... weird...
+.site-top .site-menu>ul, .site-top ul.site-menu{ 
 	@extend .clear;
 	
 	display: flex;
-	align-items: center; //align vertically
+	align-items: center; //align vertically centered. change as needed.
 	flex-wrap: wrap;
+	flex: 1;
 }
 
-.site-menu>ul>li{ 
-  @include site-menu-li();
-  
+
+
+@media screen and (min-width: $mobile-nav-menu){
+.site-logo + #mobilize{
+		.site-menu>ul, ul.site-menu{
+			justify-content: flex-end;	//putting the menu at end of line
+			height: 100%;
+		}
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+#  main nav menu li styling
+--------------------------------------------------------------*/
+.site-menu{
+	li{
+		float: none;
+		color: $nav-links;
+		margin-right: 15px;
+		padding: 8px 0;
+		
+		&:last-of-type{
+			margin: 0;
+		}
+	}
+	
 	//all a's inside li's.
 	a{
 		color: inherit;
 		@extend .transitions;
 		outline: none;
+		@include font-size(.8);
+		text-transform: uppercase;
 	}
-} 
-
-.sub-menu{
-	@include sub-menu();
-	left: 0;
+	
+	
 }
 
 
@@ -199,15 +228,19 @@
 
 @media screen and (min-width: $mobile-nav-menu) {
    
-	.site-top:not(.dashboard-menu) .site-menu{
+
+	.site-top .site-menu{
 
 	  li{
-			@include site-menu-li-desktop();
-			float: none;
+			&:hover, &.current-menu-item{
+				color: $color__link;
+			}
 		}
 
 
-
+/*--------------------------------------------------------------
+## desktop submenus
+--------------------------------------------------------------*/
 	 .sub-menu{
 		 position:absolute;
 		 left: 0;
@@ -217,26 +250,27 @@
 		 max-height: 0;
 		 transition: all .4s ease;
 		 text-align: left;
-		  
-		 @include sub-menu-on-desktop()
+		 
+		 li{
+			 padding: 3px;
+		 } 
+		
 		}
 	
-}
+  }
 
 
-/*--------------------------------------------------------------
-## desktop submenus
---------------------------------------------------------------*/
-	.site-top *:not(.dashboard-menu) .sub-menu{
+	
+	.site-top .sub-menu{
 		//just in case they toggle it closed in mobile view and then go to desktop view
 	  display: block !important; 
 	}
-	
+		
 	.site-menu .sub-menu .sub-menu{
 		left: 100%;
 	}
 	
-	//leave it open for a few seconds even when someone hovers off
+	//transition sub menus on desktop
 
 	.site-menu .sub-menu{  		
 		transition-delay: .3s;
@@ -244,9 +278,8 @@
 	} 
 	
 	
-		.site-top .site-menu
-			li:hover > .sub-menu,
-			.site-top .site-menu li.focus > .sub-menu{
+		.site-top .site-menu li:hover > .sub-menu,
+		.site-top .site-menu li.focus > .sub-menu{
 	    visibility: visible;
 	    opacity: 1;
 	    transition-delay: 0;
@@ -270,40 +303,45 @@
 			transition-delay: 0;
 		}
 		
-}
+} //end desktop styling
 
 
 /*--------------------------------------------------------------
-# styles for dashboard, mobile, and widget menus. they go straight down and have dropdown toggle capabilities
+# styles for stright down menus like mobile
 --------------------------------------------------------------*/
 
 
 @mixin list-menu(){
 	
 	//if it was centred, uncenter the menu	
-	.site-menu{
+	.site-menu, .site-menu>ul{
 		text-align: left;
-	}	
-	.menu-item-has-children > a:after{  //dropdown toggle button takes over
+		display: flex;
+	   flex-direction: column;
+	   justify-content: flex-start;
+	   align-items: flex-start;
+	   
+	   span{
+		   @include font-size(.7);
+	   }
+
+	}
+		
+	.menu-item-has-children > a:after{  //dropdown toggle button takes over so hide the pseudo element
 		display: none;
 	}
 	
-	//becomes block not flex
-	.site-menu>ul{
-		display: block;
-	}
 	
-		li{
-			//already has position relative
-			float: none;
-			margin: 0;
-			padding: 5px 0;
-			
-			a{
-				width: 80%;
-				padding-left: 10px;
-			}
+	
+	li{
+		margin: 0;
+		padding: 5px 0;
+		
+		a{
+			width: 80%;
+			padding-left: 10px;
 		}
+	}
 		
 		
 		//submenus remain out. no hover
@@ -343,12 +381,13 @@
 	 top: 0;
 	 height: 100vh;
 	 z-index: 97;
-
-	@include list-menu();
+	 background: $dark-blue;
+    width: 40vw;
+	 @include list-menu();
+	 li{
+		 color: white;
+	 }
 	  	
- 	& > *{ //take padding off nav or anything directly in mobilize
-	 	padding: 0;
- 	}
  }	
 
 
@@ -359,31 +398,35 @@
 
 @media screen and (max-width: $mobile-nav-menu){
 	
-	.site-top{
-		padding: 15px 0;
-	}
 	
-	//centering logo and anything else not in mobilize
-	.site-top > div > *{
-		min-width: 80%;
-		text-align: center;
+	.site-logo{
 		margin: auto;
+		flex: 1;
+		text-align: center;
+		h1, p{
+			display: inline-block;
+		}
 	}
-	
-	.site-content .site-top{
-		height: auto;
-	}
-	
-			
-	.site-menu ul>li{
-		@include site-menu-li-mobile();
-	}
-
 
 	#mobilize{
-		@include mobilize();
-		@include mobile-pop-out();
+	   @include mobilize();	
+	  
+	}
+	
+	
+	.main-navigation{
+		padding-top: 100px;
 		
+		.site-menu>li{
+			width: 100%;
+		}
+		
+	
+	}
+	
+	#mobilize{
+		transform: translate(-100%, 0);
+		transition: all .5s;
 	}
 	
 	#mobilize.toggled{
@@ -394,28 +437,12 @@
 }
 
 
-aside .widget_nav_menu, .dashboard-menu .main-navigation{
+aside .widget_nav_menu{
 	@include list-menu();
 	
 }
 
 //more widgets stuff under site secondary
-
-/*--------------------------------------------------------------
-# Dashboard Menu | mobile menu
---------------------------------------------------------------*/
-
-
-
-#mobilize.dashboard-menu{
-		@include mobilize();
-		
-		@include dashboard();
-		.site-menu>li{
-			@include site-menu-li-mobile();
-		}
-	}
-
 
 
 /*--------------------------------------------------------------
@@ -432,9 +459,9 @@ aside .widget_nav_menu, .dashboard-menu .main-navigation{
 	background: transparent;
 	font-size: inherit;
 	font-weight: inherit;
-	padding: 3px 0 0 0;
+	padding: 0;
 	position: absolute;
-	top: 5px;
+	top: 0;
 	right: 10px;
 	z-index: 50;
 	outline: none;

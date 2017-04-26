@@ -9,18 +9,25 @@
  * you can put class col-3-4 on primary and have columns. check out page sidebar right for ideas. otherwise use a smaller column and center it down the page
  */
 
+//if its a portfolio peice dont show unless it had a pop up image
+$pop_up = get_post_meta(get_the_ID(), 'pop_up_image', true);
+
+if(get_post_type() == 'snp_portfolio'){
+	wp_redirect(home_url('/portfolio/#item-'. get_the_ID() ) );
+	exit;
+}
+
+
 get_header(); ?>
 
 
-
-<div class="wrap">
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
 		
 			<?php
 			while ( have_posts() ) : the_post();
 		
-				get_template_part( 'template-parts/content', get_post_format() );
+				get_template_part( 'template-parts/content-single', get_post_format() );
 		
 				the_post_navigation();
 		
@@ -35,11 +42,6 @@ get_header(); ?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 		
-		<?php
-		//if having a sidebar place a col-3-4 or some column class on primary above. also use content-sidebar template part. see page-sidebar-right for how its done
-		
-		//get_sidebar();
-		?>
-	</div>
+	
 <?php
 get_footer();

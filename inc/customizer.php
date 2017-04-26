@@ -10,7 +10,7 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function seasaltpress_customize_register( $wp_customize ) {
+function snp_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -20,16 +20,6 @@ function seasaltpress_customize_register( $wp_customize ) {
 /*--------------------------------------------------------------
 # Adding more customizations to the wp customizer
 --------------------------------------------------------------*/	
-	//adding logo support
-  $wp_customize->add_setting('your_theme_logo');
-	
-  // Add a control to upload the logo
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'your_theme_logo',
-	array(
-	'label' => __('Upload Logo'),
-	'section' => 'title_tagline',
-	'description' => 'Add logo image or svg here.'
-	) ) );
 
 
 
@@ -40,9 +30,9 @@ function seasaltpress_customize_register( $wp_customize ) {
 
 
  	//add new section for site top options and options
-	$wp_customize->add_section( 'seasaltpress_options', array(
+	$wp_customize->add_section( 'snp_options', array(
   'title' => __( 'Site Top Options' ),
-  'description' => __( 'Options. NOTE: Make sure to also set the sass variables in sass/style.scss for grid options as they cannot be set here.', 'seasaltpress' ),
+  'description' => __( 'Options. NOTE: Make sure to also set the sass variables in sass/style.scss for grid options as they cannot be set here.', 'snp' ),
   'panel' => '', // Not typically needed.
   'priority' => 160,
   'capability' => 'edit_theme_options',
@@ -53,8 +43,8 @@ function seasaltpress_customize_register( $wp_customize ) {
 
 
 	//add new section for site layout manual
-	$wp_customize->add_section( 'seasaltpress_manual', array(
-  'title' => __( 'site top layouts', 'seasaltpress' ),
+	$wp_customize->add_section( 'snp_layout', array(
+  'title' => __( 'site top layouts', 'snp' ),
   'description' => __( 'Preset or Manually set the top layout here.' ),
   'panel' => '', // Not typically needed.
   'priority' => 160,
@@ -64,8 +54,8 @@ function seasaltpress_customize_register( $wp_customize ) {
 ) );
 
 //footer options
-	$wp_customize->add_section( 'seasaltpress_footer', array(
-  'title' => __( 'footer options', 'seasaltpress' ),
+	$wp_customize->add_section( 'snp_footer', array(
+  'title' => __( 'footer options', 'snp' ),
   'description' => __( 'Chose footer options.' ),
   'panel' => '', // Not typically needed.
   'priority' => 160,
@@ -76,21 +66,6 @@ function seasaltpress_customize_register( $wp_customize ) {
 
 
 
- $wp_customize->add_setting('seasaltpress_footer_sidebars', array(
-     'default'     => '1'
-
- ));
-
- $wp_customize->add_control('seasaltpress_footer_sidebars', array(
-     'label'      => __('How many widgets for the footer?', 'seasaltpress'),
-     'section'    => 'seasaltpress_footer',
-     'type'    => 'select',
-     'choices' => array(
-        '1' => '1',
-        '2' => '2',
-        '3' => '3'
-     )
- ));
 
 
 
@@ -99,44 +74,29 @@ function seasaltpress_customize_register( $wp_customize ) {
 # settings and controls for above sections
 --------------------------------------------------------------*/
 
- //site top height in pixels
- $wp_customize->add_setting('site_top_height',
- 	array(
-	 	'default' => '100'
- 	));
+//add more footer widgets
+ $wp_customize->add_setting('snp_footer_sidebars', array(
+     'default'     => '1'
+
+ ));
+
+ $wp_customize->add_control('snp_footer_sidebars', array(
+     'label'      => __('How many widgets for the footer?', 'snp'),
+     'section'    => 'snp_footer',
+     'type'    => 'select',
+     'choices' => array(
+        '1' => '1',
+        '2' => '2',
+        '3' => '3'
+     )
+ ));
+
 	
-	$wp_customize->add_control('site_top_height',
-	array(
-	'label' => __('Site top pixel height'),
-	'section' => 'seasaltpress_options',
-	'type' => 'number',
-	'description' => 'Typically holds the logo and primary nav. Enter number.',
-	'input_attrs' => array(
-    'placeholder' => '100'
-  ),
-	) );
 	
-	
-	
- //adding logo width
- $wp_customize->add_setting('logo_width',
- 	array(
-	 	'default' => '32%'
- 	));
 	
 
-	$wp_customize->add_control('logo_width',
-	array(
-	'label' => __('Logo container width'),
-	'section' => 'seasaltpress_options',
-	'type' => 'text',
-	'description' => 'Enter Number with px or %. You can add logo image under Identity.',
-	'input_attrs' => array(
-    'placeholder' => __( '32%' )
-  ),
-	) );
 	
-	 //adding nav width
+//adding a wrap inside site top
  $wp_customize->add_setting('wrap_nav',
  	array(
 	 	'default' => 'yes'
@@ -146,7 +106,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('wrap_nav',
 	array(
 	'label' => __('containt site top in wrap'),
-	'section' => 'seasaltpress_options',
+	'section' => 'snp_layout',
 	'type' => 'select',
 	'choices' => array(
 		'yes' => 'yes',
@@ -155,53 +115,9 @@ function seasaltpress_customize_register( $wp_customize ) {
 	'description' => 'You can set wrap size via variables in scss'
 	) );
 	 
-	   
 
 
-//the options
- $wp_customize->add_setting('top_layout',
- 	array(
-	 
-	 	'default' => 'nav-right'
- 	));
-	
-	// Add a control to upload the logo
-	$wp_customize->add_control('top_layout',
-	array(
-	'label' => __('Layout Presets'),
-	'section' => 'seasaltpress_manual',
-	'type' => 'select',
-	'description' => 'Quick presets that change the layout. Check Manual Layout to see the changes it makes.',
-	'choices' => array(
-		'nav-right' => 'nav on right',
-		'nav-left' => 'nav on left',
-		'nav-centered' => 'nav centered',
-		'dashboard-nav' => 'dashboard nav'
-	)
-	 ) );
-	 
-	 
-	 
-	  
- $wp_customize->add_setting('dashboard_width',
- 	array(
-	 	'default' => '200px'
- 	));
-	
-	// Add a control to upload the logo
-	$wp_customize->add_control('dashboard_width',
-	array(
-	'label' => __('Mobile and Dashboard Width'),
-	'section' => 'seasaltpress_options',
-	'type' => 'text',
-	'description' => 'Width of mobile and dashboard menu.',
-		'input_attrs' => array(
-    'placeholder' => __( '200px' ))
-	) );
-
-
-
-//adding manual html for site top
+//adding manual html yourself
  $wp_customize->add_setting('use_customizer',
  	array(
 	 	'default' => 'yes'
@@ -211,7 +127,7 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('use_customizer',
 	array(
 	'label' => __('Use the customizer?'),
-	'section' => 'seasaltpress_manual',
+	'section' => 'snp_layout',
 	'type' => 'radio',
 	'description' => 'You can make your own layout in php in header.php and ignore presets and manual settings.',
 		'choices' => array(
@@ -219,14 +135,40 @@ function seasaltpress_customize_register( $wp_customize ) {
 			'no' => 'no'
 		)
 	) );
+		   
 
 
+//preset options. the presets just fill the manual textarea below it.
+ $wp_customize->add_setting('preset_layout',
+ 	array(
+	 
+	 	'default' => 'nav-right'
+ 	));
+	
+	// Add a control to upload the logo
+	$wp_customize->add_control('preset_layout',
+	array(
+	'label' => __('Layout Presets'),
+	'section' => 'snp_layout',
+	'type' => 'select',
+	'active_callback' => 'is_manual_on',
+	'description' => 'Quick presets that change the layout. Check Manual Layout to see the changes it makes.',
+	'choices' => array(
+		'nav-right' => 'nav on right',
+		'nav-left' => 'nav on left',
+		'nav-centered' => 'nav centered'
+	)
+	 ) );
+	 
+	 
+	 
 
-//adding manual html for site top
+
+//adding preset html for site top
  $wp_customize->add_setting('manual_layout',
  	array(
 	 	'default' => '[logo]
-<div class="mobilize">
+<div id="mobilize">
   [primary_nav] 
 </div>',
 	 	'sanitize_callback' => 'sanitize_html_output'
@@ -236,25 +178,23 @@ function seasaltpress_customize_register( $wp_customize ) {
 	$wp_customize->add_control('manual_layout',
 	array(
 	'label' => __('Manual Site Top Layout'),
-	'section' => 'seasaltpress_manual',
+	'section' => 'snp_layout',
 	'type' => 'textarea',
-	'description' => 'include the whole top with shortcodes available [logo] and [primary_nav]',
+	'description' => 'include the whole top with shortcodes available [logo] and [primary_nav] and [site_description]',
 	'active_callback' => 'is_manual_on',
 		'input_attrs' => array(
-    'placeholder' => __( '200px' ))
+    'placeholder' => __( '[logo]
+<div id="mobilize">
+  [primary_nav] 
+</div>' ))
 	) );
-
-
-
-
-
 
 
 
 	
 	
 }
-add_action( 'customize_register', 'seasaltpress_customize_register' );
+add_action( 'customize_register', 'snp_customize_register' );
 
 
 
@@ -264,12 +204,12 @@ add_action( 'customize_register', 'seasaltpress_customize_register' );
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function seasaltpress_customize_preview_js() {
+function snp_customize_preview_js() {
 
-	wp_enqueue_script('seasaltpress_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+	wp_enqueue_script('snp_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 
-add_action( 'customize_preview_init', 'seasaltpress_customize_preview_js' );
+add_action( 'customize_preview_init', 'snp_customize_preview_js' );
 
 
 
@@ -277,13 +217,13 @@ add_action( 'customize_preview_init', 'seasaltpress_customize_preview_js' );
 	* add changes to the controls based on selections. does not run on refresh.
 	*/
 	
-function seasaltpress_customizer_controls_js(){
+function snp_customizer_controls_js(){
 	
-  wp_enqueue_script('seasaltpress_customizer_controls_js', get_template_directory_uri() . '/js/customizer_controls.js', array( 'customize-controls' ), '2151215', true );
+  wp_enqueue_script('snp_customizer_controls_js', get_template_directory_uri() . '/js/customizer_controls.js', array( 'customize-controls' ), '2151215', true );
 }
 
 
-add_action( 'customize_controls_enqueue_scripts', 'seasaltpress_customizer_controls_js' );
+add_action( 'customize_controls_enqueue_scripts', 'snp_customizer_controls_js' );
 
 
 

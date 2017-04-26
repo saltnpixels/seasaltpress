@@ -22,9 +22,9 @@
 				else{
 					?>
 				
-		      <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'seasaltpress' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'seasaltpress' ), 'WordPress' ); ?></a>
+		      <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'snp' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'snp' ), 'WordPress' ); ?></a>
 					<span class="sep"> | </span>
-					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'seasaltpress' ), 'seasaltpress', '<a href="http://saltnpixels.com" rel="designer">shamai</a>' ); ?>
+					<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'snp' ), 'snp', '<a href="http://saltnpixels.com" rel="designer">shamai</a>' ); ?>
 				<?php } ?>
 		
 		</div><!-- .site-info -->

@@ -10,10 +10,10 @@
 get_header(); ?>
 
 
-<div class="wrap">
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main content-column" role="main">
 
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+		<div class="archive-grid">
 		<?php
 		if ( have_posts() ) : ?>
 
@@ -29,7 +29,9 @@ get_header(); ?>
 				get_template_part( 'template-parts/content', 'search' );
 
 			endwhile;
-
+?>
+</div>
+<?php
 			the_posts_navigation();
 
 		else :
@@ -39,11 +41,8 @@ get_header(); ?>
 		endif; ?>
 
 		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #primary -->
 
-	<?php
-	//get_sidebar();
-	?>
-</div>
+
 <?php
 get_footer();

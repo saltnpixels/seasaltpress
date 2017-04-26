@@ -10,19 +10,38 @@ blockquote {
 	margin: 0 1.5em;
 }
 
+
+
+
 address {
 	margin: 0 0 1.5em;
 }
 
 pre {
-	background: $color__background-pre;
+	background: #152637;
 	font-family: $font__pre;
 	@include font-size(0.9375);
 	line-height: $font__line-height-pre;
 	margin-bottom: 1.6em;
-	max-width: 100%;
+	//max-width: 100%;
 	overflow: auto;
 	padding: 1.6em;
+	
+	white-space: pre-wrap;
+	
+	@extend .break-out;
+	
+	//changing code blocks
+	margin-left: 0;
+	width: calc( 100vw - ((100vw - #{$content-column}) / 2) - 30px);
+	max-width: calc(100vw - 30px);
+	
+	code{
+		//width: $content-column;
+		padding: 0 15px;
+		
+		margin: 0;
+	}
 }
 
 code, kbd, tt, var {
@@ -42,4 +61,17 @@ mark, ins {
 
 big {
 	font-size: 125%;
+}
+
+.small{
+	@include font-size(.8);
+}
+
+
+@media screen and (max-width: $mobile-width){
+	article p, .entry-content li, #tinymce p{
+		@include font-size(.9);
+	}
+	
+	
 }

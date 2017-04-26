@@ -3,11 +3,11 @@ Theme Name: sea salt press
 Theme URI: http://underscores.me/
 Author: shamai
 Author URI: http://saltnpixels.com
-Description: SaltnPixels Starter theme based on udnerscores.
-Version: 1.0.0
+Description: SaltnPixels Starter theme based on underscores.
+Version: 1.1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: seasaltpress
+Text Domain: snp
 Tags:
 
 This theme, like WordPress, is licensed under the GPL.
@@ -48,6 +48,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 @import "variables-site/variables-site";
 @import "mixins/mixins-master";
+
+//vars can be changed under structure.scss
+
 @import "sea-salt-grid";
 /*--------------------------------------------------------------
 # Normalize

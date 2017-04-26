@@ -1,4 +1,4 @@
-# seasaltpress
+# snp
 A simple starter theme for developers.
 
 **Note:** This theme is for developers and not end users. It still needs lots of styling and some changes here and there based on the theme you plan to make.
@@ -7,7 +7,7 @@ A simple starter theme for developers.
 
 The theme is based on underscores which saves hours when making a theme for WordPress. 
 I took it and added more stuff to make it even faster to create a website.
-Here are the changes I made to underscores to make it seasaltpress.
+Here are the changes I made to underscores to make it snp.
 
 ##Changes
 
@@ -73,7 +73,7 @@ You can play around to get something you want. You can even add more stuff into 
 All things inside div#mobilize will be put into the mobile menu area when the mobile query is hit.
 
 You can change the mobile query variable under vairables.
-Changes especially to the nav can be made under sass/navigation/seasaltpress_nav.scss
+Changes especially to the nav can be made under sass/navigation/snp_nav.scss
 mixins have been created at the top so you can easily style parts without having to scroll down and add it into the code all over.
 
 You also can see in the manual settings, you have access to primary_nav() or [primary_nav]

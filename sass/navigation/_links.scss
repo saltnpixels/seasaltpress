@@ -1,5 +1,6 @@
 //links outside of article dont have visited and focus...
 a {
+	text-decoration: none;
 	color: $color__link;
 	
   &:focus {
@@ -12,16 +13,32 @@ a {
 }
 
 
-article a{
-	
+article .entry-content a:not(.link):not(.button){
+	@extend .transitions;
 	&:visited {
 		color: $color__link-visited;
 	}
 	&:hover,
 	&:focus,
 	&:active {
+		text-decoration: underline;
 		color: $color__link-hover;
 	}
 	
 
 }
+
+
+
+.link{
+	color: $color__link;
+	font-weight: 600;
+	@include font-size(1.125);
+	text-transform: uppercase;
+	display: inline-block;
+	
+	i{
+		margin-left: 3px;
+	}
+}
+

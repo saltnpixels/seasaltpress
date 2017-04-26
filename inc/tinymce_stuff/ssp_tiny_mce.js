@@ -1,3 +1,4 @@
+//when changing page template on editor page i can add a centered column so it looks more liek front end
 jQuery(document).ready( function($){ 
     $('#page_template').on('change', setwrapper);
     
@@ -14,6 +15,16 @@ jQuery(document).ready( function($){
 	}
 	
 	
+/*
+	//add my styles from my cutom field?
+	var styles = $('#pods-form-ui-pods-meta-extra-styles-and-javascript').text();
+	alert(styles);
+	setTimeout(function() { 
+     $("#content_ifr").contents().find("html>head").append(styles);
+    
+		}, 300);
+	
+*/
  });
  
  

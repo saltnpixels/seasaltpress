@@ -12,13 +12,14 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found content-column center-text">
+			<section class="error-404 not-found center-text">
+				<div class="large-logo"> <?php echo logo(); ?></div>
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'seasaltpress' ); ?></h1>
+					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'snp' ); ?></h1>
 				</header><!-- .page-header -->
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'seasaltpress' ); ?></p>
+				<div class="page-content content-column">
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'snp' ); ?></p>
 
 					<?php
 						get_search_form();

@@ -4,30 +4,33 @@
 
 
 //adding tiny mce plugin buttons	
-add_action( 'init', 'seasaltpress_buttons' );
-function seasaltpress_buttons() {
-    add_filter( "mce_external_plugins", "seasaltpress_add_buttons" );
-    add_filter( 'mce_buttons', 'seasaltpress_register_buttons' );
+add_action( 'init', 'snp_buttons' );
+function snp_buttons() {
+    add_filter( "mce_external_plugins", "snp_add_buttons" );
+    add_filter( 'mce_buttons', 'snp_register_buttons' );
     wp_enqueue_style('tinymce_button_styles', get_template_directory_uri() . '/inc/tinymce_stuff/custom-button-style.css');	
 }
 
-function seasaltpress_add_buttons( $plugin_array ) {
-    $plugin_array['seasaltpress'] = get_template_directory_uri() . '/inc/tinymce_stuff/tinymce_buttons.js';
+function snp_add_buttons( $plugin_array ) {
+    $plugin_array['snp'] = get_template_directory_uri() . '/inc/tinymce_stuff/tinymce_buttons.js';
     return $plugin_array;
 }
-function seasaltpress_register_buttons( $buttons ) {
+
+function snp_register_buttons( $buttons ) {
 	
-	$seasaltpress_buttons = array(
+	$snp_buttons = array(
 	'columns',
 	'content-column',
 	'button-link',
 	'break-out',
-	'wrap'
+	'wrap',
+	'prism',
+	'code'
 	
 );
 
 
-    $buttons = array_merge( $buttons, $seasaltpress_buttons); 
+    $buttons = array_merge( $buttons, $snp_buttons); 
     return $buttons;
 }
 

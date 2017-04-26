@@ -1,5 +1,5 @@
 (function() {
-    tinymce.create('tinymce.plugins.seasaltpress', {
+    tinymce.create('tinymce.plugins.snp', {
         /**
          * Initializes the plugin, this will be executed after the plugin has been created.
          * This call is done before the editor instance has finished it's initialization so use the onInit event
@@ -8,6 +8,7 @@
          * @param {tinymce.Editor} ed Editor instance that the plugin is initialized in.
          * @param {string} url Absolute URL to where the plugin is located.
          */
+         
         init : function(ed, url) {
 	       
 	       ed.addButton('columns', {
@@ -35,6 +36,16 @@
                 cmd : 'wrap'
             });
             
+              ed.addButton('prism', {
+                title : 'prism code',
+                cmd : 'prism'
+            });
+
+            ed.addButton('code', {
+                title : 'code',
+                cmd : 'code'
+            });
+            
             
             
             
@@ -43,10 +54,10 @@
             var selected_text = ed.selection.getContent() ? ed.selection.getContent()  : 'Put content here';
             
             var return_text = '';
-            return_text = '<div class="row">';
+            return_text = '<div class="row flex">';
             
             for(var i = 0; i < number; i++){
-	            return_text +='<div class="col-1-' + number + '"><p>' + selected_text + '</p></div>';
+	            return_text +='<div class="col">' + selected_text + '</div>';
 	            }
 	            return_text += ' </div> Text After columns';
             ed.execCommand('mceInsertContent', 0, return_text);
@@ -72,7 +83,7 @@
 	      ed.addCommand('button-link', function() {
 	      	var selected_text = ed.selection.getContent() ? ed.selection.getContent()  : 'Link Text';
 	      	
-	      	var return_text = '<a href="#" class="button">' + selected_text + ' </a>';
+	      	var return_text = '<a href="#" class="button">' + selected_text + ' <i class="fa fa-arrow-circle-o-right"></i></a>';
 	      	ed.execCommand('mceInsertContent', 0, return_text);  
 	      });
 	      
@@ -83,6 +94,37 @@
       	var return_text = '<div class="wrap">' + selected_text + ' </div>';
       	ed.execCommand('mceInsertContent', 0, return_text);  
       });
+      
+      
+      ed.addCommand('prism', function() {
+	      var langType = prompt("which language? php html scss markup... ");
+	     
+	      if (langType == null){
+		      
+		      langType = 'markup';
+	      }
+            var selected_text = ed.selection.getContent({'format' : 'raw' }) ? ed.selection.getContent({'format' : 'raw' })  : 'Put content here';
+      	    	
+      	var return_text = '<pre><code class="language-' + langType + '">' + selected_text + '</code></pre>';
+      	ed.execCommand('mceInsertContent', false, return_text);  
+      });
+      
+      
+       ed.addCommand('code', function() {
+	      var langType = prompt("which language? php html scss markup... ");
+	     
+	      if (langType == null){
+		      
+		      langType = 'markup';
+	      }
+            var selected_text = ed.selection.getContent({'format' : 'raw' }) ? ed.selection.getContent({'format' : 'raw' })  : 'Put content here';
+      	    	
+      	var return_text = '<code class="language-' + langType + '">' + selected_text + '</code> ';
+      	ed.execCommand('mceInsertContent', false, return_text);  
+      });
+      
+      
+      
  
         },
  
@@ -118,5 +160,5 @@
     });
 
     // Register plugin
-    tinymce.PluginManager.add( 'seasaltpress', tinymce.plugins.seasaltpress );
+    tinymce.PluginManager.add( 'snp', tinymce.plugins.snp );
 })();

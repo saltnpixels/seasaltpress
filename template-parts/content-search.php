@@ -8,23 +8,38 @@
  */
 
 ?>
-
+<div class="col">
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
+	<header class="entry-header">
+		<a href="<?php the_permalink(); ?>">
+		<?php
+				the_post_thumbnail();
+				?>
+		</a>
+				<?php
+				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			
+
+		if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php seasaltpress_posted_on(); ?>
+			<?php snp_posted_on();  //date and author ?>
 		</div><!-- .entry-meta -->
-		<?php endif; ?>
+		<?php
+		endif; ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
+
+	<div class="entry-content">
+		<?php
+			the_excerpt();
+		?>
+	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php seasaltpress_entry_footer(); ?>
+		<?php snp_entry_footer(); ?>
+
 	</footer><!-- .entry-footer -->
+
 </article><!-- #post-## -->
+ </div>

@@ -6,13 +6,13 @@ $size__site-sidebar: 25%;
 $wrap: 1200px;           //size of wrap
 $gutters: 15px;          //column gutters
 $footer-height: 25px;    //height of footer. useful for sticky footer
-$content-column: 600px;  //special centered column great for text. also allows for breaking out of column inside articles.
-$mobile-width: 500px;    //media query for when columns on page should go 100%. columns with class .stay-on-mobile will not be affected
-$baseline: 1.5rem;       //margin bottom used in a lot of places
+$content-column: 730px;  //special centered column great for text. also allows for breaking out of column inside articles. images should be 730 - gutters. 700
+$mobile-width: 600px;    //media query for when columns on page should go 100%. columns with class .stay-on-mobile will not be affected
+$baseline: 30px;       //margin bottom used in a lot of places
 
 //other styles
 $mobile-nav-menu: 600px; //media query for when the main nav should go mobile and off to the side.
-$mobile-nav-width: 200px;//size of mobile pop out or dashboard menu
+
 
 
 $fa: 'fontAwesome';
