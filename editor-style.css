@@ -2149,6 +2149,9 @@ body .sidebar-toggle {
 /*--------------------------------------------------------------
 # Sidebar Styles
 --------------------------------------------------------------*/
+/*
+	- Sidebar layout and structure can be found in structure_defualts
+*/
 /*------- Cool Sidebar Toggle Button --------*/
 body .sidebar-toggle {
   position: absolute;
