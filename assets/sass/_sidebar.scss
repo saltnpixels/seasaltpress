@@ -25,67 +25,13 @@ body .sidebar-toggle{
 	color: $color-sidebar-toggled;
 }
 
-
-
-
-
-/*------- Plain Sidebar inline with content --------*/ 
-
-.content-sidebar-holder .posts-holder{
-	width: 75%;
-}
-
-.content-sidebar-holder{
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	
-	#secondary{
-		align-self: stretch;
-		padding-top: $baseline;
-	}	
-	
-}
-
-.sidebar-left{
-	order: 2;
-}
-
-
-/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/ 
-
-@media (max-width: $sidebar-mobile-width){
-	.sidebar-toggle{
-		display: block;
+//making sure the menu doesnt bump into the sidebar icon when window is narrow
+@media (max-width: $wrap + 30) and (min-width: $mobile-nav-width){
+	.sidebar-active .site-top{
+		padding-right: 30px;
 	}
-	
-	//set to cool sidebar. repeated here... to od. dont repeat
-	.js #secondary{
-		position: absolute;
-		padding-top: $cool-sidebar-top-padding; 
-		top: 0;
-		width: 75vw;
-		max-width: $sidebar-width;
-		right: 0;
-		transition: all .6s;
-		height: 100%;
-		min-height: 100vh;
-		display: block;
-		transform: translate(75vw, 0);
-		background: $background-sidebar;
-		z-index: 20;
-		
-		.sidebar-holder{
-			overflow: scroll;
-			height: 100%;
-		}
-	}
-	
-	.content-sidebar-holder .posts-holder{
-		width: auto;
-	}	
-		
 }
+
 
 
 
@@ -145,21 +91,32 @@ body .sidebar-toggle{
 # Sidebar Styles inline
 --------------------------------------------------------------*/
 
-.content-sidebar-holder #secondary{
-	color: $color-inline-sidebar;
-	background: $background-inline-sidebar;
-	
-	h2{
-		color: $color-inline-sidebar-header;
+@media (min-width: $sidebar-mobile-width){
+	.content-sidebar-holder #secondary{
+		color: $color-inline-sidebar;
+		background: $background-inline-sidebar;
+		
+		h2{
+			color: $color-inline-sidebar-header;
+		}
+		
+		a, .dropdown-toggle{
+			color: $color-inline-sidebar-highlight;
+			transition: all .5s;
+		}
+		
+		a:hover, a:active{
+			color: $color-inline-sidebar-highlight-active;
+		}
+		
 	}
-	
-	a, .dropdown-toggle{
-		color: $color-inline-sidebar-highlight;
-		transition: all .5s;
+}
+
+
+@media (max-width: $sidebar-mobile-width){
+	.js #secondary{
+		background: $background-sidebar;
+		
+		
 	}
-	
-	a:hover, a:active{
-		color: $color-inline-sidebar-highlight-active;
-	}
-	
 }

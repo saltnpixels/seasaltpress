@@ -730,7 +730,16 @@ td:last-child {
 
 #page .site-logo {
   position: relative;
-  max-width: 100%; }
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   #page .site-logo h1, #page .site-logo p {
     margin: 0; }
   #page .site-logo a {
@@ -1838,6 +1847,31 @@ figcaption {
 .sidebar-toggle {
   display: none; }
 
+/*------- Plain Sidebar inline with content layout --------*/
+.content-sidebar-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+  .content-sidebar-holder #secondary {
+    -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
+        align-self: stretch;
+    padding-top: 30px; }
+
+.content-sidebar-holder .posts-holder {
+  width: 75%; }
+
+.sidebar-left {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
 /*------- Cool Sidebar toggle function --------*/
 body .sidebar-toggle {
   -webkit-transition: all .5s;
@@ -1879,6 +1913,31 @@ body .sidebar-toggle {
   z-index: 20; }
   .js .cool-sidebar .content-area ~ #secondary .sidebar-holder {
     height: 100%; }
+
+/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/
+@media (max-width: 1000px) {
+  .sidebar-toggle {
+    display: block; }
+  .js #secondary {
+    position: absolute;
+    padding-top: 60px;
+    top: 0;
+    width: 75vw;
+    max-width: 300px;
+    right: 0;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+    height: 100%;
+    min-height: 100vh;
+    display: block;
+    -webkit-transform: translate(75vw, 0);
+            transform: translate(75vw, 0);
+    z-index: 20; }
+    .js #secondary .sidebar-holder {
+      overflow: scroll;
+      height: 100%; }
+  .content-sidebar-holder .posts-holder {
+    width: auto; } }
 
 /*
  * This file is for styling your posts, pages, and archive pages
@@ -2106,56 +2165,9 @@ body .sidebar-toggle {
 .sidebar-toggle.sidebar-open {
   color: white; }
 
-/*------- Plain Sidebar inline with content --------*/
-.content-sidebar-holder .posts-holder {
-  width: 75%; }
-
-.content-sidebar-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start; }
-  .content-sidebar-holder #secondary {
-    -ms-flex-item-align: stretch;
-        -ms-grid-row-align: stretch;
-        align-self: stretch;
-    padding-top: 30px; }
-
-.sidebar-left {
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2; }
-
-/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/
-@media (max-width: 1000px) {
-  .sidebar-toggle {
-    display: block; }
-  .js #secondary {
-    position: absolute;
-    padding-top: 60px;
-    top: 0;
-    width: 75vw;
-    max-width: 300px;
-    right: 0;
-    -webkit-transition: all .6s;
-    transition: all .6s;
-    height: 100%;
-    min-height: 100vh;
-    display: block;
-    -webkit-transform: translate(75vw, 0);
-            transform: translate(75vw, 0);
-    background: #161F26;
-    z-index: 20; }
-    .js #secondary .sidebar-holder {
-      overflow: scroll;
-      height: 100%; }
-  .content-sidebar-holder .posts-holder {
-    width: auto; } }
+@media (max-width: 1060px) and (min-width: 600px) {
+  .sidebar-active .site-top {
+    padding-right: 30px; } }
 
 /*--------------------------------------------------------------
 # Cool Sidebar Styles Defaults. Change what you want
@@ -2192,17 +2204,22 @@ body .sidebar-toggle {
 /*--------------------------------------------------------------
 # Sidebar Styles inline
 --------------------------------------------------------------*/
-.content-sidebar-holder #secondary {
-  color: #6C747D;
-  background: transparent; }
-  .content-sidebar-holder #secondary h2 {
-    color: #161F26; }
-  .content-sidebar-holder #secondary a, .content-sidebar-holder #secondary .dropdown-toggle {
+@media (min-width: 1000px) {
+  .content-sidebar-holder #secondary {
     color: #6C747D;
-    -webkit-transition: all .5s;
-    transition: all .5s; }
-  .content-sidebar-holder #secondary a:hover, .content-sidebar-holder #secondary a:active {
-    color: #10B8E0; }
+    background: transparent; }
+    .content-sidebar-holder #secondary h2 {
+      color: #161F26; }
+    .content-sidebar-holder #secondary a, .content-sidebar-holder #secondary .dropdown-toggle {
+      color: #6C747D;
+      -webkit-transition: all .5s;
+      transition: all .5s; }
+    .content-sidebar-holder #secondary a:hover, .content-sidebar-holder #secondary a:active {
+      color: #10B8E0; } }
+
+@media (max-width: 1000px) {
+  .js #secondary {
+    background: #161F26; } }
 
 .page-template-page-blank {
   padding: 0 15px; }

@@ -2212,12 +2212,6 @@
 		"oAP": "\/inc\/back-compat.php",
 		"oF": 0
 		},
-	"\/inc\/color-patterns.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/inc\/color-patterns.php",
-		"oF": 0
-		},
 	"\/inc\/custom-header.php": {
 		"ft": 8192,
 		"oA": 2,

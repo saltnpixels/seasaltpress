@@ -182,8 +182,32 @@
 }
 
 
-/*------- Cool Sidebar toggle function --------*/ 
+/*------- Plain Sidebar inline with content layout --------*/ 
 
+//holds content for article and the sidebar under header
+.content-sidebar-holder{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	
+	#secondary{
+		align-self: stretch;
+		padding-top: $baseline;
+	}	
+	
+}
+
+//archive pages with sidebars are set to a width of 75%
+.content-sidebar-holder .posts-holder{
+	width: 75%;
+}
+
+.sidebar-left{
+	order: 2;
+}
+
+
+/*------- Cool Sidebar toggle function --------*/ 
 body .sidebar-toggle{
 	transition: all .5s;
 	transition-delay: .05s;
@@ -201,18 +225,16 @@ body .sidebar-toggle{
 //if the screen is wide enough we will make primary, footer and site-top thinner when sidebar opens so it looks like its pushing it over
 @media (min-width: $mobile-width + 500px){
 	
-		.content-area, .site-top, .site-footer, .break-out > *{
-			transition: all .6s;
-		}
-	
+	.content-area, .site-top, .site-footer, .break-out > *{
+		transition: all .6s;
+	}
 	
 	.cool-sidebar.sidebar-open{
 		.content-area, .site-top, .site-footer, .break-out > *{
 			width: calc( 100vw - #{$sidebar-width});
 		}
 	}
-	
-	
+		
 }
 
 
@@ -245,4 +267,39 @@ body .sidebar-toggle{
 	}
 }
 
+
+
+/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/ 
+
+@media (max-width: $sidebar-mobile-width){
+	.sidebar-toggle{
+		display: block;
+	}
+	
+	//set to cool sidebar.
+	.js #secondary{
+		position: absolute;
+		padding-top: $cool-sidebar-top-padding; 
+		top: 0;
+		width: 75vw;
+		max-width: $sidebar-width;
+		right: 0;
+		transition: all .6s;
+		height: 100%;
+		min-height: 100vh;
+		display: block;
+		transform: translate(75vw, 0);
+		z-index: 20;
+		
+		.sidebar-holder{
+			overflow: scroll;
+			height: 100%;
+		}
+	}
+	
+	.content-sidebar-holder .posts-holder{
+		width: auto;
+	}	
+		
+}
 

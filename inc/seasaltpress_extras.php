@@ -87,7 +87,6 @@ function seasaltpress_logo( $return_image_url = false){
 		}
 		
 
-		
 		if(is_front_page() && ! has_custom_logo() ){
 			return '<div class="site-logo"><h1>' . $logo . '</h1></div>';
 		}

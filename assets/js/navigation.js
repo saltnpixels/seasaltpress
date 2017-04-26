@@ -278,7 +278,8 @@
  var $checksidebar = $('.js #secondary');
 	if( $checksidebar.length ){
 		$('#page').append('<button aria-expanded="false" class="sidebar-toggle" style="height: ' + $('.site-top').height() + 'px;">' + seasaltpressScreenReaderText.sidebar_icon + '</div>');
-	
+		
+		$body.addClass('sidebar-active');
 		
 		
 		$('.sidebar-toggle').on('click', function() {
