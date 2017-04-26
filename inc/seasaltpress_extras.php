@@ -10,7 +10,19 @@
  * @subpackage Sea_Salt_Press
  * @since 1.0
  */
- 
+function iodine_is_active() {
+	if ( is_plugin_active( 'iodine/iodine.php' ) ) {
+		return false;
+	}
+	?>
+	<div class="notice notice-error is-dismissible">
+		<p>
+			<a target="_blank" href="https://github.com/saltnpixels/Iodine"> <?php  _e('This plugin works best with iodine installed!!', 'seasaltpress'); ?></a>
+		</p>
+	</div>
+	<?php
+}
+add_action( 'admin_notices', 'iodine_is_active' ); 
 
 
 
