@@ -1,7 +1,7 @@
 /*
- * This page is used to make defualt layout for any elements on the site.
- * There is no styles of colors and backgrounds here. Just structure and layout.
- * You can override whats here in other scss files, unless you know what you are doing.
+ * This page is used to make defualt layout for major elements on the site.
+ * There is no styles of colors and backgrounds here. Just structure and layout. (widths, heights, flex...)
+ * It is better to override whats here in other scss files, unless you know what you are doing.
 */
 
 /*--------------------------------------------------------------
@@ -54,13 +54,6 @@
 }
 
 
-/*------- Header image placement --------*/ 
-/*
-	- By default the header featured image is set to be large and full width suing cover. It can be either behind the header-content, usually darkened, or above it or below it.
-	- Simple classes have been provided here to change its behavior. It defaults to being above the header content at a height of 300px
-	- Just add class .image-behind or .image-below onto header to change the images placement
-	- You can also use @extend .image-behind instead of adding the class for the same effect. This is done in the post_types.scss by default
-*/
 
 
 /*------- Default Post Thumbnails/ Featured Image --------*/ 
@@ -84,6 +77,14 @@
 	background-size: cover; //fallback for ie. Using js we detect and set it to be background image instead. 
 }
 
+
+/*------- Header image placement --------*/ 
+/*
+	- By default the header featured image is set to be large and full width suing cover. It can be either behind the header-content, usually darkened, or above it or below it.
+	- Simple classes have been provided here to change its behavior. It defaults to being above the header content at a height of 300px
+	- Just add class .image-behind or .image-below onto header to change the images placement
+	- You can also use @extend .image-behind instead of adding the class for the same effect. This is done in the post_types.scss by default
+*/
 
 /*------- Image Placement Classes --------*/ 
 /*

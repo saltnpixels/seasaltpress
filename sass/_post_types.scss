@@ -42,10 +42,10 @@
 
 
 /*--------------------------------------------------------------
-# Styles for posts and pages. Change or delete. 
+# Defualt Styles for posts and pages. Change or delete. 
 --------------------------------------------------------------*/
 
-/*------- Defualt author and updated post meta --------*/ 
+/*------- Default author and updated post meta not showing --------*/ 
 
 .updated:not(.published) {
 	display: none;
@@ -69,6 +69,7 @@
 
 
 //each post type needs: the archive page header styled if there is an archive page, the single post entry styled and the archive articles list styled
+//you can set featured image behind or above or below the rest of the content in header using @extend .image-behind|.image-below on the header
 
 /*------- Archive pages --------*/ 
 .blog, .archive{
@@ -115,7 +116,7 @@
 
 /*------- List of posts on any Archives --------*/ 
 
-//make grid if wanted
+//example of making a grid if wanted of all posts
 .posts-holder{
 	display: flex;
 	flex-wrap: wrap;
@@ -124,7 +125,6 @@
 
 
 .blog article, .archive article, .search article{
-	//box-shadow: 0 1px 5px $background-content-shadow;
 	border: 1px solid rgba($grey, .2);
 	margin-bottom: $gutters;
 	color: $color-content;
@@ -146,8 +146,7 @@
 	}
 	
 	.featured-image{
-		flex: 1;
-		
+		flex: 1;	
 	}
 	
 	.entry-title, .cat-links, .entry-content, .entry-meta{
@@ -157,7 +156,6 @@
 	.posted-by{
 		display: none; //not needed unless there are more authors
 	}
-	
 	
 	.tag-links, .cats-tags-sep{
 		display: none;
@@ -207,6 +205,10 @@
 		color: inherit;
 	}
 	
-} //post page article on archive
+} //post and page articles on archive, or any post type... 
+
+
+
+//Add your own post type stuff here to override
 
 

@@ -1718,9 +1718,9 @@ figcaption {
 11.0 Posts and Pages
 --------------------------------------------------------------*/
 /*
- * This page is used to make defualt layout for any elements on the site.
- * There is no styles of colors and backgrounds here. Just structure and layout.
- * You can override whats here in other scss files, unless you know what you are doing.
+ * This page is used to make defualt layout for major elements on the site.
+ * There is no styles of colors and backgrounds here. Just structure and layout. (widths, heights, flex...)
+ * It is better to override whats here in other scss files, unless you know what you are doing.
 */
 /*--------------------------------------------------------------
 # Default Layout.
@@ -1766,13 +1766,6 @@ figcaption {
     .page-header .header-content .entry-title, .page-header .header-content .page-title, .page-header .header-content h1, .single .entry-header .header-content .entry-title, .single .entry-header .header-content .page-title, .single .entry-header .header-content h1, .page .entry-header .header-content .entry-title, .page .entry-header .header-content .page-title, .page .entry-header .header-content h1 {
       margin: 0; }
 
-/*------- Header image placement --------*/
-/*
-	- By default the header featured image is set to be large and full width suing cover. It can be either behind the header-content, usually darkened, or above it or below it.
-	- Simple classes have been provided here to change its behavior. It defaults to being above the header content at a height of 300px
-	- Just add class .image-behind or .image-below onto header to change the images placement
-	- You can also use @extend .image-behind instead of adding the class for the same effect. This is done in the post_types.scss by default
-*/
 /*------- Default Post Thumbnails/ Featured Image --------*/
 .featured-image {
   display: block;
@@ -1788,6 +1781,13 @@ figcaption {
   margin: auto;
   background-size: cover; }
 
+/*------- Header image placement --------*/
+/*
+	- By default the header featured image is set to be large and full width suing cover. It can be either behind the header-content, usually darkened, or above it or below it.
+	- Simple classes have been provided here to change its behavior. It defaults to being above the header content at a height of 300px
+	- Just add class .image-behind or .image-below onto header to change the images placement
+	- You can also use @extend .image-behind instead of adding the class for the same effect. This is done in the post_types.scss by default
+*/
 /*------- Image Placement Classes --------*/
 /*
 	 - Place one of these classes on the header and the image will go below or behind. 
@@ -1964,9 +1964,9 @@ body .sidebar-toggle {
     float: left; }
 
 /*--------------------------------------------------------------
-# Styles for posts and pages. Change or delete. 
+# Defualt Styles for posts and pages. Change or delete. 
 --------------------------------------------------------------*/
-/*------- Defualt author and updated post meta --------*/
+/*------- Default author and updated post meta not showing --------*/
 .updated:not(.published) {
   display: none; }
 
@@ -2205,7 +2205,7 @@ body .sidebar-toggle {
     color: white; }
 
 /*--------------------------------------------------------------
-# Sidebar Styles inline
+# Sidebar Styles inline when on desktop. Mobile gets cool sidebar styles
 --------------------------------------------------------------*/
 @media (min-width: 1000px) {
   .content-sidebar-holder #secondary {

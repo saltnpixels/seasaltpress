@@ -34,8 +34,7 @@ body .sidebar-toggle{
 		padding-right: 30px;
 	}
 }
-
-
+ 
 
 
 /*--------------------------------------------------------------
@@ -90,7 +89,7 @@ body .sidebar-toggle{
 
 
 /*--------------------------------------------------------------
-# Sidebar Styles inline
+# Sidebar Styles inline when on desktop. Mobile gets cool sidebar styles
 --------------------------------------------------------------*/
 
 @media (min-width: $sidebar-mobile-width){
@@ -117,8 +116,7 @@ body .sidebar-toggle{
 
 @media (max-width: $sidebar-mobile-width){
 	.js #secondary{
-		background: $background-sidebar;
-		
+		background: $background-sidebar;	
 		
 	}
 }
