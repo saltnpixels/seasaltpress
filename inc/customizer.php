@@ -1,8 +1,10 @@
 <?php
 /**
- * sea salt press Theme Customizer.
- * Sea salt press added to underscores here
- * @package sea_salt_press
+ * Sea Salt Press: Customizer
+ *
+ * @package WordPress
+ * @subpackage Sea_Salt_Press
+ * @since 1.0
  */
 
 /**
@@ -10,124 +12,51 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function snp_customize_register( $wp_customize ) {
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+function seasaltpress_customize_register( $wp_customize ) {
+	$wp_customize->get_setting( 'blogname' )->transport          = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport   = 'postMessage';
 	
-	
+	//$wp_customize->get_setting( 'header_textcolor' )->transport  = 'postMessage';
 
-/*--------------------------------------------------------------
-# Adding more customizations to the wp customizer
---------------------------------------------------------------*/	
-
-
-
-/*--------------------------------------------------------------
-# Adding sections
---------------------------------------------------------------*/
-
-
-
- 	//add new section for site top options and options
-	$wp_customize->add_section( 'snp_options', array(
-  'title' => __( 'Site Top Options' ),
-  'description' => __( 'Options. NOTE: Make sure to also set the sass variables in sass/style.scss for grid options as they cannot be set here.', 'snp' ),
-  'panel' => '', // Not typically needed.
-  'priority' => 160,
-  'capability' => 'edit_theme_options',
-  'theme_supports' => '', // Rarely needed.
-  
-) );
-
-
-
-	//add new section for site layout manual
-	$wp_customize->add_section( 'snp_layout', array(
-  'title' => __( 'site top layouts', 'snp' ),
-  'description' => __( 'Preset or Manually set the top layout here.' ),
-  'panel' => '', // Not typically needed.
-  'priority' => 160,
-  'capability' => 'edit_theme_options',
-  'theme_supports' => '', // Rarely needed.
-  
-) );
-
-//footer options
-	$wp_customize->add_section( 'snp_footer', array(
-  'title' => __( 'footer options', 'snp' ),
-  'description' => __( 'Chose footer options.' ),
-  'panel' => '', // Not typically needed.
-  'priority' => 160,
-  'capability' => 'edit_theme_options',
-  'theme_supports' => '', // Rarely needed.
-  
-) );
-
-
-
-
-
-
-
-/*--------------------------------------------------------------
-# settings and controls for above sections
---------------------------------------------------------------*/
-
-//add more footer widgets
- $wp_customize->add_setting('snp_footer_sidebars', array(
-     'default'     => '1'
-
- ));
-
- $wp_customize->add_control('snp_footer_sidebars', array(
-     'label'      => __('How many widgets for the footer?', 'snp'),
-     'section'    => 'snp_footer',
-     'type'    => 'select',
-     'choices' => array(
-        '1' => '1',
-        '2' => '2',
-        '3' => '3'
-     )
- ));
-
-	
-	
-	
-
-	
-//adding a wrap inside site top
- $wp_customize->add_setting('wrap_nav',
- 	array(
-	 	'default' => 'yes'
- 	));
-	
-
-	$wp_customize->add_control('wrap_nav',
-	array(
-	'label' => __('containt site top in wrap'),
-	'section' => 'snp_layout',
-	'type' => 'select',
-	'choices' => array(
-		'yes' => 'yes',
-		'no' => 'no'
-	),
-	'description' => 'You can set wrap size via variables in scss'
+	$wp_customize->selective_refresh->add_partial( 'blogname', array(
+		'selector' => '.site-title a',
+		'render_callback' => 'seasaltpress_customize_partial_blogname',
 	) );
-	 
+	
+	$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+		'selector' => '.site-description',
+		'render_callback' => 'seasaltpress_customize_partial_blogdescription',
+	) );
 
 
-//adding manual html yourself
- $wp_customize->add_setting('use_customizer',
+
+/**
+ * Theme options.
+ */
+$wp_customize->add_section( 'theme_options', array(
+	'title'    => __( 'Theme Options', 'seasaltpress' ),
+	'priority' => 130, // Before Additional CSS.
+) );
+
+$wp_customize->add_section( 'post_types', array(
+	'title'    => __( 'Post Type Archives', 'seasaltpress' ),
+	'priority' => 130, // Before Additional CSS.
+) );
+
+
+/**
+ * Layout of Site top
+ */
+$wp_customize->add_setting('site_top_use_customizer',
  	array(
 	 	'default' => 'yes'
  	));
 	
 	// Add a control to upload the logo
-	$wp_customize->add_control('use_customizer',
+	$wp_customize->add_control('site_top_use_customizer',
 	array(
 	'label' => __('Use the customizer?'),
-	'section' => 'snp_layout',
+	'section' => 'theme_options',
 	'type' => 'radio',
 	'description' => 'You can make your own layout in php in header.php and ignore presets and manual settings.',
 		'choices' => array(
@@ -135,113 +64,193 @@ function snp_customize_register( $wp_customize ) {
 			'no' => 'no'
 		)
 	) );
-		   
 
 
-//preset options. the presets just fill the manual textarea below it.
- $wp_customize->add_setting('preset_layout',
+/**
+ * Nav Menu and Logo Options
+ */
+$wp_customize->add_setting('site_top_wrap',
  	array(
-	 
-	 	'default' => 'nav-right'
+	 	'default' => 'yes',
+	 	'transport' => 'postMessage',
+ 	));
+	
+
+	$wp_customize->add_control('site_top_wrap',
+	array(
+		'label' => __('contain the site top in .wrap'),
+		'section' => 'theme_options',
+		'type' => 'select',
+		'choices' => array(
+			'wrap' => 'yes',
+			'' => 'no'
+		),
+		'description' => 'You can set wrap size via variables in scss'
+	) );
+	
+/*
+$wp_customize->selective_refresh->add_partial( 'site_top_wrap', array(
+	'selector'  => '.site-top-inner-container',
+	'render_callback' => 'seasaltpress_customize_partial_site_top_wrap',
+) );
+*/
+
+
+
+
+/**
+ * Layout of Site top
+ */
+$wp_customize->add_setting('site_top_layout',
+ 	array(
+	 	'default' => 'logo-left',
+	 	'transport' => 'postMessage'
  	));
 	
 	// Add a control to upload the logo
-	$wp_customize->add_control('preset_layout',
+	$wp_customize->add_control('site_top_layout',
 	array(
-	'label' => __('Layout Presets'),
-	'section' => 'snp_layout',
+	'label' => __('Logo Position'),
+	'section' => 'theme_options',
 	'type' => 'select',
-	'active_callback' => 'is_manual_on',
-	'description' => 'Quick presets that change the layout. Check Manual Layout to see the changes it makes.',
-	'choices' => array(
-		'nav-right' => 'nav on right',
-		'nav-left' => 'nav on left',
-		'nav-centered' => 'nav centered'
-	)
-	 ) );
-	 
-	 
-	 
-
-
-//adding preset html for site top
- $wp_customize->add_setting('manual_layout',
- 	array(
-	 	'default' => '[logo]
-<div id="mobilize">
-  [primary_nav] 
-</div>',
-	 	'sanitize_callback' => 'sanitize_html_output'
- 	));
-	
-	// Add a control to upload the logo
-	$wp_customize->add_control('manual_layout',
-	array(
-	'label' => __('Manual Site Top Layout'),
-	'section' => 'snp_layout',
-	'type' => 'textarea',
-	'description' => 'include the whole top with shortcodes available [logo] and [primary_nav] and [site_description]',
-	'active_callback' => 'is_manual_on',
-		'input_attrs' => array(
-    'placeholder' => __( '[logo]
-<div id="mobilize">
-  [primary_nav] 
-</div>' ))
+	'description' => 'You can make your own layout in php in header.php and ignore presets and manual settings.',
+		'choices' => array(
+			'logo-left' => 'logo-left',
+			'logo-right' => 'logo-right',
+			'logo-center' => 'logo-center',
+			'logo-center-under' => 'logo-center-under',
+			'logo-in-middle' => 'logo-in-middle',
+			'no-logo' => 'no-logo'
+		)
 	) );
 
 
-
-	
-	
-}
-add_action( 'customize_register', 'snp_customize_register' );
-
-
-
-
+/*
+ $wp_customize->selective_refresh->add_partial( 'site_top_layout', array(
+	'selector'  => '.site-top-inner-container',
+) );
+*/
 
 
 /**
- * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+ * Add cool menu capability. app like menu on mobile
+ *
  */
-function snp_customize_preview_js() {
+$wp_customize->add_setting( 'cool_menu',
+	array(
+		'default'=> false,
+	));
+$wp_customize->add_control( 'cool_menu', 
+	array(
+		'label' => __('Enable Cool Mobile Menu'),
+		'section' => 'theme_options',
+		'type' => 'checkbox'
+	));	
+	
 
-	wp_enqueue_script('snp_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+/**
+ * Add cool sidebar capability. 
+ *
+ */
+$wp_customize->add_setting( 'cool_sidebar',
+	array(
+		'default'=> false,
+	));
+$wp_customize->add_control( 'cool_sidebar', 
+	array(
+		'label' => __('Enable Cool Sidebar'),
+		'section' => 'theme_options',
+		'type' => 'checkbox'
+	));	
+	
+	
+//add post type descriptions
+$seasaltpress_post_types = get_post_types(array('_builtin'=>false, 'has_archive'=>true), 'objects');
+$seasaltpress_post_types[] = get_post_type_object('post');
+foreach( $seasaltpress_post_types as $post_type ){
+	
+$wp_customize->add_setting( 'seasaltpress_archive_header_' . $post_type->name,
+	array(
+		'default'=> '',
+));
+	
+$wp_customize->add_control( 'seasaltpress_archive_header_' . $post_type->name, array(
+  'label' => __( 'Archive Header For ', 'seasaltpress' ) . ucwords($post_type->labels->singular_name),
+  'type' => 'dropdown-pages',
+  'allow_addition' => true,
+  'section' => 'post_types',
+  'description' => __('Set a page to be used to display the header for this archive. Note: Post type must have an archive page.', 'seasaltpress'),
+) );
+
+
 }
 
-add_action( 'customize_preview_init', 'snp_customize_preview_js' );
+
+               
+}
+add_action( 'customize_register', 'seasaltpress_customize_register' );
+
 
 
 
 /**
-	* add changes to the controls based on selections. does not run on refresh.
-	*/
-	
-function snp_customizer_controls_js(){
-	
-  wp_enqueue_script('snp_customizer_controls_js', get_template_directory_uri() . '/js/customizer_controls.js', array( 'customize-controls' ), '2151215', true );
-}
-
-
-add_action( 'customize_controls_enqueue_scripts', 'snp_customizer_controls_js' );
-
-
-
-
-//callbacks
-
-function is_manual_on(){
-	return (get_theme_mod('use_customizer') === 'yes');
-}
-
-
-function sanitize_html_output($value){
-   return	wp_kses_post($value);
+ * Render the site title for the selective refresh partial.
+ *
+ * @since Sea Salt Press 1.0
+ * @see seasaltpress_customize_register()
+ *
+ * @return void
+ */
+function seasaltpress_customize_partial_blogname() {
+	bloginfo( 'name' );
 }
 
 
 
+/**
+ * Render the site tagline for the selective refresh partial.
+ *
+ * @since Sea Salt Press 1.0
+ * @see seasaltpress_customize_register()
+ *
+ * @return void
+ */
+function seasaltpress_customize_partial_blogdescription() {
+	bloginfo( 'description' );
+}
 
+/**
+ * Return whether we're previewing the front page and it's a static page.
+ */
+function seasaltpress_is_static_front_page() {
+	return ( is_front_page() && ! is_home() );
+}
+
+/**
+ * Return whether we're on a view that supports a one or two column layout.
+ */
+function seasaltpress_is_view_with_layout_option() {
+	// This option is available on all pages. It's also available on archives when there isn't a sidebar.
+	return ( is_page() || ( is_archive() && ! is_active_sidebar( 'sidebar-1' ) ) );
+}
+
+
+
+/**
+ * Bind JS handlers to instantly live-preview changes.
+ */
+function seasaltpress_customize_preview_js() {
+	wp_enqueue_script( 'seasaltpress-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview' ), '1.0', true );
+}
+add_action( 'customize_preview_init', 'seasaltpress_customize_preview_js' );
+
+/**
+ * Load dynamic logic for the customizer controls area.
+ */
+function seasaltpress_panels_js() {
+	wp_enqueue_script( 'seasaltpress-customize-controls', get_theme_file_uri( '/assets/js/customize-controls.js' ), array(), '1.0', true );
+}
+//add_action( 'customize_controls_enqueue_scripts', 'seasaltpress_panels_js' );
 
 
 

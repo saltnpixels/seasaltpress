@@ -1,15 +1,20 @@
-<?php //styles can be found in forms.scss ?>
+<?php
+/**
+ * Template for displaying search forms in Sea Salt Press
+ *
+ * @package WordPress
+ * @subpackage Sea_Salt_Press
+ * @since 1.0
+ * @version 1.0
+ */
+?>
 
-<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-    <label>
-        <span class="screen-reader-text"><?php echo _x( 'Search for:', 'label' ) ?></span>
-        <input type="search" class="search-field"
-            placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>"
-            value="<?php echo get_search_query() ?>" name="s"
-            title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
-    </label>
-    <button type="submit" class="search-submit">
-     <i class="fa fa-search"></i>
-    </button>
-  
+<?php $unique_id = esc_attr( uniqid( 'search-form-' ) ); ?>
+
+<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<label for="<?php echo $unique_id; ?>">
+		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', 'seasaltpress' ); ?></span>
+	</label>
+	<input type="search" id="<?php echo $unique_id; ?>" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'seasaltpress' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+	<button type="submit" class="search-submit"><?php echo seasaltpress_get_svg( array( 'icon' => 'search' ) ); ?><span class="screen-reader-text"><?php echo _x( 'Search', 'submit button', 'seasaltpress' ); ?></span></button>
 </form>

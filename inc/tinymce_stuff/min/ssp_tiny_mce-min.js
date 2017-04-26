@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){function e(){""!==t&&$("#content_ifr").contents().find("#tinymce").removeClass(t),t=$("#page_template").val()}var t="";$("#page_template").on("change",e),setTimeout(e,300)});

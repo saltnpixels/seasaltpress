@@ -1,0 +1,165 @@
+
+/*--------------------------------------------------------------
+# Sidebar Styles
+--------------------------------------------------------------*/
+
+/*------- Cool Sidebar Toggle Button --------*/ 
+
+//if sidebar exists on this post AND cool sidebar is enabled a sidebar icon will appear after the menu all the way at edge of screen.
+//it will also appear on mobile if there is a sidebar, regardless of whether its cool or not.
+body .sidebar-toggle{
+	position: absolute;
+	right: 15px;
+	top: 0;
+	height: 100%;
+	line-height: 0;
+	background: $background-menu-toggle;
+	color: $color-menu-toggle;
+	border: none;
+	padding: 0;
+	cursor: pointer;	
+}
+
+
+.sidebar-toggle.sidebar-open{
+	color: $color-sidebar-toggled;
+}
+
+
+
+
+
+/*------- Plain Sidebar inline with content --------*/ 
+
+.content-sidebar-holder .posts-holder{
+	width: 75%;
+}
+
+.content-sidebar-holder{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	
+	#secondary{
+		align-self: stretch;
+		padding-top: $baseline;
+	}	
+	
+}
+
+.sidebar-left{
+	order: 2;
+}
+
+
+/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/ 
+
+@media (max-width: $sidebar-mobile-width){
+	.sidebar-toggle{
+		display: block;
+	}
+	
+	//set to cool sidebar. repeated here... to od. dont repeat
+	.js #secondary{
+		position: absolute;
+		padding-top: $cool-sidebar-top-padding; 
+		top: 0;
+		width: 75vw;
+		max-width: $sidebar-width;
+		right: 0;
+		transition: all .6s;
+		height: 100%;
+		min-height: 100vh;
+		display: block;
+		transform: translate(75vw, 0);
+		background: $background-sidebar;
+		z-index: 20;
+		
+		.sidebar-holder{
+			overflow: scroll;
+			height: 100%;
+		}
+	}
+	
+	.content-sidebar-holder .posts-holder{
+		width: auto;
+	}	
+		
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Cool Sidebar Styles Defaults. Change what you want
+--------------------------------------------------------------*/
+
+.site-content .widget-area{
+	color: $color-sidebar;
+	background: $background-sidebar;
+	
+	h2{
+		color: $color-sidebar-header;	
+		text-transform: capitalize;
+		margin: 0;
+	}
+	
+	ul{
+		list-style: none;
+		margin: 0;
+		margin-bottom: 0;
+	}
+	
+	li{
+		margin: 0;
+		padding: 0;
+	}
+	
+	a, .dropdown-toggle{
+		color: $color-sidebar-highlight;
+		transition: all .5s;
+	}
+	
+	a:hover, a:active{
+		color: $color-sidebar-highlight-active;
+	}
+	
+	
+	a, li, p, .textwidget{
+		@include font-size(.8);
+	}
+	
+	section{
+		margin-bottom: $baseline;
+	}
+	
+	input{
+		background: tint($background-sidebar, 10%);
+		color: $white;
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+# Sidebar Styles inline
+--------------------------------------------------------------*/
+
+.content-sidebar-holder #secondary{
+	color: $color-inline-sidebar;
+	background: $background-inline-sidebar;
+	
+	h2{
+		color: $color-inline-sidebar-header;
+	}
+	
+	a, .dropdown-toggle{
+		color: $color-inline-sidebar-highlight;
+		transition: all .5s;
+	}
+	
+	a:hover, a:active{
+		color: $color-inline-sidebar-highlight-active;
+	}
+	
+}

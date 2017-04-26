@@ -1,0 +1,1 @@
+jQuery(function($){$("#seasaltpress_extra_styles").addClass("emmet-syntax-css"),emmet.require("textarea").setup({pretty_break:!0,use_tab:!0})});

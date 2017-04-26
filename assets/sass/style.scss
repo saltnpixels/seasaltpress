@@ -1,0 +1,93 @@
+/*
+Theme Name: Sea Salt Press
+Theme URI: https://wordpress.org/themes/seasaltpress/
+Author: Shamai Greenfield
+Author URI: https://seasalt.press/
+Description: Sea Salt Press is a starter theme thats made to save you time and let you focus on design and advanced functionality.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: seasaltpress
+Tags: custom-menu, custom-logo, editor-style, featured-images, footer-widgets
+
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+
+
+/*--------------------------------------------------------------
+1.0 Mixins
+--------------------------------------------------------------*/
+//add your own mixins!
+@import "mixins";
+
+
+/*--------------------------------------------------------------
+2.0 Variables
+--------------------------------------------------------------*/
+@import "variables";
+
+
+/*--------------------------------------------------------------
+3.0 Normalize, Accessibility, Alignments, Clearings
+--------------------------------------------------------------*/
+@import "normalize_alignments_clearings";
+
+
+/*--------------------------------------------------------------
+4.0 Layout  - Grid system
+--------------------------------------------------------------*/
+@import "layout";
+
+
+/*--------------------------------------------------------------
+5.0 Lists and Tables
+--------------------------------------------------------------*/
+@import "lists_tables";
+
+
+/*--------------------------------------------------------------
+6.0 Menus
+--------------------------------------------------------------*/
+@import "menus";
+
+
+/*--------------------------------------------------------------
+7.0 Elements
+--------------------------------------------------------------*/
+@import "elements";
+
+
+/*--------------------------------------------------------------
+8.0 Typography
+--------------------------------------------------------------*/
+@import "typography";
+
+
+/*--------------------------------------------------------------
+9.0 Forms
+--------------------------------------------------------------*/
+@import "forms";
+
+
+/*--------------------------------------------------------------
+10.0 Media
+--------------------------------------------------------------*/
+@import "media";
+
+/*--------------------------------------------------------------
+11.0 Posts and Pages
+--------------------------------------------------------------*/
+@import "structure_defaults";
+@import "post_types";
+
+
+/*--------------------------------------------------------------
+12.0 Comments
+--------------------------------------------------------------*/
+@import "comments";
+
+/*--------------------------------------------------------------
+13.0 Sidebar
+--------------------------------------------------------------*/
+@import "sidebar";

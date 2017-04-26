@@ -1,41 +1,55 @@
 <?php
 /**
- * Template Name: blank no header
+ * Template Name: Blank Page
+ * Template Post Type: post, page
  *
- * This is the template that displays pages with no wrap and gives you full width. It also has no header. You make that in the content. This is good for front pages and pages with a lot of styling and sections.
- 
- *You have full control over the article
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * A blank page template where there is no header or anything other than site top and footer and you have full control of middle section. Good for full widescreen pages and front pages.
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package sea_salt_press
+ * @package WordPress
+ * @subpackage Sea_Salt_Press
+ * @since 1.0
+ * @version 1.0
  */
 
 get_header(); ?>
 
-<?php //get_template_part('template-parts/content', 'header'); page blank usually means you will make your own header via the admin editor.  ?>
-	
-
-	
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 			<?php
-			while ( have_posts() ) : the_post();
+				/* Start the Loop */
+				while ( have_posts() ) : the_post();
 				
-				
-				get_template_part( 'template-parts/content', 'page' );
+			//if the post type has its own folder it must also have its own set of post format files too.
+					$post_type = get_post_type();
+					if(file_exists( locate_template( 'template-parts/' . $post_type . '/content.php' ) ) ){
+						get_template_part( 'template-parts/' . $post_type . '/content', get_post_format() );
+					}
+					else{
+						//default to getting the post folder if the new post type does not have a folder
+						get_template_part( 'template-parts/page/content', get_post_format() );
+					}
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
 
-			endwhile; // End of the loop.
+					
+					// If comments are open or we have at least one comment, load up the comment template.
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
+
+if( is_single() ){
+					the_post_navigation( array(
+						'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'seasaltpress' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous', 'seasaltpress' ) . '</span> <span class="nav-title"><span class="nav-title-icon-wrapper">' . seasaltpress_get_svg( array( 'icon' => 'arrow-left' ) ) . '</span>%title</span>',
+						'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'seasaltpress' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next', 'seasaltpress' ) . '</span> <span class="nav-title">%title<span class="nav-title-icon-wrapper">' . seasaltpress_get_svg( array( 'icon' => 'arrow-right' ) ) . '</span></span>',
+					) );
+					}
+
+				endwhile; // End of the loop.
 			?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 
-<?php
-get_footer();
+<?php get_footer();

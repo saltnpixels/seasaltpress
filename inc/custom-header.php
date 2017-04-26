@@ -1,60 +1,78 @@
 <?php
 /**
- * Sample implementation of the Custom Header feature.
+ * Custom header implementation
  *
- * You can add an optional custom header image to header.php like so ...
+ * @link https://codex.wordpress.org/Custom_Headers
  *
-	<?php if ( get_header_image() ) : ?>
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<img src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
-	</a>
-	<?php endif; // End header image check. ?>
- *
- * @link https://developer.wordpress.org/themes/functionality/custom-headers/
- *
- * @package sea_salt_press
+ * @package WordPress
+ * @subpackage Sea_Salt_Press
+ * @since 1.0
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses snp_header_style()
+ * @uses seasaltpress_header_style()
  */
-function snp_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'snp_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
-		'flex-height'            => true,
-		'wp-head-callback'       => 'snp_header_style',
-	) ) );
-}
-add_action( 'after_setup_theme', 'snp_custom_header_setup' );
+function seasaltpress_custom_header_setup() {
 
-if ( ! function_exists( 'snp_header_style' ) ) :
+	/**
+	 * Filter Sea Salt Press custom-header support arguments.
+	 *
+	 * @since Sea Salt Press 1.0
+	 *
+	 * @param array $args {
+	 *     An array of custom-header support arguments.
+	 *
+	 *     @type string $default-image     		Default image of the header.
+	 *     @type string $default_text_color     Default color of the header text.
+	 *     @type int    $width                  Width in pixels of the custom header image. Default 954.
+	 *     @type int    $height                 Height in pixels of the custom header image. Default 1300.
+	 *     @type string $wp-head-callback       Callback function used to styles the header image and text
+	 *                                          displayed on the blog.
+	 *     @type string $flex-height     		Flex support for height of header.
+	 * }
+	 */
+	add_theme_support( 'custom-header', apply_filters( 'seasaltpress_custom_header_args', array(
+		'default-image'      => get_parent_theme_file_uri( '/assets/images/header.jpg' ),
+		'width'              => 2000,
+		'height'             => 1200,
+		'flex-height'        => true,
+		'video'              => true,
+		'wp-head-callback'   => 'seasaltpress_header_style',
+	) ) );
+
+	register_default_headers( array(
+		'default-image' => array(
+			'url'           => '%s/assets/images/header.jpg',
+			'thumbnail_url' => '%s/assets/images/header.jpg',
+			'description'   => __( 'Default Header Image', 'seasaltpress' ),
+		),
+	) );
+}
+add_action( 'after_setup_theme', 'seasaltpress_custom_header_setup' );
+
+if ( ! function_exists( 'seasaltpress_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see snp_custom_header_setup().
+ * @see seasaltpress_custom_header_setup().
  */
-function snp_header_style() {
+function seasaltpress_header_style() {
 	$header_text_color = get_header_textcolor();
 
-	/*
-	 * If no custom options for text are set, let's bail.
-	 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
-	 */
-	if ( HEADER_TEXTCOLOR === $header_text_color ) {
+	// If no custom options for text are set, let's bail.
+	// get_header_textcolor() options: add_theme_support( 'custom-header' ) is default, hide text (returns 'blank') or any hex value.
+	if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
 		return;
 	}
 
 	// If we get this far, we have custom styles. Let's do this.
 	?>
-	<style type="text/css">
+	<style id="seasaltpress-custom-header-styles" type="text/css">
 	<?php
 		// Has the text been hidden?
-		if ( ! display_header_text() ) :
+		if ( 'blank' === $header_text_color ) :
 	?>
 		.site-title,
 		.site-description {
@@ -66,11 +84,37 @@ function snp_header_style() {
 		else :
 	?>
 		.site-title a,
-		.site-description {
+		.colors-dark .site-title a,
+		.colors-custom .site-title a,
+		body.has-header-image .site-title a,
+		body.has-header-video .site-title a,
+		body.has-header-image.colors-dark .site-title a,
+		body.has-header-video.colors-dark .site-title a,
+		body.has-header-image.colors-custom .site-title a,
+		body.has-header-video.colors-custom .site-title a,
+		.site-description,
+		.colors-dark .site-description,
+		.colors-custom .site-description,
+		body.has-header-image .site-description,
+		body.has-header-video .site-description,
+		body.has-header-image.colors-dark .site-description,
+		body.has-header-video.colors-dark .site-description,
+		body.has-header-image.colors-custom .site-description,
+		body.has-header-video.colors-custom .site-description {
 			color: #<?php echo esc_attr( $header_text_color ); ?>;
 		}
 	<?php endif; ?>
 	</style>
 	<?php
 }
-endif;
+endif; // End of seasaltpress_header_style.
+
+/**
+ * Customize video play/pause button in the custom header.
+ */
+function seasaltpress_video_controls( $settings ) {
+	$settings['l10n']['play'] = '<span class="screen-reader-text">' . __( 'Play background video', 'seasaltpress' ) . '</span>' . seasaltpress_get_svg( array( 'icon' => 'play' ) );
+	$settings['l10n']['pause'] = '<span class="screen-reader-text">' . __( 'Pause background video', 'seasaltpress' ) . '</span>' . seasaltpress_get_svg( array( 'icon' => 'pause' ) );
+	return $settings;
+}
+add_filter( 'header_video_settings', 'seasaltpress_video_controls' );

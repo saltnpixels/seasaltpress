@@ -1,38 +1,74 @@
-=== sea salt press ===
-
-Contributors: automattic
-Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
-
-Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 1.0.0
+=== Sea Salt Press ===
+Contributors: the WordPress team
+Requires at least: WordPress 4.7
+Tested up to: WordPress 4.7
+Version: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-A starter theme called sea salt press, or underscores.
+Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
 
 == Description ==
 
-Hi. I'm a starter theme called sea salt press, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Sea Salt Press brings your site to life with header video and immersive featured images. With a focus on business sites, it features multiple sections on the front page as well as widgets, navigation and social menus, a logo, and more. Personalize its asymmetrical grid with a custom color scheme and showcase your multimedia content with post formats. Our default theme for 2017 works great in many languages, for any abilities, and on any device.
+
+For more information about Sea Salt Press please go to https://codex.wordpress.org/Sea_Salt_Press.
 
 == Installation ==
-	
-1. In your admin panel, go to Appearance > Themes and click the Add New button.
-2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
-3. Click Activate to use your new theme right away.
 
-== Frequently Asked Questions ==
+1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
+2. Type in Sea Salt Press in the search form and press the 'Enter' key on your keyboard.
+3. Click on the 'Activate' button to use your new theme right away.
+4. Go to https://codex.wordpress.org/Sea_Salt_Press for a guide on how to customize this theme.
+5. Navigate to Appearance > Customize in your admin panel and customize to taste.
 
-= Does this theme support any plugins? =
+== Copyright ==
 
-sea salt press includes support for Infinite Scroll in Jetpack.
+Sea Salt Press WordPress Theme, Copyright 2016 WordPress.org
+Sea Salt Press is distributed under the terms of the GNU GPL
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+Sea Salt Press bundles the following third-party resources:
+
+HTML5 Shiv, Copyright 2014 Alexander Farkas
+Licenses: MIT/GPL2
+Source: https://github.com/aFarkas/html5shiv
+
+jQuery scrollTo, Copyright 2007-2015 Ariel Flesler
+License: MIT
+Source: https://github.com/flesler/jquery.scrollTo
+
+normalize.css, Copyright 2012-2016 Nicolas Gallagher and Jonathan Neal
+License: MIT
+Source: https://necolas.github.io/normalize.css/
+
+Font Awesome icons, Copyright Dave Gandy
+License: SIL Open Font License, version 1.1.
+Source: http://fontawesome.io/
+
+Bundled header image, Copyright Alvin Engler
+License: CC0 1.0 Universal (CC0 1.0)
+Source: https://unsplash.com/@englr?photo=bIhpiQA009k
 
 == Changelog ==
 
-= 1.0 - May 12 2015 =
-* Initial release
+= 1.1 =
+* Released: January 6, 2017
 
-== Credits ==
+- Fix incorrect $content_width value in theme
+- Ensure functions in customize-controls.js don't count on Customizer sections always being present
+- Deprecate page_home nav menu item starter content
+- Introduce a theme-specific filter seasaltpress_starter_content for customizing the starter content array
 
-* Based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
-* normalize.css http://necolas.github.io/normalize.css/, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
+= 1.0 =
+* Released: December 6, 2016
+
+Initial release

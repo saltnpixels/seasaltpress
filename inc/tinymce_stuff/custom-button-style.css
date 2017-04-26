@@ -1,7 +1,7 @@
  /* for syling the editor window use the sass file custom-editor-style  */
  
  
- i.mce-i-columns:before {   
+ i.mce-i-seasaltpress-options:before {   
     content: "\f538";       
     font-family: dashicons;
     font-size: 1.35em;
@@ -9,53 +9,6 @@
  }
 
 
- i.mce-i-break-out:before {   
-    content: "\f169";       
-    font-family: dashicons;
-    font-size: 1.35em;
 
- }
- 
-  i.mce-i-content-column:before {   
-    content: "\f214";       
-    font-family: dashicons;
-    font-size: 1.35em;
- }
- 
-  i.mce-i-button-link:before {   
-    content: "\f502";       
-    font-family: dashicons;
-    font-size: 1.35em;
-    border-radius: 3px;
-   
- }
- 
- 
-  i.mce-i-wrap:before {   
-    content: "\f499";       
-    font-family: dashicons;
-    font-size: 1.35em;
-    border-radius: 3px;
-   
- }
- 
- 
-  
-  i.mce-i-prism:before {   
-    content: "\f475";       
-    font-family: dashicons;
-    font-size: 1.35em;
-    border-radius: 3px;
-   
- }
- 
- 
-  i.mce-i-code:before {   
-    content: "\f475";       
-    font-family: dashicons; 
-    font-size: 1.35em;
-    border-radius: 3px;
-   
- }
  
  

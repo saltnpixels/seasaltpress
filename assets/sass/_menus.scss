@@ -1,0 +1,636 @@
+/*--------------------------------------------------------------
+# Site Top, Logo and Mobile popout Layout
+--------------------------------------------------------------*/
+.site-top{
+	background: $background-site-top;
+	width: 100%;
+	position: relative;
+	z-index: 10;
+}
+
+
+//site logo
+#page .site-logo{
+	position: relative;
+	max-width: 100%;
+	h1,p{
+		margin: 0;	
+	}
+	
+	a{
+		display: flex;
+		text-decoration: none;
+		color: $color-logo;
+		justify-content: center;
+		@include font-size(1.5);
+		font-weight: normal;
+	  padding: 5px 0;
+	}
+	
+	img{
+		display: block;
+	}
+}
+
+
+//layout of mobile poput to fill space in site top
+.site-top .mobile-popout{
+	flex: 1;
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+## Logo and menu positions from WP Customizer
+--------------------------------------------------------------*/
+
+//no logo. Center menu and hide logo on customizer. Elsewhere no logo will even show.
+.no-logo > .site-logo{
+	display: none;
+}
+
+.no-logo, .logo-in-middle {  //when there is a menu its ul.menu and when its defaulting to pages its .menu ul...annoying
+	ul.menu, .menu>ul{
+		justify-content: center;
+	}
+}
+
+//logo right
+.logo-right .site-logo{
+	order: 2;
+}
+
+//logo left
+.logo-left ul.menu, .logo-left .menu>ul{
+	justify-content: flex-end;
+}
+
+//logo centered
+.logo-center, .logo-center-under{
+	flex-direction: column;
+}
+
+.logo-center-under .site-logo{
+	order: 5;
+}
+
+
+/*--------------------------------------------------------------
+# Menu Button and submenu dropdown toggle buttons for mobile
+--------------------------------------------------------------*/
+.js .menu-toggle,
+.js .dropdown-toggle {
+		display: none;
+}
+
+//on mobile for submenus there is a dropdown button to open submenus	
+.dropdown-toggle {
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	color: $color-mobile-menu-link;
+	display: block;
+	font-size: 16px;
+	right: 0;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0 0.5em 0 0;
+	
+	text-shadow: none;
+	top: 3px;
+	cursor: pointer;
+	transition: all .5s;
+
+	flex: 1;
+	text-align: right;
+	background: $background-mobile-menu-link;
+}
+
+//the menu toggle button to show menu on mobile
+.js .menu-toggle{
+		position: absolute;
+		top: 0;
+		padding: 0;
+		border: none;
+		box-shadow: none;
+		z-index: 99;
+		cursor: pointer;
+		will-change: transform;
+		background: $background-menu-toggle;
+		color: $color-menu-toggle;
+		line-height: 0;
+		width: 40px;
+		left: 0;
+		height: 100%;
+		transition: color .2s;
+}
+
+
+body:not(.cool-menu) .menu-toggle.toggled-on{
+	color: $color-menu-toggled;
+}
+
+
+//sidebar button can be found in sidebar.scss
+
+
+/*--------------------------------------------------------------
+# Menus
+--------------------------------------------------------------*/
+
+ul.menu, .menu>ul{  //when there is a menu its ul.menu and when its defaulting to pages its .menu ul...annoying
+	padding: 0;
+	list-style: none;
+	margin: 0;
+	display: flex;
+	
+	
+	li{
+		position: relative;
+		margin: 0;
+		
+		
+		a{
+			display: block;
+			text-decoration: none;
+			transition: all .5s;	
+			font-weight: 700;
+		}
+	}
+	
+}
+
+ul.sub-menu{
+	list-style: none;
+	margin: 0;
+}
+
+
+
+/*--------------------------------------------------------------
+# Desktop Menus
+--------------------------------------------------------------*/
+
+@media (min-width: $mobile-nav-width){
+	
+	.site-top, body .sidebar-toggle{
+		position: $site-top-position;
+	}
+	
+	
+	.page-header, .single .entry-header{
+		padding-top: $header-top-padding;
+	}
+	
+	.site-top-inner-container > *{ //each flexed item
+		padding: 0 $gutters;
+	}
+
+	.logo-in-middle > .site-logo{
+		display: none;
+	}
+	
+	ul.menu, .menu>ul{ 
+		align-items: center; 
+		
+		//list items spacing
+		li{
+			margin-right: $menu-item-margin-right;
+		}
+		
+		li:last-child{
+			margin: 0;
+		}
+		
+		//desktop links
+		li a{
+			padding: 10px 5px; //height can effect the site top height size overall
+			color: $color-menu-link;
+			background: $background-menu-link;
+			@include font-size(.87);
+		}
+		
+		//desktop hover links
+		li a:hover, .current-menu-item > a, li.focus > a{
+				color: $color-menu-link-hover;
+				background: $background-menu-link-hover;
+		}
+	}
+	
+	
+.site-top, .horizontal-menu{
+	//submenus on desktop
+	.menu ul.sub-menu{
+		opacity: 0;
+		visibility: hidden;
+		transition: all .5s;
+		transition-delay: .2s;
+		margin: .7em 0 0 0;
+		
+		position: absolute;
+		z-index: 10;
+		top: 95%;
+		left: 50%;
+		padding: 5px 0;
+		width: 150px; 
+		margin-left: -75px; //half of width to center the submenu
+				
+		
+		background: $background-sub-menu;
+		border-radius: 3px;
+		
+		
+		li{
+			margin: 0;
+			z-index: 10;
+		}
+		
+		a{
+			color: $color-sub-menu-link;
+			background: $background-sub-menu-link;
+			padding: 3px 5px;
+			padding-right: 25px; //space for angle icon
+			
+			.icon-angle-down{
+				transform: rotate(-90deg);
+				position: absolute;
+				right: 5px;
+				top: 5px;
+			}
+		}
+		
+		//submenu link hovers
+		li:hover > a, li.focus > a{
+			color: $color-sub-menu-link-hover;
+			background: $background-sub-menu-link-hover;
+		}
+	} //sub-menu
+	
+	//sub-menu top pointer piece 
+	ul.sub-menu:before{
+		content: '';
+    position: absolute;
+    top: -6px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+    border-radius: 4px 0 0 0;
+    background: $background-sub-menu;
+	}
+	
+	//sub-menu opens on hover
+	.menu li:hover > .sub-menu, .menu li.hover > .sub-menu, .menu li.focus > .sub-menu{
+		opacity: 1;
+		visibility: visible;
+		top: calc(100% + 5px);
+		transition-delay: 0s;
+	}
+	
+	//two levels deep
+	.menu li .sub-menu .sub-menu{
+		top: 0;
+		margin: 0;
+		left: 100%;
+		z-index: 9;
+		border-radius: 0 3px 3px 0;
+		
+		
+		&:before{
+			content: none;
+		}
+	}
+	} //end site top submenus
+	
+}
+
+
+
+/*--------------------------------------------------------------
+# Mobile Menus
+--------------------------------------------------------------*/
+@media (max-width: $mobile-nav-width){
+
+/*------- Mobile Popout Work --------*/ 
+
+	.js .menu-toggle, .js .dropdown-toggle{
+		display: block;
+	}
+	
+	//untoggled  
+	.bar-one, .bar-two{
+			display: block;
+			@include font-size(1.7);
+			line-height: 7px;
+			transition: all .3s;
+	}
+	
+	.menu-toggle.toggled-on{
+		position: fixed;
+	  .bar-one{
+		  transform: rotate(45deg) translate(3px, -1px);
+		  
+	  }
+	  
+	  .bar-two{
+		  transform: rotate(-45deg) translate(6px, -2px);	  
+	  }
+		 
+	}
+	
+	
+	.mobile-popout{
+		position: fixed;
+		padding-top: 50px;
+		height: 100vh;
+		left: 0;
+		top: 0;
+		z-index: 80;
+		width: 40vw;
+		background: $background-mobile-popout;
+		transition: transform .5s;
+		transform: translate(-100vw, 0);
+		will-change: transform;
+	}
+		
+	.mobile-popout.toggled-on{
+		transform: translate(0, 0);
+	}
+	
+	body:not(.cool-menu) .site-top.toggled-on{
+		z-index: 90;
+	}
+
+
+/*--------------------------------------------------------------
+## Mobile Menu
+--------------------------------------------------------------*/
+	.site-top> .flex{
+		justify-content: space-between;
+		&:before, &:after{
+			content: none;
+		}
+	}
+	
+	.site-top .site-logo{
+		flex: 1;
+		padding: 0 40px;
+	}
+	
+	.site-top ul.menu, .site-top .menu>ul,
+	.mobile-popout ul.menu, .mobile-popout .menu>ul{
+		
+		flex-direction: column; //stack items
+		
+		//li does not have color because the submenu would highlight also. instead need to give anchor the colors and backgrounds
+		li{
+			margin: 0;
+			overflow: hidden;
+			display: flex;
+			flex-wrap: wrap;
+			transition: all .5s;
+			
+			
+			a .icon-angle-down{
+				display: none; //hide these and instead show dropdown buttons.
+			}
+			
+			//basic coloring of links
+			a{
+				width: auto;
+				display: block;
+				padding: 10px 30px 10px 5px;
+				background: $background-mobile-menu-link;
+				color: $color-mobile-menu-link;
+				
+				@include font-size(.8);
+			}
+		}
+		
+		//if no dropdown toggle make a full width
+		li:not(.menu-item-has-children) a{
+			width: 100%;
+		}
+		
+
+		
+		//links clicked, focused, current, is current ancestor
+		//both a and dropdown button get same styles
+		.current-menu-ancestor > a, 
+		li > a:active, .focus > a, 
+		.current-menu-item > a, 
+		li:active > a, 
+		li.focus > .dropdown-toggle, 
+		.current-menu-item > .dropdown-toggle, 
+		.current-menu-ancestor > .dropdown-toggle, 
+		li:active .dropdown-toggle{
+			color: $color-mobile-menu-link-active;
+			background: $background-mobile-menu-link-active;
+		}
+		
+		
+		
+		.sub-menu{
+			background: $background-mobile-sub-menu;
+			clear: both;
+			display: none;
+			overflow: hidden;
+			transition: all 0s;
+			width: 100%;
+			
+			//overrides clicked, focused.... above 
+			li a{
+				padding-left: 10px;
+				color: $color-mobile-sub-menu-link;
+				background: $background-mobile-sub-menu-link;
+			}
+			
+			.dropdown-toggle{
+				background: $background-mobile-menu-link;
+				color: $color-mobile-menu-link;
+			}
+			
+			
+			.current-menu-item > a{
+				background: $background-mobile-sub-menu-link-active;
+				color: $color-mobile-sub-menu-link-active;
+				font-weight: bold;
+			}
+			
+		}
+		
+	} //ul.menu, .menu>ul
+	
+	
+
+
+/*--------------------------------------------------------------
+# Cool Mobile Menu 
+#moves mobile popout outside of #page and whole #page moves over
+--------------------------------------------------------------*/
+
+body.cool-menu{
+	
+
+	//page holder is wrapper around all content and then transformed
+	.page-holder{
+		position: relative;
+		z-index: 90;
+		transition: transform .5s;
+		background: $background-body;
+		will-change: transform;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		overflow: hidden;
+	}
+	
+	.menu-toggle.toggled-on{
+		position: absolute;
+	}
+	
+	
+	//wont move but stays behind
+	.mobile-popout{
+		position: absolute;
+		z-index: 80;
+		width: 100vw;
+		transform: translate(0, 0);
+		display: none;
+		transform: translate3d(0,0,0);
+		overflow: scroll;
+		padding-top: 130px;
+	}
+	
+	.mobile-popout.open{
+		display: block;
+	}
+	
+
+	.mobile-menu-open{ //#page set height. might not be needed with body now locked
+		height: 100vh;
+	}
+	
+	.mobile-menu-open .page-holder{ //when page opens
+		transform: translate(50vw, -2vh) scale(.75);
+		box-shadow: -3px 0 10px rgba(0, 0, 0, .5);
+	}
+	
+	
+	ul.menu, .menu>ul{
+		
+		li a{
+			padding: 10px 20px 10px 20px;
+		}
+		
+		.dropdown-toggle{
+			text-align: left;
+		}
+			
+	}
+	
+ } //end cool-menu
+
+
+
+} //end mobile menus
+
+
+//lock body so the user can scroll when menus are open or anything really... like a module opening
+.menu-lock{
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	touch-action: manipulate;
+
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+#	Widget Menus
+--------------------------------------------------------------*/
+
+//very similar to mobile menus but this applies on non mobile as well
+#secondary .widget_nav_menu ul, #secondary .widget_pages ul{
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 0;
+	
+	li{
+		margin: 0;
+		margin: 0;
+		overflow: hidden;
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+	
+	a{
+		background: transparent;
+		padding: 0;
+		padding-right: 10px;
+		transition: all .5s;
+		width: auto;
+		text-decoration: none;
+		font-weight: inherit;
+	}
+	
+	
+	.sub-menu, .children{
+		width: 100%;
+		display: none;
+		a{
+			padding-left: 10px;
+		}
+	}
+		
+	 
+		li > a:active, .focus > a, 
+		.current-menu-item > a, 
+		li:active > a, 
+		li.focus > .dropdown-toggle, 
+		.current-menu-item > .dropdown-toggle,  
+		li:active .dropdown-toggle{
+		color: $color-sidebar-highlight-active;
+		background: transparent;
+	}
+	
+
+}
+
+.js .widget-area .dropdown-toggle{
+	display: block;
+	color: $color-sidebar-highlight;
+	text-align: left;
+}
+
+
+//desktop menus in sidebar have hover effect
+@media (min-width: $sidebar-mobile-width){
+	#secondary li{
+		a:hover + .dropdown-toggle, .dropdown-toggle:hover{
+			color: $color-sidebar-highlight-active;
+			background: transparent;
+		}
+	}
+}
+
+
+
+
+/*--------------------------------------------------------------
+# MENU OVERRIDES BELOW
+--------------------------------------------------------------*/
+
+
+
+
+
+

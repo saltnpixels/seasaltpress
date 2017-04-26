@@ -1,20 +1,19 @@
-
 <?php
 /**
- * The template for displaying all pages.
- * 
+ * The template for displaying all pages
+ *
  * This is the template that displays all pages by default.
- * By default it does not have a sidebar. 
- * To default with a sidebar change the file name of one of the sidebar ones to page.php and this one to page-no-sidebar.php
- * the difference betweena a sidebar or not is also whether the header of article is inside or above article.
- * no sidebar means the header is inside.
- 
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package sea_salt_press
+ * @package WordPress
+ * @subpackage Sea_Salt_Press
+ * @since 1.0
+ * @version 1.0
  */
-
-
 
 get_header(); ?>
 
@@ -24,8 +23,9 @@ get_header(); ?>
 
 			<?php
 			while ( have_posts() ) : the_post();
-
-				get_template_part( 'template-parts/content', 'page' );
+		
+			include( locate_template( 'template-parts/page/content.php' ) );
+		
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :
@@ -38,6 +38,4 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-
-<?php
-get_footer();
+<?php get_footer();

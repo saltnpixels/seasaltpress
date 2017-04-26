@@ -1,97 +1,192 @@
 <?php
 /**
- * Custom template tags for this theme.
+ * Custom template tags for this theme
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package sea_salt_press
+ * @package WordPress
+ * @subpackage Sea_Salt_Press
+ * @since 1.0
  */
 
-if ( ! function_exists( 'snp_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function snp_posted_on() {
-	//for when used outside the loop fix
+if( ! function_exists( 'seasaltpress_posted_by') ):
+/*
+ * Prints the author image with his name.
+*/
+function seasaltpress_posted_by(){
+	$author_id = get_the_author_meta( 'ID' );
+	$author_link = esc_url( get_author_posts_url( $author_id ) );
+	$author_image = '<a href="' . $author_link . '" class="author-avatar">' . get_avatar( $author_id, 50) . '</a>';
+	$author_name = sprintf( __('%s by %s', 'seasaltpress'), '<a href="' . $author_link . '" class="author-name byline fn n"><span>', '</span>' . get_the_author() . '</a>');
+	$author_description = '<div class="author-description">' .  get_the_author_meta( 'description' ) . '</div>';
 	
-	global $post;
-  $author_id = $post->post_author;
-    
+	
+	return '<div class="posted-by">' . $author_image . '<div class="author-info">' . $author_name . $author_description . '</div></div>';
+
+}
+endif;
+
+
+if ( ! function_exists( 'seasaltpress_posted_on' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time.
+ */
+function seasaltpress_posted_on() {
+
+
+	// Finally, let's write all of this to the page.
+	echo '<div class="posted-on">' . seasaltpress_time_link() . '</div>';
+}
+endif;
+
+
+if ( ! function_exists( 'seasaltpress_time_link' ) ) :
+/**
+ * Gets a nicely formatted string for the published date.
+ */
+function seasaltpress_time_link() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
+		get_the_date( DATE_W3C ),
+		get_the_date(),
+		get_the_modified_date( DATE_W3C ),
+		get_the_modified_date()
 	);
 
-	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'snp' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+	// Wrap the time string in a link, and preface it with 'Posted on'.
+	return sprintf(
+		/* translators: %s: post date */
+		__( '<span class="screen-reader-text">Posted on</span> %s', 'seasaltpress' ),
+		'<a class="entry-date" href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
-
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'snp' ),  
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID', $author_id ) ) ) . '">' . esc_html( get_the_author_meta( 'nickname', $author_id ) ) . '</a></span>'
-	);
-
-	echo '<span class="posted-on">' . $posted_on . '</span> <span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
 }
 endif;
 
-if ( ! function_exists( 'snp_entry_footer' ) ) :
+
+if ( ! function_exists( 'seasaltpress_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function snp_entry_footer() {
-	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'snp' ) );
-		if ( $categories_list && snp_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( '%1$s', 'snp' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-		}
-   
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'snp' ) );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( '%1$s', 'snp' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-		}
-	}
+function seasaltpress_cats_tags() {
 
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'snp' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ), '<i class="fa fa-comments"></i> 1', '<i class="fa fa-comments"></i> %');
-		echo '</span>';
-	}
+	/* translators: used between list items, there is a space after the comma */
+	$separate_meta = __( ', ', 'seasaltpress' );
 
-	edit_post_link(
+	// Get Categories for posts.
+	$categories_list = get_the_category_list( $separate_meta );
+
+	// Get Tags for posts.
+	$tags_list = get_the_tag_list( '', $separate_meta );
+
+	// We don't want to output .entry-footer if it will be empty, so make sure its not.
+	if ( ( ( seasaltpress_categorized_blog() && $categories_list ) || $tags_list ) || get_edit_post_link() ) {
+
+		echo '<div class="cats-tags-meta">';
+
+			if ( 'post' === get_post_type() ) {
+				if ( ( $categories_list && seasaltpress_categorized_blog() ) || $tags_list ) {
+					echo '<div class="cats-tags-links">';
+
+						// Make sure there's more than one category before displaying.
+						if ( $categories_list && seasaltpress_categorized_blog() ) {
+							echo '<span class="cat-links"><span class="screen-reader-text">' . __( 'Categories', 'seasaltpress' ) . '</span>' . $categories_list . '</span>';
+						}
+						
+						if( $categories_list && seasaltpress_categorized_blog() && $tags_list ){
+							echo '<span class="cats-tags-sep">|</span>';
+						}
+
+						if ( $tags_list ) {
+							echo '<span class="tag-links"><span class="screen-reader-text">' . __( 'Tags', 'seasaltpress' ) . '</span>' . $tags_list . '</span>';
+						}
+
+					echo '</div>';
+				}
+			}
+
+
+		echo '</div> <!-- .cats-tags-meta -->';
+	}
+}
+endif;
+
+
+
+if ( ! function_exists( 'seasaltpress_comment_link' ) ) :
+/**
+ * Returns the comment link with icon for comments as well as comment or comments if wanted. 
+ */
+function seasaltpress_comment_link($comment_string = false){
+ $num_comments = get_comments_number(); // get_comments_number returns only a numeric value
+
+	if ( comments_open() ) {
+		if ( $num_comments == 0 ) {
+			$num_comments = '';
+			$comments = __('No Comments');
+		} elseif ( $num_comments > 1 ) {
+			$comments = $num_comments . __(' Comments');
+		} else {
+			$comments = __('1 Comment');
+		}
+		
+		if( $comment_string ){
+			$write_comments = '<a class="comment-link" href="' . get_comments_link() .'">'. seasaltpress_get_svg( array('icon'=>'comments') ) . ' ' .  $comments . '</a>';
+		}
+		else{
+			$write_comments = '<a class="comment-link" href="' . get_comments_link() .'">'. seasaltpress_get_svg( array('icon'=>'comments') ) . ' ' .  $num_comments . '</a>';
+		}
+		
+		return $write_comments;
+	} 
+	return;
+}
+endif;
+
+
+
+
+if ( ! function_exists( 'seasaltpress_edit_link' ) ) :
+/**
+ * Returns an accessibility-friendly link to edit a post or page.
+ *
+ * This also gives us a little context about what exactly we're editing
+ * (post or page?) so that users understand a bit more where they are in terms
+ * of the template hierarchy and their content. Helpful when/if the single-page
+ * layout with multiple posts/pages shown gets confusing.
+ */
+function seasaltpress_edit_link() {
+
+	$link = edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'snp' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+			__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'seasaltpress' ),
+			get_the_title()
 		),
 		'<span class="edit-link">',
 		'</span>'
 	);
+
+	return $link;
 }
 endif;
+
+
 
 /**
  * Returns true if a blog has more than 1 category.
  *
  * @return bool
  */
-function snp_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'snp_categories' ) ) ) {
+function seasaltpress_categorized_blog() {
+	$category_count = get_transient( 'seasaltpress_categories' );
+
+	if ( false === $category_count ) {
 		// Create an array of all the categories that are attached to posts.
-		$all_the_cool_cats = get_categories( array(
+		$categories = get_categories( array(
 			'fields'     => 'ids',
 			'hide_empty' => 1,
 			// We only need to know if there is more than one category.
@@ -99,29 +194,24 @@ function snp_categorized_blog() {
 		) );
 
 		// Count the number of categories that are attached to the posts.
-		$all_the_cool_cats = count( $all_the_cool_cats );
+		$category_count = count( $categories );
 
-		set_transient( 'snp_categories', $all_the_cool_cats );
+		set_transient( 'seasaltpress_categories', $category_count );
 	}
 
-	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so snp_categorized_blog should return true.
-		return true;
-	} else {
-		// This blog has only 1 category so snp_categorized_blog should return false.
-		return false;
-	}
+	return $category_count > 1;
 }
 
+
 /**
- * Flush out the transients used in snp_categorized_blog.
+ * Flush out the transients used in seasaltpress_categorized_blog.
  */
-function snp_category_transient_flusher() {
+function seasaltpress_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'snp_categories' );
+	delete_transient( 'seasaltpress_categories' );
 }
-add_action( 'edit_category', 'snp_category_transient_flusher' );
-add_action( 'save_post',     'snp_category_transient_flusher' );
+add_action( 'edit_category', 'seasaltpress_category_transient_flusher' );
+add_action( 'save_post',     'seasaltpress_category_transient_flusher' );

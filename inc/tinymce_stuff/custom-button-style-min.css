@@ -1,0 +1,5 @@
+/* for syling the editor window use the sass file custom-editor-style  */
+i.mce-i-seasaltpress-options:before {
+  content: "\f538";
+  font-family: dashicons;
+  font-size: 1.35em; }
