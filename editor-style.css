@@ -1058,6 +1058,7 @@ ul.sub-menu {
     .site-top ul.menu li.focus > .dropdown-toggle,
     .site-top ul.menu .current-menu-item > .dropdown-toggle,
     .site-top ul.menu .current-menu-ancestor > .dropdown-toggle,
+    .site-top ul.menu .menu-item.toggled-on,
     .site-top ul.menu li:active .dropdown-toggle, .site-top .menu > ul .current-menu-ancestor > a,
     .site-top .menu > ul li > a:active, .site-top .menu > ul .focus > a,
     .site-top .menu > ul .current-menu-item > a,
@@ -1065,6 +1066,7 @@ ul.sub-menu {
     .site-top .menu > ul li.focus > .dropdown-toggle,
     .site-top .menu > ul .current-menu-item > .dropdown-toggle,
     .site-top .menu > ul .current-menu-ancestor > .dropdown-toggle,
+    .site-top .menu > ul .menu-item.toggled-on,
     .site-top .menu > ul li:active .dropdown-toggle,
     .mobile-popout ul.menu .current-menu-ancestor > a,
     .mobile-popout ul.menu li > a:active,
@@ -1074,6 +1076,7 @@ ul.sub-menu {
     .mobile-popout ul.menu li.focus > .dropdown-toggle,
     .mobile-popout ul.menu .current-menu-item > .dropdown-toggle,
     .mobile-popout ul.menu .current-menu-ancestor > .dropdown-toggle,
+    .mobile-popout ul.menu .menu-item.toggled-on,
     .mobile-popout ul.menu li:active .dropdown-toggle, .mobile-popout .menu > ul .current-menu-ancestor > a,
     .mobile-popout .menu > ul li > a:active, .mobile-popout .menu > ul .focus > a,
     .mobile-popout .menu > ul .current-menu-item > a,
@@ -1081,12 +1084,13 @@ ul.sub-menu {
     .mobile-popout .menu > ul li.focus > .dropdown-toggle,
     .mobile-popout .menu > ul .current-menu-item > .dropdown-toggle,
     .mobile-popout .menu > ul .current-menu-ancestor > .dropdown-toggle,
+    .mobile-popout .menu > ul .menu-item.toggled-on,
     .mobile-popout .menu > ul li:active .dropdown-toggle {
       color: #F5F8F9;
       background: rgba(245, 248, 249, 0.3); }
     .site-top ul.menu .sub-menu, .site-top .menu > ul .sub-menu,
     .mobile-popout ul.menu .sub-menu, .mobile-popout .menu > ul .sub-menu {
-      background: rgba(245, 248, 249, 0.3);
+      background: transparent;
       clear: both;
       display: none;
       overflow: hidden;
@@ -1095,7 +1099,7 @@ ul.sub-menu {
       width: 100%; }
       .site-top ul.menu .sub-menu li a, .site-top .menu > ul .sub-menu li a,
       .mobile-popout ul.menu .sub-menu li a, .mobile-popout .menu > ul .sub-menu li a {
-        padding-left: 10px;
+        padding-left: 30px;
         color: #F5F8F9;
         background: transparent; }
       .site-top ul.menu .sub-menu .dropdown-toggle, .site-top .menu > ul .sub-menu .dropdown-toggle,
@@ -1499,12 +1503,9 @@ input[type="submit"] {
   -webkit-transition: all .5s;
   transition: all .5s;
   cursor: pointer; }
-  button:hover, button.focus,
-  .button:hover,
+  button.focus,
   .button.focus,
-  input[type="button"]:hover,
   input[type="button"].focus,
-  input[type="submit"]:hover,
   input[type="submit"].focus {
     background: #0e9cbe; }
   button:active,
@@ -1512,6 +1513,13 @@ input[type="submit"] {
   input[type="button"]:active,
   input[type="submit"]:active {
     background: #085c70; }
+
+@media (min-width: 600px) {
+  button:hover,
+  .button:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
+    background: #0e9cbe; } }
 
 ::-webkit-input-placeholder {
   color: #989ea4;

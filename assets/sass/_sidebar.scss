@@ -1,0 +1,122 @@
+/*--------------------------------------------------------------
+# Sidebar Styles
+--------------------------------------------------------------*/
+/*
+	- Sidebar layout and structure can be found in structure_defualts
+*/
+
+
+/*------- Cool Sidebar Toggle Button --------*/ 
+
+//if sidebar exists on this page AND cool sidebar is enabled a sidebar icon will appear after the menu all the way at right top edge of screen.
+//it will also appear on mobile if there is a sidebar, regardless of whether its cool or not.
+body .sidebar-toggle{
+	position: absolute;
+	right: 15px;
+	top: 0;
+	height: 100%;
+	line-height: 0;
+	background: $background-menu-toggle;
+	color: $color-menu-toggle;
+	border: none;
+	padding: 0;
+	cursor: pointer;	
+}
+
+
+.sidebar-toggle.sidebar-open{
+	color: $color-sidebar-toggled;
+}
+
+//making sure the menu doesnt bump into the sidebar icon when window is narrow
+@media (max-width: $wrap + 30) and (min-width: $mobile-nav-width){
+	.sidebar-active .site-top{
+		padding-right: 30px;
+	}
+}
+ 
+
+
+/*--------------------------------------------------------------
+# Cool Sidebar Styles Defaults. Change what you want
+--------------------------------------------------------------*/
+
+.site-content .widget-area{
+	color: $color-sidebar;
+	background: $background-sidebar;
+	
+	h2{
+		color: $color-sidebar-header;	
+		text-transform: capitalize;
+		margin: 0;
+	}
+	
+	ul{
+		list-style: none;
+		margin: 0;
+		margin-bottom: 0;
+	}
+	
+	li{
+		margin: 0;
+		padding: 0;
+	}
+	
+	a, .dropdown-toggle{
+		color: $color-sidebar-highlight;
+		transition: all .5s;
+	}
+	
+	a:hover, a:active{
+		color: $color-sidebar-highlight-active;
+	}
+	
+	
+	a, li, p, .textwidget{
+		@include font-size(.8);
+	}
+	
+	section{
+		margin-bottom: $baseline;
+	}
+	
+	input{
+		background: tint($background-sidebar, 10%);
+		color: $white;
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+# Sidebar Styles inline when on desktop. Mobile gets cool sidebar styles
+--------------------------------------------------------------*/
+
+@media (min-width: $sidebar-mobile-width){
+	.content-sidebar-holder #secondary{
+		color: $color-inline-sidebar;
+		background: $background-inline-sidebar;
+		
+		h2{
+			color: $color-inline-sidebar-header;
+		}
+		
+		a, .dropdown-toggle{
+			color: $color-inline-sidebar-highlight;
+			transition: all .5s;
+		}
+		
+		a:hover, a:active{
+			color: $color-inline-sidebar-highlight-active;
+		}
+		
+	}
+}
+
+
+@media (max-width: $sidebar-mobile-width){
+	.js #secondary{
+		background: $background-sidebar;	
+		
+	}
+}

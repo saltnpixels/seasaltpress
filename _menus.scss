@@ -431,7 +431,6 @@ ul.sub-menu{
 		li.focus > .dropdown-toggle, 
 		.current-menu-item > .dropdown-toggle, 
 		.current-menu-ancestor > .dropdown-toggle,
-		.menu-item.toggled-on,
 		li:active .dropdown-toggle{
 			color: $color-mobile-menu-link-active;
 			background: $background-mobile-menu-link-active;
@@ -450,7 +449,7 @@ ul.sub-menu{
 			
 			//overrides clicked, focused.... above 
 			li a{
-				padding-left: 30px;
+				padding-left: 10px;
 				color: $color-mobile-sub-menu-link;
 				background: $background-mobile-sub-menu-link;
 			}

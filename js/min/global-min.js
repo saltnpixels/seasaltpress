@@ -1,0 +1,1 @@
+jQuery(function($){function e(){return/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream}function t(){return document.documentMode||/Edge/.test(navigator.userAgent)}var r=$("body");if(e()&&$("body").addClass("ios"),t()){var n=$(".header-image");"cover"===n.css("object-fit")&&(n.parent().css({"background-image":"url("+n.attr("src")+")"}),n.hide())}});

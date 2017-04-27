@@ -1,0 +1,161 @@
+/*--------------------------------------------------------------
+# Typography Basics
+--------------------------------------------------------------*/
+
+html{
+	//everything else in rem will inherit this going from 18px to 20px. 18 from 0 to 400 and 20 from 1000 and up. in between will be fluid 
+	//you can use this include on any other element too.
+	@include scss-font-lock(18px, 20px, 400px, 1000px); 
+}
+
+
+body,
+button,
+input,
+select,
+textarea {
+	color: $color-text-main;
+	font-family: $font-main;
+	@include font-size(1);
+	line-height: $font-line-height-body;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	line-height: $font-line-height-body;
+}
+
+
+p{
+	margin: 0 0 1em 0;
+	line-height: $font-line-height-body;
+}
+
+li{
+	margin-bottom: 10px;
+	@include font-size(1);
+	font-size: inherit;
+}
+
+
+dfn,
+cite,
+em,
+blockquote{
+	font-style: italic;
+}
+
+
+blockquote {
+	quotes: "" "";
+	margin: 0;
+	padding: 5px 10px 5px $baseline;
+	border-left: 7px solid $grey;
+	background: $faded-dark-blue;
+	
+	p:last-child{
+		margin: 0;
+	}
+}
+
+q {
+	quotes: "“" "”" "‘" "’";
+}
+
+blockquote:before,
+blockquote:after {
+	content: "";
+}
+
+
+
+pre {
+	background: #eee;
+	font-family:  $font-pre;
+	font-size: 15px;
+	font-size: 0.9375rem;
+	line-height: $font-line-height-pre;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+:focus {
+	outline: none;
+}
+
+/*------- Quick text alignment classes --------*/ 
+
+.center-text{
+	text-align: center;
+}
+
+.right-text{
+	text-align: right;
+}
+
+/*--------------------------------------------------------------
+# Content Headings
+--------------------------------------------------------------*/
+
+h1, .single .entry-title, .page-title{
+	@include font-size(2.8);  //56 at high end (2.8 * 20) and 50 at low
+	line-height: 1.3;
+	font-weight: normal;
+}
+
+h2{
+	@include font-size(1.5); //30px at high end 
+	font-weight: normal;
+}
+
+h3{
+	@include font-size(1.3); //26px
+}
+
+h4{
+	@include font-size(1.1); //22px
+}
+
+
+
+/*--------------------------------------------------------------
+# Links
+--------------------------------------------------------------*/
+
+a, a:visited {
+	color: $highlight;
+	text-decoration: none;
+}
+
+a:focus {
+	outline: thin dotted;
+	color: $highlight-active;
+}
+
+a:hover,
+a:active {
+	color: $highlight-active;
+	outline: 0;
+}
+
+

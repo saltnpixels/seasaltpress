@@ -64,25 +64,12 @@ input[type="submit"] {
 	transition: all .5s;
 	cursor: pointer;
 	
-	&.focus{
+	&:hover, &.focus{
 		background: shade($highlight, 15%);
 	}
 	
 	&:active{
 		background: shade($highlight, 50%);
-	}
-}
-
-//hover on buttons, not for mobile
-@media( min-width: $mobile-nav-width ){
-	button,
-	.button,
-	input[type="button"],
-	input[type="submit"] {
-		
-		&:hover{
-			background: shade($highlight, 15%);
-		}
 	}
 }
 

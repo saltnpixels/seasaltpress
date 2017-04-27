@@ -73,19 +73,6 @@ input[type="submit"] {
 	}
 }
 
-//hover on buttons, not for mobile
-@media( min-width: $mobile-nav-width ){
-	button,
-	.button,
-	input[type="button"],
-	input[type="submit"] {
-		
-		&:hover{
-			background: shade($highlight, 15%);
-		}
-	}
-}
-
 ::-webkit-input-placeholder {
 	color: tint($color-input, 30%);
 	font-family: $font-main;
@@ -109,6 +96,18 @@ input[type="submit"] {
 }
 	
 
+@media( min-width: $mobile-nav-width ){
+	button,
+	.button,
+	input[type="button"],
+	input[type="submit"] {
+		
+		&:hover{
+			background: shade($highlight, 15%);
+		}
+	}
+
+}
 
 /*--------------------------------------------------------------
 # Search Form
