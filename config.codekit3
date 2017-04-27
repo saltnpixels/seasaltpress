@@ -1816,22 +1816,6 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"\/assets\/images\/seasalt-image.jpg": {
-		"ft": 16384,
-		"iS": 2152104,
-		"oA": 0,
-		"oAP": "\/assets\/images\/seasalt-image.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 1,
-		"q": 100
-		},
-	"\/assets\/images\/seasaltpress.sketch": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/images\/seasaltpress.sketch",
-		"oF": 0
-		},
 	"\/assets\/js\/custom-admin.js": {
 		"ft": 64,
 		"mi": 1,
