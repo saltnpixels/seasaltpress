@@ -8,7 +8,7 @@
 	z-index: 10;
 }
 
-
+ 
 //site logo
 #page .site-logo{
 	position: relative;
@@ -43,7 +43,9 @@
 }
 
 
-
+.custom-logo-link svg{
+	max-width: 100%;
+}
 
 
 /*--------------------------------------------------------------
@@ -422,7 +424,7 @@ ul.sub-menu{
 		
 
 		
-		//links clicked, focused, current, is current ancestor
+		//links clicked, focused, current, is current ancestor, current menus parent
 		//both a and dropdown button get same styles
 		.current-menu-ancestor > a, 
 		li > a:active, .focus > a, 
@@ -430,12 +432,14 @@ ul.sub-menu{
 		li:active > a, 
 		li.focus > .dropdown-toggle, 
 		.current-menu-item > .dropdown-toggle, 
-		.current-menu-ancestor > .dropdown-toggle, 
+		.current-menu-ancestor > .dropdown-toggle,
+		.menu-item.toggled-on,
 		li:active .dropdown-toggle{
 			color: $color-mobile-menu-link-active;
 			background: $background-mobile-menu-link-active;
 		}
 		
+
 		
 		
 		.sub-menu{
@@ -448,7 +452,7 @@ ul.sub-menu{
 			
 			//overrides clicked, focused.... above 
 			li a{
-				padding-left: 10px;
+				padding-left: 30px;
 				color: $color-mobile-sub-menu-link;
 				background: $background-mobile-sub-menu-link;
 			}

@@ -2147,7 +2147,7 @@
 		"oA": 0,
 		"oAP": "\/style.css",
 		"oF": 1,
-		"oS": 0,
+		"oS": 3,
 		"uL": 1
 		},
 	"\/comments.php": {
@@ -2212,6 +2212,12 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/inc\/icon-functions.php",
+		"oF": 0
+		},
+	"\/inc\/seasaltpress_custom_fields.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/seasaltpress_custom_fields.php",
 		"oF": 0
 		},
 	"\/inc\/seasaltpress_extras.php": {

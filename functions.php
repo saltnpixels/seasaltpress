@@ -1,4 +1,18 @@
 <?php
+
+function pods_gf_addon_edit_id( $edit_id, $pod, $form_id, $feed, $form, $options ) {
+
+    
+    if ( 1 == $form_id ) {
+        $edit_id = 307; //just testing an existing id
+    }
+
+    return $edit_id;
+
+}
+
+	add_filter( 'pods_gf_addon_edit_id', 'pods_gf_addon_edit_id', 10, 6 );
+	
 /**
  * Sea Salt Press functions and definitions
  *
@@ -114,6 +128,7 @@ add_action( 'after_setup_theme', 'seasaltpress_content_width', 0 );
 	 *
 	 * See: https://codex.wordpress.org/Post_Formats
 	 */
+/*
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
@@ -123,10 +138,11 @@ add_action( 'after_setup_theme', 'seasaltpress_content_width', 0 );
 		'gallery',
 		'audio',
 	) );
+*/
 
 	// Add theme support for Custom Logo.
 	add_theme_support( 'custom-logo', array(
-		'width'       => 250,
+		'width'       => 400,
 		'height'      => 250,
 		'flex-width'  => true,
 		'flex-height' => true
@@ -306,7 +322,7 @@ function seasaltpress_javascript_detection() {
 add_action( 'wp_head', 'seasaltpress_javascript_detection', 0 );
 
 
-//to do figure out what the hell this is
+
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
  */
@@ -387,12 +403,13 @@ add_action( 'wp_enqueue_scripts', 'seasaltpress_scripts' );
 
 
 
-//todo fix
+/**
+ * Add emmet to text areas in admin
+ */
 function load_custom_wp_admin_style() {
 	
 	    wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet.min.js' ), false, '1.0.0', false);
       wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin-min.js' ), array('seasaltpress_emmet'), '1.0.0', false);
-       
         
         
 }
@@ -435,3 +452,9 @@ require get_parent_theme_file_path( '/inc/icon-functions.php' );
  * SeaSaltPress tinymce additions
  */
  require get_parent_theme_file_path( '/inc/tinymce_stuff/tinymce.php' );
+ 
+ 
+  /**
+ * SeaSaltPress Custom Fields
+ */
+ require get_parent_theme_file_path( '/inc/seasaltpress_custom_fields.php');

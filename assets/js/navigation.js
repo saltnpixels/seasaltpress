@@ -24,7 +24,7 @@
 		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
 		
 		// Set the active submenu dropdown toggle button initial state.
-		container.find( '.current-menu-ancestor > button' )
+		container.find( '.current-menu-ancestor > button, .current-menu-parent' )
 			.addClass( 'toggled-on' )
 			.attr( 'aria-expanded', 'true' )
 			.find( '.screen-reader-text' )
