@@ -21,7 +21,7 @@
 			.append( seasaltpressScreenReaderText.icon )
 			.append( $( '<span />', { 'class': 'screen-reader-text', text: seasaltpressScreenReaderText.expand }) );
 
-		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle );
+		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).insert( dropdownToggle ); //removed insert() and added append()
 		
 		// Set the active submenu dropdown toggle button initial state.
 		container.find( '.current-menu-ancestor > button, .current-menu-parent' )
@@ -40,7 +40,7 @@
 			e.preventDefault();
 			_this.toggleClass( 'toggled-on' );
 			_this.closest('li').toggleClass('toggled-on'); //added for styling the item clicked
-			_this.next( '.children, .sub-menu' ).toggleClass( 'toggled-on' ).slideToggle();
+			_this.closest('li').children( '.children, .sub-menu' ).toggleClass( 'toggled-on' ).slideToggle();
 
 			_this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 

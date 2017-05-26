@@ -1924,15 +1924,6 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"\/assets\/js\/navigation.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/min\/navigation-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
 	"\/assets\/js\/skip-link-focus-fix.js": {
 		"ft": 64,
 		"mi": 1,

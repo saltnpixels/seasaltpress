@@ -1,18 +1,4 @@
 <?php
-
-function pods_gf_addon_edit_id( $edit_id, $pod, $form_id, $feed, $form, $options ) {
-
-    
-    if ( 1 == $form_id ) {
-        $edit_id = 307; //just testing an existing id
-    }
-
-    return $edit_id;
-
-}
-
-	add_filter( 'pods_gf_addon_edit_id', 'pods_gf_addon_edit_id', 10, 6 );
-	
 /**
  * Sea Salt Press functions and definitions
  *
