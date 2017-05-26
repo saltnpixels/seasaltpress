@@ -21,7 +21,7 @@
 			.append( seasaltpressScreenReaderText.icon )
 			.append( $( '<span />', { 'class': 'screen-reader-text', text: seasaltpressScreenReaderText.expand }) );
 
-		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).insert( dropdownToggle ); //removed insert() and added append()
+		container.find( '.menu-item-has-children > a, .page_item_has_children > a' ).after( dropdownToggle ); 
 		
 		// Set the active submenu dropdown toggle button initial state.
 		container.find( '.current-menu-ancestor > button, .current-menu-parent' )
