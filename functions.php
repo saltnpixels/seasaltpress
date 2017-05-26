@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Sea Salt Press functions and definitions
  *
@@ -23,7 +25,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
  * 
  */
 function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
+  $mimes['svg'] = 'image/svg+xml'; 
   return $mimes;
 }
 add_filter('upload_mimes', 'cc_mime_types');
@@ -396,10 +398,9 @@ function load_custom_wp_admin_style() {
 	
 	    wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet.min.js' ), false, '1.0.0', false);
       wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin-min.js' ), array('seasaltpress_emmet'), '1.0.0', false);
-        
-        
+               
 }
-add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+//add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 
 
