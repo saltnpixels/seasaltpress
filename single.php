@@ -18,7 +18,7 @@ get_header(); ?>
 			<?php
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
-				
+				update_field('relationacf', array(133, 426));
 					//if the post type has its own folder it must also have its own set of post format files too.
 					$post_type = get_post_type();
 					if(file_exists( locate_template( 'template-parts/' . $post_type . '/content.php' ) ) ){
