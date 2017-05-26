@@ -117,12 +117,10 @@ class Rational_Meta_Box {
 	 */
 	public function admin_footer() {
 		
-		
 		?><script>
 			// https://codestag.com/how-to-use-wordpress-3-5-media-uploader-in-theme-options/
 			jQuery(document).ready(function($){
-				
-				if ( typeof wp.media !== 'undefined' && typeof wp.media.editor !== 'undefined') {
+				if ( typeof wp.media !== 'undefined' ) {
 					var _custom_media = true,
 					_orig_send_attachment = wp.media.editor.send.attachment;
 					$('.rational-metabox-media').click(function(e) {

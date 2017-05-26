@@ -1,6 +1,18 @@
 <?php
 
+function pods_gf_addon_edit_id( $edit_id, $pod, $form_id, $feed, $form, $options ) {
 
+    
+    if ( 1 == $form_id ) {
+        $edit_id = 307; //just testing an existing id
+    }
+
+    return $edit_id;
+
+}
+
+	add_filter( 'pods_gf_addon_edit_id', 'pods_gf_addon_edit_id', 10, 6 );
+	
 /**
  * Sea Salt Press functions and definitions
  *
@@ -398,9 +410,10 @@ function load_custom_wp_admin_style() {
 	
 	    wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet.min.js' ), false, '1.0.0', false);
       wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin-min.js' ), array('seasaltpress_emmet'), '1.0.0', false);
-               
+        
+        
 }
-//add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 
 
