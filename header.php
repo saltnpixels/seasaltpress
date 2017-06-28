@@ -39,7 +39,7 @@
 		$logo_position = get_theme_mod('site_top_layout', 'logo-left');
 	?>
 			
-		<div class="site-top-inner-container stay-on-mobile flex <?= $wrap . ' ' . $logo_position; ?>">
+		<div class="site-top-inner-container stay-on-mobile flex align-center <?= $wrap . ' ' . $logo_position; ?>">
 			<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false">
 				<?php
 					if( ! get_theme_mod('cool_menu') ){

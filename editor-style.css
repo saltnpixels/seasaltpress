@@ -726,7 +726,8 @@ td:last-child {
   background: white;
   width: 100%;
   position: relative;
-  z-index: 10; }
+  z-index: 10;
+  border-bottom: none; }
 
 #page .site-logo {
   position: relative;
@@ -819,7 +820,6 @@ td:last-child {
   text-shadow: none;
   top: 3px;
   cursor: pointer;
-  -webkit-transition: all .5s;
   transition: all .5s;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -842,7 +842,6 @@ td:last-child {
   width: 40px;
   left: 0;
   height: 100%;
-  -webkit-transition: color .2s;
   transition: color .2s; }
 
 body:not(.cool-menu) .menu-toggle.toggled-on {
@@ -864,7 +863,6 @@ ul.menu, .menu > ul {
     ul.menu li a, .menu > ul li a {
       display: block;
       text-decoration: none;
-      -webkit-transition: all .5s;
       transition: all .5s;
       font-weight: 700; }
 
@@ -904,10 +902,8 @@ ul.sub-menu {
   .site-top .menu ul.sub-menu, .horizontal-menu .menu ul.sub-menu {
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: all .5s;
     transition: all .5s;
-    -webkit-transition-delay: .2s;
-            transition-delay: .2s;
+    transition-delay: .2s;
     margin: .7em 0 0 0;
     position: absolute;
     z-index: 10;
@@ -952,8 +948,7 @@ ul.sub-menu {
     opacity: 1;
     visibility: visible;
     top: calc(100% + 5px);
-    -webkit-transition-delay: 0s;
-            transition-delay: 0s; }
+    transition-delay: 0s; }
   .site-top .menu li .sub-menu .sub-menu, .horizontal-menu .menu li .sub-menu .sub-menu {
     top: 0;
     margin: 0;
@@ -976,7 +971,6 @@ ul.sub-menu {
     font-size: 34px;
     font-size: 1.7rem;
     line-height: 7px;
-    -webkit-transition: all .3s;
     transition: all .3s; }
   .menu-toggle.toggled-on {
     position: fixed; }
@@ -994,9 +988,7 @@ ul.sub-menu {
     top: 0;
     z-index: 80;
     width: 40vw;
-    background: -webkit-radial-gradient(top left, #2DA6D8 0%, #1F4567 100%);
     background: radial-gradient(top left, #2DA6D8 0%, #1F4567 100%);
-    -webkit-transition: -webkit-transform .5s;
     transition: -webkit-transform .5s;
     transition: transform .5s;
     transition: transform .5s, -webkit-transform .5s;
@@ -1009,8 +1001,8 @@ ul.sub-menu {
   body:not(.cool-menu) .site-top.toggled-on {
     z-index: 90; }
   /*--------------------------------------------------------------
-## Mobile Menu
---------------------------------------------------------------*/
+	## Mobile Menu
+	--------------------------------------------------------------*/
   .site-top > .flex {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -1037,7 +1029,6 @@ ul.sub-menu {
       display: flex;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-      -webkit-transition: all .5s;
       transition: all .5s; }
       .site-top ul.menu li a .icon-angle-down, .site-top .menu > ul li a .icon-angle-down,
       .mobile-popout ul.menu li a .icon-angle-down, .mobile-popout .menu > ul li a .icon-angle-down {
@@ -1097,7 +1088,6 @@ ul.sub-menu {
       clear: both;
       display: none;
       overflow: hidden;
-      -webkit-transition: all 0s;
       transition: all 0s;
       width: 100%; }
       .site-top ul.menu .sub-menu li a, .site-top .menu > ul .sub-menu li a,
@@ -1115,13 +1105,12 @@ ul.sub-menu {
         color: #F5F8F9;
         font-weight: bold; }
   /*--------------------------------------------------------------
-# Cool Mobile Menu 
-#moves mobile popout outside of #page and whole #page moves over
---------------------------------------------------------------*/
+	# Cool Mobile Menu
+	#moves mobile popout outside of #page and whole #page moves over
+	--------------------------------------------------------------*/
   body.cool-menu .page-holder {
     position: relative;
     z-index: 90;
-    -webkit-transition: -webkit-transform .5s;
     transition: -webkit-transform .5s;
     transition: transform .5s;
     transition: transform .5s, -webkit-transform .5s;
@@ -1195,7 +1184,6 @@ ul.sub-menu {
     background: transparent;
     padding: 0;
     padding-right: 10px;
-    -webkit-transition: all .5s;
     transition: all .5s;
     width: auto;
     text-decoration: none;
@@ -1352,8 +1340,8 @@ blockquote {
   quotes: "" "";
   margin: 0;
   padding: 5px 10px 5px 30px;
-  border-left: 7px solid #6C747D;
-  background: rgba(28, 49, 68, 0.7); }
+  border-left: 7px solid #10B8E0;
+  background: white; }
   blockquote p:last-child {
     margin: 0; }
 
@@ -1465,7 +1453,6 @@ textarea {
   background: white;
   color: #6C747D;
   width: 100%;
-  -webkit-transition: all .5s;
   transition: all .5s; }
   input[type="text"]:focus,
   input[type="email"]:focus,
@@ -1503,7 +1490,6 @@ input[type="submit"] {
   background: #10B8E0;
   color: white;
   padding: 3px 10px;
-  -webkit-transition: all .5s;
   transition: all .5s;
   cursor: pointer; }
   button.focus,
@@ -1885,21 +1871,17 @@ figcaption {
 
 /*------- Cool Sidebar toggle function --------*/
 body .sidebar-toggle {
-  -webkit-transition: all .5s;
   transition: all .5s;
-  -webkit-transition-delay: .05s;
-          transition-delay: .05s;
+  transition-delay: .05s;
   z-index: 30; }
 
 #page #secondary.sidebar-open {
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
-  -webkit-transition: all .4s;
   transition: all .4s; }
 
 @media (min-width: 1000px) {
   .content-area, .site-top, .site-footer, .break-out > * {
-    -webkit-transition: all .6s;
     transition: all .6s; }
   .cool-sidebar.sidebar-open .content-area, .cool-sidebar.sidebar-open .site-top, .cool-sidebar.sidebar-open .site-footer, .cool-sidebar.sidebar-open .break-out > * {
     width: calc( 100vw - 300px); } }
@@ -1914,7 +1896,6 @@ body .sidebar-toggle {
   right: 0;
   padding-top: 60px;
   display: block;
-  -webkit-transition: all .65s;
   transition: all .65s;
   height: 100%;
   min-height: 100vh;
@@ -1936,7 +1917,6 @@ body .sidebar-toggle {
     width: 75vw;
     max-width: 300px;
     right: 0;
-    -webkit-transition: all .6s;
     transition: all .6s;
     height: 100%;
     min-height: 100vh;
@@ -2202,7 +2182,6 @@ body .sidebar-toggle {
     padding: 0; }
   .site-content .widget-area a, .site-content .widget-area .dropdown-toggle {
     color: #6C747D;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .site-content .widget-area a:hover, .site-content .widget-area a:active {
     color: #10B8E0; }
@@ -2226,7 +2205,6 @@ body .sidebar-toggle {
       color: #161F26; }
     .content-sidebar-holder #secondary a, .content-sidebar-holder #secondary .dropdown-toggle {
       color: #6C747D;
-      -webkit-transition: all .5s;
       transition: all .5s; }
     .content-sidebar-holder #secondary a:hover, .content-sidebar-holder #secondary a:active {
       color: #10B8E0; } }
@@ -2244,7 +2222,6 @@ body .sidebar-toggle {
 
 .col, .flex > * {
   border: 1px solid transparent;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .col:hover, .flex > *:hover {

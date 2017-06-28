@@ -38,11 +38,11 @@ function seasaltpress_body_classes( $classes ) {
 	if ( has_header_image() ) {
 		$classes[] = 'has-header-image';
 	}
-	
+// 	adds cool menu class if active in customizer. jquery then can use this to activate the menu as well as css
 	if( get_theme_mod('cool_menu') ){
 		$classes[] = 'cool-menu';
 	}
-	
+// 	add cool-sidebar class if active
 	if( get_theme_mod('cool_sidebar') ){
 		$classes[] = 'cool-sidebar';
 	}
@@ -50,6 +50,14 @@ function seasaltpress_body_classes( $classes ) {
 	// Add class if sidebar is used.
 	if ( is_active_sidebar( 'sidebar-1' )  ) {
 		$classes[] = 'has-sidebar';
+	}
+	
+	
+	// adds users role as class
+	if( is_user_logged_in()){
+		$current_user = new WP_User(get_current_user_id());
+		$user_role = array_shift($current_user->roles);
+		$classes[] = 'role-'. $user_role;
 	}
 	
 
