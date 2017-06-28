@@ -2,58 +2,57 @@
 	This file is for styling your comment sections
 */
 
-.comment-list{
-	margin: 0;
-	padding: 0;
-	list-style: none;
+.comment-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.comment{
-	margin: 0;
-	
-	article{
-		margin-bottom: $baseline;
-	}
-	
-	.children{
-		margin: 0;
-		padding: 0 0 0 15px;
-		list-style: none;
-	}
-	
+.comment {
+  margin: 0;
+
+  article {
+    margin-bottom: $baseline;
+  }
+
+  .children {
+    margin: 0;
+    padding: 0 0 0 15px;
+    list-style: none;
+  }
+
 }
 
-.comment-meta{
-	display: flex;
-	
-	.says{
-		display: none;
-	}
-	
-	.comment-author{
-		margin-right: 15px;
-	}
-	
-	.comment-metadata{
-		@include font-size(.65);
-		font-style: italic;
-		
-		a{
-			color: $color-text-secondary;
-		}
-	}
-	
+.comment-meta {
+  display: flex;
+
+  .says {
+    display: none;
+  }
+
+  .comment-author {
+    margin-right: 15px;
+  }
+
+  .comment-metadata {
+    @include font-size(.65);
+    font-style: italic;
+
+    a {
+      color: $color-text-secondary;
+    }
+  }
+
 }
 
+.comment-content {
+  @include font-size(.9);
 
-.comment-content{
-		@include font-size(.9);
-	
-	p:last-child{
-		margin-bottom: 15px;
-	}
+  p:last-child {
+    margin-bottom: 15px;
+  }
 }
 
-.reply{
-	@include font-size(.7);
+.reply {
+  @include font-size(.7);
 }

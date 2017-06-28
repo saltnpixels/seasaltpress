@@ -1,12 +1,11 @@
 /*!
-Theme Name: Sea Salt Press
-Theme URI: https://wordpress.org/themes/seasaltpress/
+Theme Name: Sea Salt Press Site
+Theme URI: https://seasalt.press/
 Author: Shamai Greenfield
 Author URI: https://seasalt.press/
-Description: Sea Salt Press is a starter theme thats made to save you time and let you focus on design and advanced functionality.
+Description: Sea Salt Press is a starter theme that's made to save you time and let you focus on design and advanced functionality.
 Version: 1.0
 License: GNU General Public License v3.0
-License URI: https://choosealicense.com/licenses/gpl-3.0/
 
 Text Domain: seasaltpress
 Tags: custom-menu, custom-logo, editor-style, featured-images, footer-widgets
@@ -14,17 +13,17 @@ Commercial License for commercial use
 */
 
 
-
 /*--------------------------------------------------------------
 1.0 Mixins
 --------------------------------------------------------------*/
-//add your own mixins!
+//add your own mixins if necessary
 @import "mixins";
 
 
 /*--------------------------------------------------------------
 2.0 Variables
 --------------------------------------------------------------*/
+//Declare ALL variables in here so you don't kill yourself later
 @import "variables";
 
 

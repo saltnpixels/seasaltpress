@@ -146,7 +146,8 @@
 	}
 	
 	.featured-image{
-		flex: 1;	
+		flex: 1;
+		max-height: 350px;
 	}
 	
 	.entry-title, .cat-links, .entry-content, .entry-meta{

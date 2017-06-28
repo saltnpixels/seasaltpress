@@ -32,6 +32,7 @@ h5,
 h6 {
 	clear: both;
 	line-height: $font-line-height-body;
+	font-family: $font-headers;
 }
 
 
@@ -59,8 +60,8 @@ blockquote {
 	quotes: "" "";
 	margin: 0;
 	padding: 5px 10px 5px $baseline;
-	border-left: 7px solid $highlight;
-	background: $white;
+	border-left: 7px solid $grey;
+	background: $highlight;
 	
 	p:last-child{
 		margin: 0;
@@ -118,9 +119,10 @@ var {
 --------------------------------------------------------------*/
 
 h1, .single .entry-title, .page-title{
-	@include font-size(2.8);  //56 at high end (2.8 * 20) and 50 at low
+	@include font-size(2);  //56 at high end (2.8 * 20) and 50 at low
 	line-height: 1.3;
 	font-weight: normal;
+	text-transform: uppercase;
 }
 
 h2{
