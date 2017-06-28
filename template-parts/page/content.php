@@ -81,7 +81,7 @@ $id = get_the_ID();
 	<header class="entry-header">
 		<?php if( has_post_thumbnail() ): ?>
 		<a href="<?php the_permalink(); ?>" class="featured-image">
-			<?php the_post_thumbnail( 'seasaltpress-featured-image', array('class'=>'header-image')); ?>
+			<?php the_post_thumbnail( 'post-thumbnail', array('class'=>'header-image')); ?>
 		</a>
 		<?php endif; ?>
 		

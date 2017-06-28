@@ -2178,12 +2178,6 @@
 		"oAP": "\/footer.php",
 		"oF": 0
 		},
-	"\/functions.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/functions.php",
-		"oF": 0
-		},
 	"\/inc\/back-compat.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -2206,12 +2200,6 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/inc\/icon-functions.php",
-		"oF": 0
-		},
-	"\/inc\/seasaltpress_custom_fields.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/inc\/seasaltpress_custom_fields.php",
 		"oF": 0
 		},
 	"\/inc\/seasaltpress_extras.php": {
@@ -2408,22 +2396,10 @@
 		"oAP": "\/template-parts\/footer\/site-info.php",
 		"oF": 0
 		},
-	"\/template-parts\/page\/content.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/template-parts\/page\/content.php",
-		"oF": 0
-		},
 	"\/template-parts\/post\/archive-header.php": {
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/template-parts\/post\/archive-header.php",
-		"oF": 0
-		},
-	"\/template-parts\/post\/content.php": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/template-parts\/post\/content.php",
 		"oF": 0
 		}
 	},
