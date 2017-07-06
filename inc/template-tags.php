@@ -4,8 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+* @package Sea_Salt_Press
  * @since 1.0
  */
 

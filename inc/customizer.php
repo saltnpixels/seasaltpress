@@ -2,8 +2,7 @@
 /**
  * Sea Salt Press: Customizer
  *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+* @package Sea_Salt_Press
  * @since 1.0
  */
 

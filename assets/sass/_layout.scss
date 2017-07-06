@@ -54,7 +54,7 @@
 .flex-grid{
 	display: flex;
 	flex-wrap: wrap;
-	
+
 	.col{
 		margin-bottom: $baseline;
 	}
@@ -76,16 +76,9 @@
 	.flex:not(.stay-on-mobile){
 		display: block;
 		.col{ margin-bottom: $baseline; }
-		
-	}
-	
-	body [class*="col-"]:not(.stay-on-mobile){
-		float: none;
-		width: 100%;
-	}
-	
-}
 
+	}
+}
 
 /*--------------------------------------------------------------
 # Column Layout
@@ -118,17 +111,26 @@
 .col-full{
   float: left;
   @extend .gutters;
-  
+
+	//if they dont have a parent of flex they need the floats cleared.
   *:not(.flex) > &{
   @extend .clear !optional;
   }
-  
+
   //helpful but not necessary
   .row{
 	  margin-left: -#{$gutters};
 		margin-right: -#{$gutters};
 		clear: both;
   }
+
+	@media( max-width: $mobile-width){
+		&:not(.stay-on-mobile){
+			float: none;
+			width: 100%;
+		}
+	}
+
 }
 
 
@@ -178,7 +180,7 @@ img{
 }
 
 
-/*------- elements --------*/ 
+/*------- elements --------*/
 .icon {
 	display: inline-block;
 	stroke-width: 0;
@@ -193,7 +195,7 @@ svg{
 	fill: currentColor;
 }
 
-/*------- Break out of centered content column --------*/ 
+/*------- Break out of centered content column --------*/
 
 //based on http://modusagency.com/css-trick-expanding-a-div-beyond-a-parent-container/
 
@@ -204,14 +206,14 @@ svg{
 	margin-left: -200%; //now 100vw is centered;
 	margin-bottom: $baseline;
 	padding: 15px 0 15px 0;
-			
+
 	.inside-break-out, >*{ //the very first child divs inside. Centered.
 		margin: auto;
 		width: 100vw;
 		display: block;
-		
+
 	 }
-			 
+
 	 .inside-break-out > p{
 			@extend .gutters;
 	 }

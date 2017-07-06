@@ -29,8 +29,16 @@ body .sidebar-toggle{
 }
 
 //making sure the menu doesnt bump into the sidebar icon when window is narrow
+//if screen is smaller than wrap plus 30 and bigger then mobile give some padding tot he side and make room for sidebar icon
 @media (max-width: $wrap + 30) and (min-width: $mobile-nav-width){
-	.sidebar-active .site-top{
+	.sidebar-active .site-top-inner-container{
+		padding-right: 30px;
+	}
+}
+
+//if site-top has no wrap and a sidebar icon it needs space too
+@media( min-width: $mobile-nav-width){
+	.sidebar-active .site-top-inner-container:not(.wrap){
 		padding-right: 30px;
 	}
 }

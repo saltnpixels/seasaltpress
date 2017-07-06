@@ -1,35 +1,32 @@
 /*
- * This page is used to make defualt layout for major elements on the site.
+ * This page is used to make default layout for major elements on the site including headers, content and sidebars.
  * There is no styles of colors and backgrounds here. Just structure and layout. (widths, heights, flex...)
  * It is better to override whats here in other scss files, unless you know what you are doing.
 */
 
 /*--------------------------------------------------------------
-# Default Layout.
+# Default Headers Layout.
 --------------------------------------------------------------*/
 
-
-/*------- Default Headers --------*/ 
+/*------- Default Headers --------*/
 /*
-	- By default headers have a min height of 40 view-height.
-	- Inside the header is a div.header-content class that is centered vertically and horizontally with flex and given paddings on all sides.
-	- The title has no margins. 
-	- This setup is most ideal and you can add content to header and still everything will be centered and nicely aligned
-	- Add styles in post_types.scss to override and change headers per post type as opposed to here. 
+	- An ideal setup for headers with a background image.
+	- The text inside is centered vertically and horizontally
+	- default of 40vh height
 */
 
-.page-header, .single .entry-header, .page .entry-header{
+.page-header, .single .entry-header, .page .entry-header {
 	position: relative;
 	overflow: hidden;
-	min-height: 40vh;
-	
+	min-height: 40vh; //default.
+
 	display: flex;
 	justify-content: center;
-	align-items: center;  //aligns .header-content to center if image is behind. else it just ignores
+	align-items: center; //aligns .header-content to center if image is behind. else it just ignores
 	flex-direction: column; //featured-image stacked on top of header-content unless behind. or set to be below
-	
-	//the edit link for archive page headers. For all others the edit link is in the amdin bar.
-	.edit-link{
+
+	//the edit link for archive page headers. For all others the edit link is already in the admin bar so its not output.
+	.edit-link {
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -38,86 +35,75 @@
 		text-align: center;
 		@include font-size(.6);
 	}
-	
-	
+
 	//everything inside header is contained inside .header-content by default except the header image
-	.header-content{
+	.header-content {
 		padding: $gutters;
 		max-width: $wrap;
 		margin: auto;
-		
-		.entry-title, .page-title, h1{
+
+		.entry-title, .page-title, h1 {
 			margin: 0;
-		}	
+		}
 	}
-	
 }
 
+/*------- Default Post Thumbnails/ Featured Image --------*/
 
-
-
-/*------- Default Post Thumbnails/ Featured Image --------*/ 
-
-//holds large header image inside header. 
-//Also used inside posts on an archive page. If thats the case ,featured-image is an anchor tag 
-.featured-image{ 
+/**
+	- Featured image inside a posts header and used on single and pages
+ */
+.featured-image {
 	display: block;
 	width: 100%;
-	height: 300px; //default height. 
+	height: 300px; //default height for archive of posts. overridden above for singles to be 40vh.
+
+	img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+		display: block;
+		margin: auto;
+		background-size: cover; //fallback for ie. Using js we detect and set it to be background image instead.
+	}
 }
 
-//the actual img element inside featured-image, set to fill its container
-//uses size seasaltpress-featured-image set in functions.php
-.header-image{
-	object-fit: cover;
-	width: 100%;
-	height: 100%;
-	display: block;
-	margin: auto;
-	background-size: cover; //fallback for ie. Using js we detect and set it to be background image instead. 
-}
-
-
-/*------- Header image placement --------*/ 
+/*------- Image Placement Classes --------*/
 /*
-	- By default the header featured image is set to be large and full width suing cover. It can be either behind the header-content, usually darkened, or above it or below it.
-	- Simple classes have been provided here to change its behavior. It defaults to being above the header content at a height of 300px
-	- Just add class .image-behind or .image-below onto header to change the images placement
-	- You can also use @extend .image-behind instead of adding the class for the same effect. This is done in the post_types.scss by default
-*/
-
-/*------- Image Placement Classes --------*/ 
-/*
-	 - Place one of these classes on the header and the image will go below or behind. 
-	 - You can also use @extend to add it to a header
+	 - Place one of these classes on the .entry-header and the image will go below or behind.
+	 - You can also use @extend to add it
+	 - Default is extending behind
 */
 
 //image moves below title and text
-.image-below .featured-image{
+.image-below .featured-image {
 	order: 2;
 }
 
 //image goes behind header
-.image-behind .featured-image{
+.image-behind .featured-image {
 	position: absolute;
-	z-index: -1;	
+	z-index: -1;
 	top: 0;
 	left: 0;
 	height: 100%;
 }
 
 
-/*------- Global Default Articles --------*/ 
+/*--------------------------------------------------------------
+# Default Content Layout
+--------------------------------------------------------------*/
+/*------- Global Default Articles --------*/
 
 //centering articles with a max width
-.single .entry-content, .page .entry-content{
+.single .entry-content, .page .entry-content {
 	@extend .content-column;
 	padding-top: $baseline;
 }
 
 //on page blank template, articles are full sized.
-.page-template-page-blank{
-	.single .entry-content, .page .entry-content{
+.page-template-page-blank {
+	.single .entry-content, .page .entry-content {
 		max-width: 100%;
 		padding: 0;
 		padding-top: $baseline;
@@ -125,130 +111,113 @@
 }
 
 //when there is a sidebar, entry-content is on right not centered.
-.content-sidebar-holder .entry-content{
+.content-sidebar-holder .entry-content {
 	margin-left: 0;
 }
-
-
-
-
-
-
-
 
 /*--------------------------------------------------------------
 # Sidebar Default Layout
 --------------------------------------------------------------*/
 
-/*------- No JS fallback  --------*/ 
+/*------- No JS fallback  --------*/
+//puts primary next to secondary.
 //if you want this full time, disable the javascript stuff in navigation.js
-@media (min-width: $mobile-width){
-	.no-js .site-content{
+@media (min-width: $mobile-width) {
+	.no-js .site-content {
 		display: flex;
-		
-		.content-area{
+
+		.content-area {
 			flex: 1;
 		}
 	}
 }
 
-
 /*------- Default Sidebar  --------*/
- 
-#secondary{
+//with js secondary is put inside primary or off to side with cool-sidebar enabled
+#secondary {
 	width: 25%;
 	will-change: width;
 	max-width: $sidebar-width;
 }
 
-
-.sidebar-holder{ //holds everything inside secondary
+.sidebar-holder { //holds everything inside secondary
 	@extend .gutters;
 }
 
-
-.content-area, .site-footer{
+.content-area, .site-footer {
 	width: 100%;
 	will-change: width;
 }
 
 //hide sidebar.
-.js .content-area ~ .widget-area{
+.js .content-area ~ .widget-area {
 	display: none;
 }
 
 //hide toggle
-.sidebar-toggle{
+.sidebar-toggle {
 	display: none;
 }
 
-
-/*------- Plain Sidebar inline with content layout --------*/ 
+/*------- Plain Sidebar inline with content layout --------*/
 
 //holds content for article and the sidebar under header
-.content-sidebar-holder{
+.content-sidebar-holder {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	
-	#secondary{
+
+	#secondary {
 		align-self: stretch;
 		padding-top: $baseline;
-	}	
-	
+	}
+
 }
 
 //archive pages with sidebars are set to a width of 75%
-.content-sidebar-holder .posts-holder{
+.content-sidebar-holder .posts-holder {
 	width: 75%;
 }
 
-.sidebar-left{
+.sidebar-left {
 	order: 2;
 }
 
-
-/*------- Cool Sidebar toggle function --------*/ 
-body .sidebar-toggle{
+/*------- Cool Sidebar toggle function --------*/
+body .sidebar-toggle {
 	transition: all .5s;
 	transition-delay: .05s;
 	z-index: 30;
 }
 
-#page #secondary.sidebar-open{
-	transform: translate(0,0);
+#page #secondary.sidebar-open {
+	transform: translate(0, 0);
 	transition: all .4s; //open faster than .6s below. gets rid of slight white line between sidebar and content
 }
 
-
-
-
 //if the screen is wide enough we will make primary, footer and site-top thinner when sidebar opens so it looks like its pushing it over
-@media (min-width: $mobile-width + 500px){
-	
-	.content-area, .site-top, .site-footer, .break-out > *{
+@media (min-width: $mobile-width + 500px) {
+
+	.content-area, .site-top, .site-footer, .break-out > * {
 		transition: all .6s;
 	}
-	
-	.cool-sidebar.sidebar-open{
-		.content-area, .site-top, .site-footer, .break-out > *{
-			width: calc( 100vw - #{$sidebar-width});
+
+	.cool-sidebar.sidebar-open {
+		.content-area, .site-top, .site-footer, .break-out > * {
+			width: calc(100vw - #{$sidebar-width});
 		}
 	}
-		
+
 }
 
-
-/*------- Cool Sidebar Layout off to side. Opens with toggle button --------*/ 
-
+/*------- Cool Sidebar Layout off to side. Opens with toggle button --------*/
 
 //on mobile and cool-sidebar show sidebar toggle
-.cool-sidebar .sidebar-toggle{
+.cool-sidebar .sidebar-toggle {
 	display: block;
 }
 
-
-.js .cool-sidebar .content-area ~ #secondary{
+.js .cool-sidebar .content-area ~ #secondary {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -261,26 +230,23 @@ body .sidebar-toggle{
 	width: $sidebar-width;
 	z-index: 20;
 
-	
-	.sidebar-holder{
+	.sidebar-holder {
 		@extend .touchscroll;
 		height: 100%;
 	}
 }
 
+/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/
 
-
-/*------- Cool Sidebar popout on mobile. Even for inline sidebar --------*/ 
-
-@media (max-width: $sidebar-mobile-width){
-	.sidebar-toggle{
+@media (max-width: $sidebar-mobile-width) {
+	.sidebar-toggle {
 		display: block;
 	}
-	
+
 	//set to cool sidebar.
-	.js #secondary{
+	.js #secondary {
 		position: absolute;
-		padding-top: $cool-sidebar-top-padding; 
+		padding-top: $cool-sidebar-top-padding;
 		top: 0;
 		width: 75vw;
 		max-width: $sidebar-width;
@@ -291,16 +257,16 @@ body .sidebar-toggle{
 		display: block;
 		transform: translate(75vw, 0);
 		z-index: 20;
-		
-		.sidebar-holder{
+
+		.sidebar-holder {
 			overflow: scroll;
 			height: 100%;
 		}
 	}
-	
-	.content-sidebar-holder .posts-holder{
+
+	.content-sidebar-holder .posts-holder {
 		width: auto;
-	}	
-		
+	}
+
 }
 

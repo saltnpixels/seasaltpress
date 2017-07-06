@@ -2,8 +2,7 @@
 /**
  * Additional features to allow styling of the templates
  *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+* @package Sea_Salt_Press
  * @since 1.0
  */
 

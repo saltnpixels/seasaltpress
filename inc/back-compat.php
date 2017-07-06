@@ -6,8 +6,7 @@
  * since this theme is not meant to be backward compatible beyond that and
  * relies on many newer functions and markup changes introduced in 4.7.
  *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+* @package Sea_Salt_Press
  * @since Sea Salt Press 1.0
  */
 

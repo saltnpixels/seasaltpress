@@ -9,8 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+ * @package Sea_Salt_Press
  * @since 1.0
  * @version 1.0
  */
@@ -23,9 +22,8 @@ get_header(); ?>
 
 			<?php
 			while ( have_posts() ) : the_post();
-		
-			include( locate_template( 'template-parts/page/content.php' ) );
-		
+
+				include( locate_template( 'template-parts/page/content.php' ) );
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :

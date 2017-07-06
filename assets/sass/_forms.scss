@@ -26,18 +26,19 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
+input[type="file"],
 textarea {
-	border: 1px solid rgba($highlight, .2);
+	border: 1px solid $border-color-input;
 	background: $background-input;
 	color: $color-input;
 	width: 100%;
 	transition: all .5s;
-	
-	&:focus{
+	padding: 3px 5px;
+
+	&:focus {
 		border: 1px solid $highlight;
 	}
 }
-
 
 select {
 	width: 100%;
@@ -47,7 +48,6 @@ input[type="radio"],
 input[type="checkbox"] {
 	margin-right: 0.5em;
 }
-
 
 /*--------------------------------------------------------------
 # Buttons
@@ -63,36 +63,36 @@ input[type="submit"] {
 	padding: 3px 10px;
 	transition: all .5s;
 	cursor: pointer;
-	
-	&.focus{
+
+	&.focus {
 		background: shade($highlight, 15%);
 	}
-	
-	&:active{
+
+	&:active {
 		background: shade($highlight, 50%);
 	}
 }
 
 //hover on buttons, not for mobile
-@media( min-width: $mobile-nav-width ){
+@media(min-width: $mobile-nav-width) {
 	button,
 	.button,
 	input[type="button"],
 	input[type="submit"] {
-		
-		&:hover{
+
+		&:hover {
 			background: shade($highlight, 15%);
 		}
 	}
 }
 
 ::-webkit-input-placeholder {
-	color: tint($color-input, 30%);
+	color: tint($color-input, 50%);
 	font-family: $font-main;
 }
 
 :-moz-placeholder {
-	color: tint($color-input, 30%);
+	color: tint($color-input, 50%);
 	font-family: $font-main;
 }
 
@@ -105,26 +105,52 @@ input[type="submit"] {
 
 :-ms-input-placeholder {
 	color: #333;
-	font-family: $font-main	
+	font-family: $font-main
 }
-	
-
 
 /*--------------------------------------------------------------
 # Search Form
 --------------------------------------------------------------*/
-.search-form{
+.search-form {
 	display: flex;
 
-	
-	.search-field{
+	.search-field {
 		flex: 1;
 		padding: 3px 10px 3px 5px;
 	}
-	
-	.search-submit{
+
+	.search-submit {
 		margin-left: -5px;
-		
+
+	}
+}
+
+
+//for sesaltrpesssite only
+.dark input[type="text"]{
+	color: $white;
+	border: 1px solid transparent;
+
+	&::-webkit-input-placeholder {
+		color: white;
+		font-family: $font-main;
+	}
+
+	&:-moz-placeholder {
+		color: white;
+		font-family: $font-main;
+	}
+
+	&::-moz-placeholder {
+		color: white;
+		font-family: $font-main;
+		opacity: 1;
+		/* Since FF19 lowers the opacity of the placeholder by default */
+	}
+
+	&:-ms-input-placeholder {
+		color: white;
+		font-family: $font-main
 	}
 }
 

@@ -1,13 +1,12 @@
 @charset "UTF-8";
 /*!
-Theme Name: Sea Salt Press
-Theme URI: https://wordpress.org/themes/seasaltpress/
+Theme Name: Sea Salt Press Site
+Theme URI: https://seasalt.press/
 Author: Shamai Greenfield
 Author URI: https://seasalt.press/
-Description: Sea Salt Press is a starter theme thats made to save you time and let you focus on design and advanced functionality.
+Description: Sea Salt Press is a starter theme that's made to save you time and let you focus on design and advanced functionality.
 Version: 1.0
 License: GNU General Public License v3.0
-License URI: https://choosealicense.com/licenses/gpl-3.0/
 
 Text Domain: seasaltpress
 Tags: custom-menu, custom-logo, editor-style, featured-images, footer-widgets
@@ -48,7 +47,7 @@ Mixins
 /*------- Break-Out --------*/
 /*------- footer --------*/
 /*--------------------------------------------------------------
-# Applied menu and site top Colors/Backgrounds
+# Applied menu and site top Colors and Backgrounds
  - All this stuff can be found in menus.scss
 --------------------------------------------------------------*/
 /*------- Site Top --------*/
@@ -317,7 +316,7 @@ template {
 /*--------------------------------------------------------------
 4.0 Clearings
 --------------------------------------------------------------*/
-.clear:before, .wrap:before, *:not(.flex) > .col-1-2:before, *:not(.flex) > .col-1-3:before, *:not(.flex) > .col-2-3:before, *:not(.flex) > .col-1-4:before, *:not(.flex) > .col-3-4:before, *:not(.flex) > .col-1-5:before, *:not(.flex) > .col-2-5:before, *:not(.flex) > .col-3-5:before, *:not(.flex) > .col-4-5:before, *:not(.flex) > .col-1-6:before, *:not(.flex) > .col-5-6:before, *:not(.flex) > .col-full:before,
+.clear:before, .wrap:before, *:not(.flex) > .col-1-2:before, *:not(.flex) > .col-1-3:before, *:not(.flex) > .col-2-3:before, *:not(.flex) > .col-1-4:before, *:not(.flex) > .col-3-4:before, *:not(.flex) > .col-1-5:before, *:not(.flex) > .col-2-5:before, *:not(.flex) > .col-3-5:before, *:not(.flex) > .col-4-5:before, *:not(.flex) > .col-1-6:before, *:not(.flex) > .col-5-6:before, *:not(.flex) > .col-full:before, .gfield:not(.separate-fields) .ginput_complex:before, .clear-multi:before, .gform_card_icon_container:before,
 .clear:after,
 .wrap:after,
 *:not(.flex) > .col-1-2:after,
@@ -332,6 +331,9 @@ template {
 *:not(.flex) > .col-1-6:after,
 *:not(.flex) > .col-5-6:after,
 *:not(.flex) > .col-full:after,
+.gfield:not(.separate-fields) .ginput_complex:after,
+.clear-multi:after,
+.gform_card_icon_container:after,
 .entry-content:before,
 .entry-content:after,
 .entry-footer:before,
@@ -375,6 +377,9 @@ template {
 *:not(.flex) > .col-1-6:after,
 *:not(.flex) > .col-5-6:after,
 *:not(.flex) > .col-full:after,
+.gfield:not(.separate-fields) .ginput_complex:after,
+.clear-multi:after,
+.gform_card_icon_container:after,
 .entry-content:after,
 .entry-footer:after,
 .comment-content:after,
@@ -506,10 +511,7 @@ html * {
   .flex:not(.stay-on-mobile) {
     display: block; }
     .flex:not(.stay-on-mobile) .col {
-      margin-bottom: 30px; }
-  body [class*="col-"]:not(.stay-on-mobile) {
-    float: none;
-    width: 100%; } }
+      margin-bottom: 30px; } }
 
 /*--------------------------------------------------------------
 # Column Layout
@@ -580,6 +582,21 @@ html * {
     margin-left: -15px;
     margin-right: -15px;
     clear: both; }
+  @media (max-width: 500px) {
+    .col-1-2:not(.stay-on-mobile),
+    .col-1-3:not(.stay-on-mobile),
+    .col-2-3:not(.stay-on-mobile),
+    .col-1-4:not(.stay-on-mobile),
+    .col-3-4:not(.stay-on-mobile),
+    .col-1-5:not(.stay-on-mobile),
+    .col-2-5:not(.stay-on-mobile),
+    .col-3-5:not(.stay-on-mobile),
+    .col-4-5:not(.stay-on-mobile),
+    .col-1-6:not(.stay-on-mobile),
+    .col-5-6:not(.stay-on-mobile),
+    .col-full:not(.stay-on-mobile) {
+      float: none;
+      width: 100%; } }
 
 .m1 {
   margin-bottom: 30px; }
@@ -723,11 +740,11 @@ td:last-child {
 # Site Top, Logo and Mobile popout Layout
 --------------------------------------------------------------*/
 .site-top {
-  background: white;
+  background: transparent;
   width: 100%;
   position: relative;
   z-index: 10;
-  border-bottom: none; }
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
 #page .site-logo {
   position: relative;
@@ -748,7 +765,7 @@ td:last-child {
     display: -ms-flexbox;
     display: flex;
     text-decoration: none;
-    color: #10B8E0;
+    color: white;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -810,7 +827,7 @@ td:last-child {
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: #F5F8F9;
+  color: white;
   display: block;
   font-size: 16px;
   right: 0;
@@ -825,7 +842,7 @@ td:last-child {
       -ms-flex: 1;
           flex: 1;
   text-align: right;
-  background: transparent; }
+  background: rgba(48, 32, 57, 0.5); }
 
 .js .menu-toggle {
   position: absolute;
@@ -837,7 +854,7 @@ td:last-child {
   cursor: pointer;
   will-change: transform;
   background: transparent;
-  color: #1C3144;
+  color: rgba(255, 255, 255, 0.75);
   line-height: 0;
   width: 40px;
   left: 0;
@@ -864,20 +881,23 @@ ul.menu, .menu > ul {
       display: block;
       text-decoration: none;
       transition: all .5s;
-      font-weight: 700; }
+      font-weight: 700;
+      outline: none; }
 
 ul.sub-menu {
   list-style: none;
   margin: 0; }
 
+.site-top, body .sidebar-toggle {
+  position: absolute; }
+
+.page-header, .single .entry-header, .page .entry-header {
+  padding-top: 50px; }
+
 /*--------------------------------------------------------------
 # Desktop Menus
 --------------------------------------------------------------*/
 @media (min-width: 600px) {
-  .site-top, body .sidebar-toggle {
-    position: relative; }
-  .page-header, .single .entry-header {
-    padding-top: 0; }
   .site-top-inner-container > * {
     padding: 0 15px; }
   .logo-in-middle > .site-logo {
@@ -892,7 +912,7 @@ ul.sub-menu {
       margin: 0; }
     ul.menu li a, .menu > ul li a {
       padding: 10px 5px;
-      color: #6C747D;
+      color: white;
       background: transparent;
       font-size: 17.4px;
       font-size: 0.87rem; }
@@ -912,13 +932,13 @@ ul.sub-menu {
     padding: 5px 0;
     width: 150px;
     margin-left: -75px;
-    background: #10B8E0;
+    background: #2C386E;
     border-radius: 3px; }
     .site-top .menu ul.sub-menu li, .horizontal-menu .menu ul.sub-menu li {
       margin: 0;
       z-index: 10; }
     .site-top .menu ul.sub-menu a, .horizontal-menu .menu ul.sub-menu a {
-      color: #F5F8F9;
+      color: white;
       background: transparent;
       padding: 3px 5px;
       padding-right: 25px; }
@@ -929,8 +949,8 @@ ul.sub-menu {
         right: 5px;
         top: 5px; }
     .site-top .menu ul.sub-menu li:hover > a, .site-top .menu ul.sub-menu li.focus > a, .horizontal-menu .menu ul.sub-menu li:hover > a, .horizontal-menu .menu ul.sub-menu li.focus > a {
-      color: #10B8E0;
-      background: #F5F8F9; }
+      color: #A46AE6;
+      background: transparent; }
   .site-top ul.sub-menu:before, .horizontal-menu ul.sub-menu:before {
     content: '';
     position: absolute;
@@ -943,7 +963,7 @@ ul.sub-menu {
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
     border-radius: 4px 0 0 0;
-    background: #10B8E0; }
+    background: #2C386E; }
   .site-top .menu li:hover > .sub-menu, .site-top .menu li.hover > .sub-menu, .site-top .menu li.focus > .sub-menu, .horizontal-menu .menu li:hover > .sub-menu, .horizontal-menu .menu li.hover > .sub-menu, .horizontal-menu .menu li.focus > .sub-menu {
     opacity: 1;
     visibility: visible;
@@ -988,7 +1008,7 @@ ul.sub-menu {
     top: 0;
     z-index: 80;
     width: 40vw;
-    background: radial-gradient(top left, #2DA6D8 0%, #1F4567 100%);
+    background: linear-gradient(45deg, #2D1754 0%, #2BAEC8 100%);
     transition: -webkit-transform .5s;
     transition: transform .5s;
     transition: transform .5s, -webkit-transform .5s;
@@ -1038,8 +1058,8 @@ ul.sub-menu {
         width: auto;
         display: block;
         padding: 10px 30px 10px 5px;
-        background: transparent;
-        color: #F5F8F9;
+        background: rgba(48, 32, 57, 0.5);
+        color: white;
         font-size: 16px;
         font-size: 0.8rem; }
     .site-top ul.menu li:not(.menu-item-has-children) a, .site-top .menu > ul li:not(.menu-item-has-children) a,
@@ -1080,8 +1100,8 @@ ul.sub-menu {
     .mobile-popout .menu > ul .current-menu-ancestor > .dropdown-toggle,
     .mobile-popout .menu > ul .menu-item.toggled-on,
     .mobile-popout .menu > ul li:active .dropdown-toggle {
-      color: #F5F8F9;
-      background: rgba(245, 248, 249, 0.3); }
+      color: white;
+      background: rgba(48, 32, 57, 0.5); }
     .site-top ul.menu .sub-menu, .site-top .menu > ul .sub-menu,
     .mobile-popout ul.menu .sub-menu, .mobile-popout .menu > ul .sub-menu {
       background: transparent;
@@ -1093,16 +1113,16 @@ ul.sub-menu {
       .site-top ul.menu .sub-menu li a, .site-top .menu > ul .sub-menu li a,
       .mobile-popout ul.menu .sub-menu li a, .mobile-popout .menu > ul .sub-menu li a {
         padding-left: 30px;
-        color: #F5F8F9;
+        color: rgba(255, 255, 255, 0.75);
         background: transparent; }
       .site-top ul.menu .sub-menu .dropdown-toggle, .site-top .menu > ul .sub-menu .dropdown-toggle,
       .mobile-popout ul.menu .sub-menu .dropdown-toggle, .mobile-popout .menu > ul .sub-menu .dropdown-toggle {
-        background: transparent;
-        color: #F5F8F9; }
+        background: rgba(48, 32, 57, 0.5);
+        color: white; }
       .site-top ul.menu .sub-menu .current-menu-item > a, .site-top .menu > ul .sub-menu .current-menu-item > a,
       .mobile-popout ul.menu .sub-menu .current-menu-item > a, .mobile-popout .menu > ul .sub-menu .current-menu-item > a {
         background: transparent;
-        color: #F5F8F9;
+        color: rgba(255, 255, 255, 0.75);
         font-weight: bold; }
   /*--------------------------------------------------------------
 	# Cool Mobile Menu
@@ -1114,7 +1134,7 @@ ul.sub-menu {
     transition: -webkit-transform .5s;
     transition: transform .5s;
     transition: transform .5s, -webkit-transform .5s;
-    background: #F5F8F9;
+    background: white;
     will-change: transform;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1204,17 +1224,17 @@ ul.sub-menu {
   #secondary .widget_pages ul li.focus > .dropdown-toggle,
   #secondary .widget_pages ul .current-menu-item > .dropdown-toggle,
   #secondary .widget_pages ul li:active .dropdown-toggle {
-    color: #10B8E0;
+    color: #A46AE6;
     background: transparent; }
 
 .js .widget-area .dropdown-toggle {
   display: block;
-  color: #6C747D;
+  color: grey;
   text-align: left; }
 
 @media (min-width: 1000px) {
   #secondary li a:hover + .dropdown-toggle, #secondary li .dropdown-toggle:hover {
-    color: #10B8E0;
+    color: #A46AE6;
     background: transparent; } }
 
 /*--------------------------------------------------------------
@@ -1230,7 +1250,7 @@ ul.sub-menu {
 # Body
 --------------------------------------------------------------*/
 body {
-  background: #F5F8F9; }
+  background: white; }
 
 hr {
   background-color: #bbb;
@@ -1254,16 +1274,16 @@ hr {
 # Break Out Styles
 --------------------------------------------------------------*/
 .break-out {
-  background: #10B8E0;
+  background: #302039;
   color: white; }
   .break-out a {
-    color: #0b819d; }
+    color: #734aa1; }
 
 /*--------------------------------------------------------------
-# Footers
+# Footer
 --------------------------------------------------------------*/
 .site-footer {
-  background: #1C3144;
+  background: #302039;
   color: white;
   padding: 15px 0 5px 0;
   font-size: 16px;
@@ -1275,7 +1295,7 @@ hr {
     font-size: 0.86rem;
     font-weight: bold; }
   .site-footer a:hover {
-    color: #10B8E0; }
+    color: #A46AE6; }
   .site-footer .site-info {
     font-size: 12px;
     font-size: 0.6rem; }
@@ -1293,7 +1313,7 @@ html {
   font-size: 18px; }
   @media (min-width: 400px) and (max-width: 1000px) {
     html {
-      font-size: calc( 18px + 2 * (100vw - 400px) / (1000 - 400)); } }
+      font-size: calc(18px + 2 * (100vw - 400px) / (1000 - 400)); } }
   @media (min-width: 1001px) {
     html {
       font-size: 20px; } }
@@ -1303,7 +1323,7 @@ button,
 input,
 select,
 textarea {
-  color: #161F26;
+  color: #2C386E;
   font-family: "Roboto", arial, sans-serif;
   font-size: 20px;
   font-size: 1rem;
@@ -1318,7 +1338,8 @@ h4,
 h5,
 h6 {
   clear: both;
-  line-height: 1.5; }
+  line-height: 1.5;
+  font-family: "Roboto Slab", serif; }
 
 p {
   margin: 0 0 1em 0;
@@ -1340,8 +1361,8 @@ blockquote {
   quotes: "" "";
   margin: 0;
   padding: 5px 10px 5px 30px;
-  border-left: 7px solid #10B8E0;
-  background: white; }
+  border-left: 7px solid grey;
+  background: #A46AE6; }
   blockquote p:last-child {
     margin: 0; }
 
@@ -1385,10 +1406,11 @@ var {
 # Content Headings
 --------------------------------------------------------------*/
 h1, .single .entry-title, .page-title {
-  font-size: 56px;
-  font-size: 2.8rem;
+  font-size: 40px;
+  font-size: 2rem;
   line-height: 1.3;
-  font-weight: normal; }
+  font-weight: normal;
+  text-transform: uppercase; }
 
 h2 {
   font-size: 30px;
@@ -1407,16 +1429,16 @@ h4 {
 # Links
 --------------------------------------------------------------*/
 a, a:visited {
-  color: #10B8E0;
+  color: #A46AE6;
   text-decoration: none; }
 
 a:focus {
   outline: thin dotted;
-  color: #0b819d; }
+  color: #734aa1; }
 
 a:hover,
 a:active {
-  color: #0b819d;
+  color: #734aa1;
   outline: 0; }
 
 /*--------------------------------------------------------------
@@ -1426,7 +1448,7 @@ a:active {
 # Global Forms
 --------------------------------------------------------------*/
 label {
-  color: #161F26;
+  color: #2C386E;
   display: block;
   font-weight: 800; }
 
@@ -1448,12 +1470,14 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
+input[type="file"],
 textarea {
-  border: 1px solid rgba(16, 184, 224, 0.2);
-  background: white;
-  color: #6C747D;
+  border: 1px solid #A46AE6;
+  background: rgba(255, 255, 255, 0.3);
+  color: #302039;
   width: 100%;
-  transition: all .5s; }
+  transition: all .5s;
+  padding: 3px 5px; }
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="url"]:focus,
@@ -1469,8 +1493,9 @@ textarea {
   input[type="datetime"]:focus,
   input[type="datetime-local"]:focus,
   input[type="color"]:focus,
+  input[type="file"]:focus,
   textarea:focus {
-    border: 1px solid #10B8E0; }
+    border: 1px solid #A46AE6; }
 
 select {
   width: 100%; }
@@ -1487,7 +1512,7 @@ button,
 input[type="button"],
 input[type="submit"] {
   border: none;
-  background: #10B8E0;
+  background: #A46AE6;
   color: white;
   padding: 3px 10px;
   transition: all .5s;
@@ -1496,26 +1521,26 @@ input[type="submit"] {
   .button.focus,
   input[type="button"].focus,
   input[type="submit"].focus {
-    background: #0e9cbe; }
+    background: #8b5ac4; }
   button:active,
   .button:active,
   input[type="button"]:active,
   input[type="submit"]:active {
-    background: #085c70; }
+    background: #523573; }
 
 @media (min-width: 600px) {
   button:hover,
   .button:hover,
   input[type="button"]:hover,
   input[type="submit"]:hover {
-    background: #0e9cbe; } }
+    background: #8b5ac4; } }
 
 ::-webkit-input-placeholder {
-  color: #989ea4;
+  color: #98909c;
   font-family: "Roboto", arial, sans-serif; }
 
 :-moz-placeholder {
-  color: #989ea4;
+  color: #98909c;
   font-family: "Roboto", arial, sans-serif; }
 
 ::-moz-placeholder {
@@ -1543,6 +1568,24 @@ input[type="submit"] {
   .search-form .search-submit {
     margin-left: -5px; }
 
+.dark input[type="text"] {
+  color: white;
+  border: 1px solid transparent; }
+  .dark input[type="text"]::-webkit-input-placeholder {
+    color: white;
+    font-family: "Roboto", arial, sans-serif; }
+  .dark input[type="text"]:-moz-placeholder {
+    color: white;
+    font-family: "Roboto", arial, sans-serif; }
+  .dark input[type="text"]::-moz-placeholder {
+    color: white;
+    font-family: "Roboto", arial, sans-serif;
+    opacity: 1;
+    /* Since FF19 lowers the opacity of the placeholder by default */ }
+  .dark input[type="text"]:-ms-input-placeholder {
+    color: white;
+    font-family: "Roboto", arial, sans-serif; }
+
 /*--------------------------------------------------------------
 10.0 Media
 --------------------------------------------------------------*/
@@ -1561,7 +1604,7 @@ figcaption {
   font-style: italic;
   margin-top: 5px;
   text-align: left;
-  color: #6C747D; }
+  color: grey; }
 
 @media (max-width: 500px) {
   .aligncenter, .alignright, .alignleft, figure img {
@@ -1715,20 +1758,18 @@ figcaption {
 11.0 Posts and Pages
 --------------------------------------------------------------*/
 /*
- * This page is used to make defualt layout for major elements on the site.
+ * This page is used to make default layout for major elements on the site including headers, content and sidebars.
  * There is no styles of colors and backgrounds here. Just structure and layout. (widths, heights, flex...)
  * It is better to override whats here in other scss files, unless you know what you are doing.
 */
 /*--------------------------------------------------------------
-# Default Layout.
+# Default Headers Layout.
 --------------------------------------------------------------*/
 /*------- Default Headers --------*/
 /*
-	- By default headers have a min height of 40 view-height.
-	- Inside the header is a div.header-content class that is centered vertically and horizontally with flex and given paddings on all sides.
-	- The title has no margins. 
-	- This setup is most ideal and you can add content to header and still everything will be centered and nicely aligned
-	- Add styles in post_types.scss to override and change headers per post type as opposed to here. 
+	- An ideal setup for headers with a background image.
+	- The text inside is centered vertically and horizontally
+	- default of 40vh height
 */
 .page-header, .single .entry-header, .page .entry-header {
   position: relative;
@@ -1764,31 +1805,27 @@ figcaption {
       margin: 0; }
 
 /*------- Default Post Thumbnails/ Featured Image --------*/
+/**
+	- Featured image inside a posts header and used on single and pages
+ */
 .featured-image {
   display: block;
   width: 100%;
   height: 300px; }
+  .featured-image img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    background-size: cover; }
 
-.header-image {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: 100%;
-  display: block;
-  margin: auto;
-  background-size: cover; }
-
-/*------- Header image placement --------*/
-/*
-	- By default the header featured image is set to be large and full width suing cover. It can be either behind the header-content, usually darkened, or above it or below it.
-	- Simple classes have been provided here to change its behavior. It defaults to being above the header content at a height of 300px
-	- Just add class .image-behind or .image-below onto header to change the images placement
-	- You can also use @extend .image-behind instead of adding the class for the same effect. This is done in the post_types.scss by default
-*/
 /*------- Image Placement Classes --------*/
 /*
-	 - Place one of these classes on the header and the image will go below or behind. 
-	 - You can also use @extend to add it to a header
+	 - Place one of these classes on the .entry-header and the image will go below or behind.
+	 - You can also use @extend to add it
+	 - Default is extending behind
 */
 .image-below .featured-image {
   -webkit-box-ordinal-group: 3;
@@ -1802,6 +1839,9 @@ figcaption {
   left: 0;
   height: 100%; }
 
+/*--------------------------------------------------------------
+# Default Content Layout
+--------------------------------------------------------------*/
 /*------- Global Default Articles --------*/
 .single .entry-content, .page .entry-content {
   padding-top: 30px; }
@@ -1884,7 +1924,7 @@ body .sidebar-toggle {
   .content-area, .site-top, .site-footer, .break-out > * {
     transition: all .6s; }
   .cool-sidebar.sidebar-open .content-area, .cool-sidebar.sidebar-open .site-top, .cool-sidebar.sidebar-open .site-footer, .cool-sidebar.sidebar-open .break-out > * {
-    width: calc( 100vw - 300px); } }
+    width: calc(100vw - 300px); } }
 
 /*------- Cool Sidebar Layout off to side. Opens with toggle button --------*/
 .cool-sidebar .sidebar-toggle {
@@ -1932,19 +1972,19 @@ body .sidebar-toggle {
 
 /*
  * This file is for styling your posts, pages, and archive pages
- * Default layouts have been provided under global_defaults.
- * These defaults include things like header height, 
+ * Default layouts have been provided under file structure_defaults.
+ * These defaults include things like header height, and placing text in center of header.
 */
 /*--------------------------------------------------------------
 # Post Navigation
 --------------------------------------------------------------*/
 .post-navigation {
-  background: #1C3144;
+  background: #2C386E;
   padding: 15px 0; }
   .post-navigation a {
-    color: #6C747D; }
+    color: grey; }
   .post-navigation a:hover {
-    color: #10B8E0; }
+    color: #A46AE6; }
   .post-navigation .nav-title-icon-wrapper {
     margin: 0 5px; }
   .post-navigation .nav-subtitle {
@@ -1975,22 +2015,22 @@ body .sidebar-toggle {
 
 /*------- Archive pages --------*/
 .blog .page-header, .archive .page-header {
-  background: #1C3144;
-  color: white; }
+  background: linear-gradient(90deg, #311F37 7%, #27315C 67%);
+  color: rgba(255, 255, 255, 0.75); }
   .blog .page-header .page-title, .blog .page-header h1, .archive .page-header .page-title, .archive .page-header h1 {
     color: inherit;
     text-align: center; }
 
 .blog .has-post-thumbnail.page-header, .archive .has-post-thumbnail.page-header {
-  background: rgba(28, 49, 68, 0.7); }
+  background: rgba(44, 56, 110, 0.7); }
 
 /*------- Single and Page Headers --------*/
 .single .entry-header, .page .entry-header {
-  background: #1C3144;
-  color: white; }
+  background: linear-gradient(90deg, #311F37 7%, #27315C 67%);
+  color: rgba(255, 255, 255, 0.75); }
 
 .single .has-post-thumbnail .entry-header, .page .has-post-thumbnail .entry-header {
-  background: rgba(28, 49, 68, 0.7); }
+  background: rgba(44, 56, 110, 0.7); }
 
 .single .page-title, .single h1, .page .page-title, .page h1 {
   color: inherit;
@@ -2005,12 +2045,15 @@ body .sidebar-toggle {
       flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
 
 .blog article, .archive article, .search article {
-  border: 1px solid rgba(108, 116, 125, 0.2);
+  border: 1px solid rgba(128, 128, 128, 0.2);
   margin-bottom: 15px;
-  color: #161F26;
+  color: #302039;
   background: white;
   -webkit-box-flex: 1;
       -ms-flex: 1 300px;
@@ -2039,7 +2082,8 @@ body .sidebar-toggle {
   .blog article .featured-image, .archive article .featured-image, .search article .featured-image {
     -webkit-box-flex: 1;
         -ms-flex: 1;
-            flex: 1; }
+            flex: 1;
+    max-height: 350px; }
   .blog article .entry-title, .blog article .cat-links, .blog article .entry-content, .blog article .entry-meta, .archive article .entry-title, .archive article .cat-links, .archive article .entry-content, .archive article .entry-meta, .search article .entry-title, .search article .cat-links, .search article .entry-content, .search article .entry-meta {
     padding: 0 20px; }
   .blog article .posted-by, .archive article .posted-by, .search article .posted-by {
@@ -2049,13 +2093,13 @@ body .sidebar-toggle {
   .blog article .cat-tags-meta, .archive article .cat-tags-meta, .search article .cat-tags-meta {
     margin-bottom: 4px; }
   .blog article .cat-links a, .archive article .cat-links a, .search article .cat-links a {
-    color: #6C747D;
+    color: grey;
     text-transform: uppercase;
     font-size: 13px;
     font-size: 0.65rem; }
   .blog article .entry-title, .archive article .entry-title, .search article .entry-title {
     text-transform: uppercase;
-    color: #1C3144;
+    color: #2C386E;
     margin: 0 0 5px 0;
     font-size: 24px;
     font-size: 1.2rem; }
@@ -2070,14 +2114,14 @@ body .sidebar-toggle {
     font-size: 15px; }
     @media (min-width: 400px) and (max-width: 1000px) {
       .blog article .entry-content, .archive article .entry-content, .search article .entry-content {
-        font-size: calc( 15px + 1 * (100vw - 400px) / (1000 - 400)); } }
+        font-size: calc(15px + 1 * (100vw - 400px) / (1000 - 400)); } }
     @media (min-width: 1001px) {
       .blog article .entry-content, .archive article .entry-content, .search article .entry-content {
         font-size: 16px; } }
   .blog article .entry-meta, .archive article .entry-meta, .search article .entry-meta {
     font-size: 13px;
     font-size: 0.65rem;
-    color: #6C747D;
+    color: grey;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2122,7 +2166,7 @@ body .sidebar-toggle {
     font-size: 0.65rem;
     font-style: italic; }
     .comment-meta .comment-metadata a {
-      color: #6C747D; }
+      color: grey; }
 
 .comment-content {
   font-size: 18px;
@@ -2151,7 +2195,7 @@ body .sidebar-toggle {
   height: 100%;
   line-height: 0;
   background: transparent;
-  color: #1C3144;
+  color: rgba(255, 255, 255, 0.75);
   border: none;
   padding: 0;
   cursor: pointer; }
@@ -2160,17 +2204,21 @@ body .sidebar-toggle {
   color: white; }
 
 @media (max-width: 1060px) and (min-width: 600px) {
-  .sidebar-active .site-top {
+  .sidebar-active .site-top-inner-container {
+    padding-right: 30px; } }
+
+@media (min-width: 600px) {
+  .sidebar-active .site-top-inner-container:not(.wrap) {
     padding-right: 30px; } }
 
 /*--------------------------------------------------------------
 # Cool Sidebar Styles Defaults. Change what you want
 --------------------------------------------------------------*/
 .site-content .widget-area {
-  color: #6C747D;
-  background: #161F26; }
+  color: white;
+  background: #302039; }
   .site-content .widget-area h2 {
-    color: white;
+    color: rgba(255, 255, 255, 0.75);
     text-transform: capitalize;
     margin: 0; }
   .site-content .widget-area ul {
@@ -2181,17 +2229,17 @@ body .sidebar-toggle {
     margin: 0;
     padding: 0; }
   .site-content .widget-area a, .site-content .widget-area .dropdown-toggle {
-    color: #6C747D;
+    color: grey;
     transition: all .5s; }
   .site-content .widget-area a:hover, .site-content .widget-area a:active {
-    color: #10B8E0; }
+    color: #A46AE6; }
   .site-content .widget-area a, .site-content .widget-area li, .site-content .widget-area p, .site-content .widget-area .textwidget {
     font-size: 16px;
     font-size: 0.8rem; }
   .site-content .widget-area section {
     margin-bottom: 30px; }
   .site-content .widget-area input {
-    background: #2d353c;
+    background: #45364d;
     color: white; }
 
 /*--------------------------------------------------------------
@@ -2199,19 +2247,432 @@ body .sidebar-toggle {
 --------------------------------------------------------------*/
 @media (min-width: 1000px) {
   .content-sidebar-holder #secondary {
-    color: #6C747D;
+    color: #302039;
     background: transparent; }
     .content-sidebar-holder #secondary h2 {
-      color: #161F26; }
+      color: #2C386E; }
     .content-sidebar-holder #secondary a, .content-sidebar-holder #secondary .dropdown-toggle {
-      color: #6C747D;
+      color: grey;
       transition: all .5s; }
     .content-sidebar-holder #secondary a:hover, .content-sidebar-holder #secondary a:active {
-      color: #10B8E0; } }
+      color: #A46AE6; } }
 
 @media (max-width: 1000px) {
   .js #secondary {
-    background: #161F26; } }
+    background: #302039; } }
+
+/*--------------------------------------------------------------
+# Gravity Forms Normalize
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Normalizing Gravity Forms
+--------------------------------------------------------------*/
+.gfield_visibility_hidden {
+  visibility: hidden;
+  position: absolute;
+  left: -9999px; }
+
+.gform_heading, .gform_footer {
+  text-transform: capitalize;
+  padding: 0 10px; }
+
+.gform_footer .button .icon {
+  margin-left: 5px; }
+
+.gform_footer {
+  margin-bottom: 30px; }
+
+body .gfield {
+  margin-bottom: 30px;
+  padding: 0 10px; }
+
+.gfield_description {
+  font-size: 16px;
+  font-size: 0.8rem; }
+
+.gfield:not(.separate-fields) .ginput_complex {
+  margin-left: -10px;
+  margin-right: -10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  .gfield:not(.separate-fields) .ginput_complex .name_suffix, .gfield:not(.separate-fields) .ginput_complex .name_prefix {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100px;
+            flex: 0 0 100px; }
+  .gfield:not(.separate-fields) .ginput_complex .ginput_full {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 100%;
+            flex: 1 0 100%; }
+  .gfield:not(.separate-fields) .ginput_complex .ginput_cardinfo_left, .gfield:not(.separate-fields) .ginput_complex .ginput_cardinfo_right, .gfield:not(.separate-fields) .ginput_complex .ginput_left, .gfield:not(.separate-fields) .ginput_complex .ginput_right {
+    width: 50%;
+    padding: 0 10px; }
+  .gfield:not(.separate-fields) .ginput_complex > span {
+    padding-left: 10px;
+    padding-right: 10px; }
+
+.ginput_complex > span {
+  display: block;
+  margin-bottom: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto; }
+  .ginput_complex > span:last-child, .ginput_complex > span.name_first {
+    margin-bottom: 0; }
+  .ginput_complex > span label {
+    font-size: 12px;
+    font-size: 0.6rem; }
+
+/*--------------------------------------------------------------
+# Checkbox and Radios
+--------------------------------------------------------------*/
+.gform_fields, .gfield_radio, .gfield_checkbox {
+  list-style: none;
+  margin: 0; }
+
+.gfield_radio li, .gfield_checkbox li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+/*--------------------------------------------------------------
+# Time input
+--------------------------------------------------------------*/
+.clear-multi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.ginput_container_time input {
+  width: 3em;
+  float: left; }
+
+.ginput_container_time i {
+  font-style: normal;
+  float: left;
+  padding: 0 3px; }
+
+.ginput_container_time label {
+  font-size: 12px;
+  font-size: 0.6rem;
+  clear: both; }
+
+.gfield_time_ampm {
+  margin-left: 5px;
+  position: relative;
+  bottom: .5rem; }
+
+/*--------------------------------------------------------------
+# List item input
+--------------------------------------------------------------*/
+.add_list_item, .delete_list_item {
+  width: 15px; }
+
+.gfield_list_icons {
+  width: 48px;
+  padding-left: 4px; }
+
+.gfield_list_icons, .gfield_list_icons img {
+  vertical-align: middle; }
+
+.gfield_list_cell {
+  vertical-align: baseline; }
+
+/*--------------------------------------------------------------
+# Products and totals
+--------------------------------------------------------------*/
+body .ginput_quantity {
+  display: inline-block;
+  width: 100px; }
+
+.ginput_product_price {
+  margin-right: 5px; }
+
+.gform_card_icon {
+  margin-right: 4px;
+  text-indent: -9000px;
+  background-image: url("assets/images/gf-creditcard-icons.png");
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 32px;
+  float: left; }
+
+.gform_card_icon_container {
+  margin-bottom: 5px; }
+
+.ginput_complex .ginput_cardextras {
+  margin-left: -10px;
+  margin-right: -10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.ginput_card_expiration_container {
+  display: block; }
+
+.ginput_cardinfo_right select {
+  width: auto;
+  margin-right: 15px; }
+
+.ginput_cardinfo_right {
+  position: relative; }
+  .ginput_cardinfo_right input {
+    padding-right: 40px; }
+
+.ginput_card_security_code_icon {
+  width: 32px;
+  height: 23px;
+  background-image: url("assets/images/gf-creditcard-icons.png");
+  background-repeat: no-repeat;
+  background-position: 0 -128px;
+  position: absolute;
+  top: .4em;
+  right: 15px;
+  display: block; }
+
+.gform_card_icon_visa {
+  background-position: 0 0; }
+  .gform_card_icon_visa.gform_card_icon_selected {
+    background-position: 0 -32px; }
+  .gform_card_icon_visa.gform_card_icon_inactive {
+    background-position: 0 -64px; }
+
+.gform_card_icon_style2 .gform_card_iconvisa {
+  background-position: 0 -192px; }
+  .gform_card_icon_style2 .gform_card_iconvisa.gform_card_icon_selected {
+    background-position: 0 -224px; }
+  .gform_card_icon_style2 .gform_card_iconvisa.gform_card_icon_inactive {
+    background-position: 0 -256px; }
+
+.gform_card_icon_mastercard {
+  background-position: -36px 0; }
+  .gform_card_icon_mastercard.gform_card_icon_selected {
+    background-position: -36px -32px; }
+  .gform_card_icon_mastercard.gform_card_icon_inactive {
+    background-position: -36px -64px; }
+
+.gform_card_icon_style2 .gform_card_iconmastercard {
+  background-position: -36px -192px; }
+  .gform_card_icon_style2 .gform_card_iconmastercard.gform_card_icon_selected {
+    background-position: -36px -224px; }
+  .gform_card_icon_style2 .gform_card_iconmastercard.gform_card_icon_inactive {
+    background-position: -36px -256px; }
+
+.gform_card_icon_amex {
+  background-position: -72px 0; }
+  .gform_card_icon_amex.gform_card_icon_selected {
+    background-position: -72px -32px; }
+  .gform_card_icon_amex.gform_card_icon_inactive {
+    background-position: -72px -64px; }
+
+.gform_card_icon_style2 .gform_card_iconamex {
+  background-position: -72px -192px; }
+  .gform_card_icon_style2 .gform_card_iconamex.gform_card_icon_selected {
+    background-position: -72px -224px; }
+  .gform_card_icon_style2 .gform_card_iconamex.gform_card_icon_inactive {
+    background-position: -72px -256px; }
+
+.gform_card_icon_discover {
+  background-position: -108px 0; }
+  .gform_card_icon_discover.gform_card_icon_selected {
+    background-position: -108px -32px; }
+  .gform_card_icon_discover.gform_card_icon_inactive {
+    background-position: -108px -64px; }
+
+.gform_card_icon_style2 .gform_card_icondiscover {
+  background-position: -108px -192px; }
+  .gform_card_icon_style2 .gform_card_icondiscover.gform_card_icon_selected {
+    background-position: -108px -224px; }
+  .gform_card_icon_style2 .gform_card_icondiscover.gform_card_icon_inactive {
+    background-position: -108px -256px; }
+
+.gform_card_icon_maestro {
+  background-position: -144px 0; }
+  .gform_card_icon_maestro.gform_card_icon_selected {
+    background-position: -144px -32px; }
+  .gform_card_icon_maestro.gform_card_icon_inactive {
+    background-position: -144px -64px; }
+
+.gform_card_icon_style2 .gform_card_iconmaestro {
+  background-position: -144px -192px; }
+  .gform_card_icon_style2 .gform_card_iconmaestro.gform_card_icon_selected {
+    background-position: -144px -224px; }
+  .gform_card_icon_style2 .gform_card_iconmaestro.gform_card_icon_inactive {
+    background-position: -144px -256px; }
+
+.gform_card_icon_jcb {
+  background-position: -180px 0; }
+  .gform_card_icon_jcb.gform_card_icon_selected {
+    background-position: -180px -32px; }
+  .gform_card_icon_jcb.gform_card_icon_inactive {
+    background-position: -180px -64px; }
+
+.gform_card_icon_style2 .gform_card_iconjcb {
+  background-position: -180px -192px; }
+  .gform_card_icon_style2 .gform_card_iconjcb.gform_card_icon_selected {
+    background-position: -180px -224px; }
+  .gform_card_icon_style2 .gform_card_iconjcb.gform_card_icon_inactive {
+    background-position: -180px -256px; }
+
+/*--------------------------------------------------------------
+# Errors and messages
+--------------------------------------------------------------*/
+.validation_error {
+  margin: 0 10px 20px;
+  color: white;
+  background: rgba(139, 0, 0, 0.8);
+  padding: 10px; }
+
+.gfield_error {
+  border-top: 1px solid rgba(139, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(139, 0, 0, 0.4); }
+
+.validation_message {
+  color: darkred;
+  font-size: 14px;
+  font-size: 0.7rem;
+  margin-top: 5px; }
+
+/*--------------------------------------------------------------
+# Date Picker jquery ui crap
+--------------------------------------------------------------*/
+/* DatePicker Container */
+.ui-datepicker {
+  width: 216px;
+  height: auto;
+  margin: 5px auto 0;
+  font-size: 14px;
+  font-size: 0.7rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); }
+  .ui-datepicker select {
+    display: inline-block;
+    width: auto;
+    font-size: 14px;
+    color: white;
+    background: black; }
+
+.ui-datepicker a {
+  text-decoration: none; }
+
+/* DatePicker Table */
+.ui-datepicker table {
+  width: 100%;
+  margin-bottom: 0; }
+
+.ui-datepicker-header {
+  background: black;
+  color: #e0e0e0;
+  font-weight: bold;
+  box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, 0.2);
+  text-shadow: 1px -1px 0px #000;
+  line-height: 30px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #111; }
+
+.ui-datepicker-title {
+  text-align: center; }
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  background-image: url("assets/images/arrow.png");
+  background-repeat: no-repeat;
+  line-height: 600%;
+  overflow: hidden; }
+
+.ui-datepicker-prev {
+  float: left;
+  background-position: center -30px; }
+
+.ui-datepicker-next {
+  float: right;
+  background-position: center 0px; }
+
+.ui-datepicker thead {
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #bbb; }
+
+.ui-datepicker th {
+  text-transform: uppercase;
+  font-size: 6pt;
+  padding: 5px 0;
+  color: #666666;
+  text-shadow: 1px 0px 0px #fff;
+  -webkit-filter: dropshadow(color=#fff, offx=1, offy=0);
+          filter: dropshadow(color=#fff, offx=1, offy=0);
+  text-align: center; }
+
+.ui-datepicker tbody td {
+  padding: 0;
+  border-right: 1px solid #bbb;
+  background: white;
+  padding: 0; }
+
+.ui-datepicker tbody td:last-child {
+  border-right: 0px; }
+
+.ui-datepicker tbody tr {
+  border-bottom: 1px solid #bbb; }
+
+.ui-datepicker tbody tr:last-child {
+  border-bottom: 0px; }
+
+.ui-datepicker td span, .ui-datepicker td a {
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: #666666;
+  text-shadow: 1px 1px 0px #fff;
+  -webkit-filter: dropshadow(color=#fff, offx=1, offy=1);
+          filter: dropshadow(color=#fff, offx=1, offy=1); }
+
+.ui-datepicker-calendar .ui-state-default {
+  background: #ededed;
+  background: linear-gradient(top, #ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
+  box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, 0.5); }
+
+.ui-datepicker-calendar .ui-state-hover {
+  background: #f7f7f7; }
+
+.ui-datepicker-calendar .ui-state-active {
+  background: #6eafbf;
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  color: #e0e0e0;
+  text-shadow: 0px 1px 0px #4d7a85;
+  -webkit-filter: dropshadow(color=#4d7a85, offx=0, offy=1);
+          filter: dropshadow(color=#4d7a85, offx=0, offy=1);
+  border: 1px solid #55838f;
+  position: relative; }
+
+.ui-datepicker-unselectable .ui-state-default {
+  background: #f4f4f4;
+  color: #b4b3b3; }
+
+.ui-datepicker-calendar td:first-child .ui-state-active {
+  margin-left: 0; }
+
+.ui-datepicker-calendar td:last-child .ui-state-active {
+  margin-right: 0; }
+
+.ui-datepicker-calendar tr:last-child .ui-state-active {
+  height: 29px;
+  margin-bottom: 0; }
 
 .page-template-page-blank {
   padding: 0 15px; }

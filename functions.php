@@ -1,13 +1,10 @@
 <?php
 
-
 /**
  * Sea Salt Press functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+ * @package Sea_Salt_Press
  * @since 1.0
  */
 
@@ -23,7 +20,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 
 /**
  * Allow upload of svg
- *
  */
 function cc_mime_types( $mimes ) {
 	$mimes['svg'] = 'image/svg+xml';
@@ -34,6 +30,14 @@ function cc_mime_types( $mimes ) {
 add_filter( 'upload_mimes', 'cc_mime_types' );
 
 
+/**
+ * @param $data
+ * @param $file
+ * @param $filename
+ * @param $mimes
+ *
+ * @return array
+ */
 function svgs_disable_real_mime_check( $data, $file, $filename, $mimes ) {
 	$wp_filetype = wp_check_filetype( $filename, $mimes );
 
@@ -50,8 +54,7 @@ add_filter( 'wp_check_filetype_and_ext', 'svgs_disable_real_mime_check', 10, 4 )
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
+ * Runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
 function seasaltpress_setup() {
@@ -80,13 +83,13 @@ function seasaltpress_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
-
+	//To use on big headers
 	add_image_size( 'seasaltpress-featured-image', 2000, 1200, true );
 
 
 	/**
 	 * Set the content width in pixels, based on the theme's design and stylesheet.
-	 *
+	 * I use my .content-column class width as the width here.
 	 * Priority 0 to make it available to lower priority callbacks.
 	 *
 	 * @global int $content_width
@@ -97,10 +100,9 @@ function seasaltpress_setup() {
 
 	add_action( 'after_setup_theme', 'seasaltpress_content_width', 0 );
 
-	// This theme uses wp_nav_menu() in two locations.
+
 	register_nav_menus( array(
-		'top'    => __( 'Top Menu', 'seasaltpress' ),
-		'social' => __( 'Social Links Menu', 'seasaltpress' ),
+		'top' => __( 'Top Menu', 'seasaltpress' ),
 	) );
 
 	/*
@@ -148,41 +150,32 @@ function seasaltpress_setup() {
  	 */
 	add_editor_style( array( 'editor-style.css', seasaltpress_google_fonts_url() ) );
 
-
 }
 
 add_action( 'after_setup_theme', 'seasaltpress_setup' );
 
 
 /**
- * Register custom fonts.
+ * Register custom google fonts.
  */
 function seasaltpress_google_fonts_url() {
 	$fonts_url = '';
 
-	/**
-	 * Translators: If there are characters in your language that are not
-	 * supported by Libre Franklin, translate this to 'off'. Do not translate
-	 * into your own language.
-	 */
-	$libre_franklin = _x( 'on', 'Libre Franklin font: on or off', 'seasaltpress' );
+	$font_families = array();
 
-	if ( 'off' !== $libre_franklin ) {
-		$font_families = array();
+	//add your fonts here into array
+	//example: Oswald:400,700
+	//use pipe to seperate types: Pangolin|Roboto:300,400
+	//use space instead of a plus symbol when font has 2 words ex: Roboto Slab , not Roboto+Slab
 
-		//add your fonts here into array
-		//example: Oswald:400,700
-		//use pipe to seperate types: Pangolin|Roboto:300,400 
+	$font_families[] = 'Roboto:400,400i,700,700i|Roboto Slab:400,700';
 
-		$font_families[] = 'Roboto:400,400i,700,700i|Roboto+Slab:400,700';
+	$query_args = array(
+		'family' => urlencode( implode( '|', $font_families ) ),
+		'subset' => urlencode( 'latin,latin-ext' ),
+	);
 
-		$query_args = array(
-			'family' => urlencode( implode( '|', $font_families ) ),
-			'subset' => urlencode( 'latin,latin-ext' ),
-		);
-
-		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	}
+	$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 
 	return esc_url_raw( $fonts_url );
 }
@@ -212,11 +205,10 @@ function seasaltpress_resource_hints( $urls, $relation_type ) {
 add_filter( 'wp_resource_hints', 'seasaltpress_resource_hints', 10, 2 );
 
 /**
- * Register widget area.
+ * Register widget areas.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-
 
 function seasaltpress_widgets_init() {
 	register_sidebar( array(
@@ -304,8 +296,7 @@ add_filter( 'excerpt_more', 'seasaltpress_excerpt_more' );
 
 /**
  * Handles JavaScript detection.
- *
- * Adds a `js` class to the root `<html>` element when JavaScript is detected.
+ * Adds a script that adds `js` class to the root `<html>` element when JavaScript is detected.
  *
  * @since Sea Salt Press 1.0
  */
@@ -328,8 +319,6 @@ function seasaltpress_pingback_header() {
 add_action( 'wp_head', 'seasaltpress_pingback_header' );
 
 
-
-
 /**
  * Enqueue scripts and styles.
  */
@@ -340,23 +329,23 @@ function seasaltpress_scripts() {
 	// Theme stylesheet.
 	wp_enqueue_style( 'seasaltpress-style', get_stylesheet_uri() );
 
-
-	//jQuery 3.0 and some touch events
-
+	//jQuery 3.0
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', false, '1.8.1' );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.0.0.min.js', array( 'jquery' ), false );
+
+	//mobile touch events
 	wp_enqueue_script( 'jquery-touch', get_template_directory_uri() . '/assets/js/min/jquery.mobile.custom.min.js', array(
 		'jquery',
 		'jquery-migrate'
 	), false );
 
+	//AJAX ready
 	wp_localize_script( 'seasaltpress-global', 'frontEndAjax', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		'nonce'   => wp_create_nonce( 'ajax_nonce' ),
 	) );
-
 
 	wp_enqueue_script( 'seasaltpress-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
 
@@ -364,16 +353,16 @@ function seasaltpress_scripts() {
 		'quote' => seasaltpress_get_svg( array( 'icon' => 'quote-right' ) ),
 	);
 
-	if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'seasaltpress-navigation', get_theme_file_uri( '/assets/js/min/navigation-min.js' ), array(), '1.0', true );
-		$seasaltpress_l10n['expand']       = __( 'Expand child menu', 'seasaltpress' );
-		$seasaltpress_l10n['collapse']     = __( 'Collapse child menu', 'seasaltpress' );
-		$seasaltpress_l10n['icon']         = seasaltpress_get_svg( array(
-			'icon'     => 'angle-down',
-			'fallback' => true
-		) );
-		$seasaltpress_l10n['sidebar_icon'] = seasaltpress_get_svg( array( 'icon' => 'sidebar' ) );
-	}
+
+	wp_enqueue_script( 'seasaltpress-navigation', get_theme_file_uri( '/assets/js/min/navigation-min.js' ), array(), '1.0', true );
+	$seasaltpress_l10n['expand']       = __( 'Expand child menu', 'seasaltpress' );
+	$seasaltpress_l10n['collapse']     = __( 'Collapse child menu', 'seasaltpress' );
+	$seasaltpress_l10n['icon']         = seasaltpress_get_svg( array(
+		'icon'     => 'angle-down',
+		'fallback' => true
+	) );
+	$seasaltpress_l10n['sidebar_icon'] = seasaltpress_get_svg( array( 'icon' => 'sidebar' ) );
+
 
 	wp_enqueue_script( 'seasaltpress-global', get_theme_file_uri( '/assets/js/min/global-min.js' ), array( 'jquery' ), '1.0', true );
 
@@ -384,22 +373,27 @@ function seasaltpress_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	//carousel for seasaltpress site
+	wp_enqueue_script( 'slick-carousel', get_theme_file_uri( '/assets/js/min/slick.min.js' ), array( 'jquery' ) );
+
+	//add your styles and scripts here
 }
 
 add_action( 'wp_enqueue_scripts', 'seasaltpress_scripts' );
 
 
 /**
- * Add emmet to text areas in admin
+ * Add emmet to text areas in admin. beta. a bit buggy
  */
 function load_custom_wp_admin_style() {
-
-	wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet.min.js' ), false, '1.0.0', false );
-	wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin-min.js' ), array( 'seasaltpress_emmet' ), '1.0.0', false );
-
+	if ( ! is_customize_preview() ) {
+		wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet-min.js' ), array(), '1.0.0', true );
+		wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin-min.js' ), array( 'seasaltpress_emmet' ), '1.0.0', true );
+	}
 }
 
-add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+//add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 
 /**
@@ -423,7 +417,7 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 /**
- * SeaSaltPress shortcodes and extras
+ * SeaSaltPress shortcode abilities and extras
  */
 require get_parent_theme_file_path( '/inc/seasaltpress_extras.php' );
 
@@ -437,3 +431,8 @@ require get_parent_theme_file_path( '/inc/tinymce_stuff/tinymce.php' );
  * SeaSaltPress Custom Fields
  */
 require get_parent_theme_file_path( '/inc/seasaltpress_custom_fields.php' );
+
+/**
+ * Add Gravity Forms Extras
+ */
+require get_parent_theme_file_path( '/inc/seasaltpress_gform_extras.php' );

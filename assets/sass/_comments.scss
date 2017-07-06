@@ -3,56 +3,56 @@
 */
 
 .comment-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .comment {
-  margin: 0;
+	margin: 0;
 
-  article {
-    margin-bottom: $baseline;
-  }
+	article {
+		margin-bottom: $baseline;
+	}
 
-  .children {
-    margin: 0;
-    padding: 0 0 0 15px;
-    list-style: none;
-  }
+	.children {
+		margin: 0;
+		padding: 0 0 0 15px;
+		list-style: none;
+	}
 
 }
 
 .comment-meta {
-  display: flex;
+	display: flex;
 
-  .says {
-    display: none;
-  }
+	.says {
+		display: none;
+	}
 
-  .comment-author {
-    margin-right: 15px;
-  }
+	.comment-author {
+		margin-right: 15px;
+	}
 
-  .comment-metadata {
-    @include font-size(.65);
-    font-style: italic;
+	.comment-metadata {
+		@include font-size(.65);
+		font-style: italic;
 
-    a {
-      color: $color-text-secondary;
-    }
-  }
+		a {
+			color: $color-text-secondary;
+		}
+	}
 
 }
 
 .comment-content {
-  @include font-size(.9);
+	@include font-size(.9);
 
-  p:last-child {
-    margin-bottom: 15px;
-  }
+	p:last-child {
+		margin-bottom: 15px;
+	}
 }
 
 .reply {
-  @include font-size(.7);
+	@include font-size(.7);
 }

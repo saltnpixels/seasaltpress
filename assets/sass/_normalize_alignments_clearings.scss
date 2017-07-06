@@ -1,4 +1,3 @@
-
 /*--------------------------------------------------------------
 1.0 Normalize
 Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
@@ -286,7 +285,7 @@ template {
 	z-index: 100000; /* Above WP toolbar. */
 }
 
-.hidden, .hide{
+.hidden, .hide {
 	display: none;
 }
 
@@ -313,7 +312,7 @@ template {
 	margin-right: auto;
 }
 
-.aligncenter, .alignleft, .alignright{
+.aligncenter, .alignleft, .alignright {
 	margin-bottom: .5em;
 }
 
@@ -368,8 +367,6 @@ template {
 	clear: both;
 }
 
-
-
 /*--------------------------------------------------------------
 # Basic Layout
 --------------------------------------------------------------*/
@@ -388,24 +385,22 @@ html {
 	box-sizing: inherit;
 }
 
-
-body *{
- -ms-overflow-style: none;
+body * {
+	-ms-overflow-style: none;
 }
 
 *::-webkit-scrollbar {
-   display: none;
+	display: none;
 }
 
 //ios tap highlight. Set to no color.
-html *{
-	 -webkit-tap-highlight-color: rgba(0,0,0,0);
+html * {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-
-.touchscroll{
+.touchscroll {
 	overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 }
 
 

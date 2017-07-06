@@ -39,7 +39,7 @@ $font-line-height-body: 1.5;
 --------------------------------------------------------------*/
 
 //try never to put colors you add directly onto other scss pages. Otherwise you have to go through them all if you want to change a color.
-//Instead use the applied colors varaibles below in your theme files so you can change colors here if needed at a later date.
+//Instead use the applied colors variables below in your theme files so you can change colors here if needed at a later date.
 
 //5 to 6 colors is usually good for one site. 
 //I like using https://coolors.co/app to choose my colors
@@ -49,15 +49,15 @@ $blue: #10B8E0;
 $dark-blue: #2C386E;
 $purple: #A46AE6;
 $dark-purple: #302039;
-$purple-overlay: rgba(#302039, .75);
+$purple-overlay: rgba(#302039, .5);
 $transparent-white: rgba(#fff, .3);
 $grey: grey;
 
-$blue-purple-gradient: radial-gradient(ellipse at center, #27315c 0%,#311f37 99%);
+$blue-purple-gradient: linear-gradient(90deg, #311F37 7%, #27315C 67%);
+
 /*--------------------------------------------------------------
 # Applied Colors
 --------------------------------------------------------------*/
-
 //use, add and remove based on how specific your theme needs to be. Use descriptions as the variable to help you remember.
 
 /*------- Body --------*/
@@ -66,18 +66,20 @@ $color-text-secondary: $grey; //metadata, dates...
 $background-body: $white; //main background
 
 /*------- Links and Buttons --------*/
-$highlight: $purple;
+$highlight: $purple; //links, buttons
 $highlight-active: shade($highlight, 30%);
-$on-highlight: $white; //if $highlight is used for background, this color goes on top. Good for buttons
+$on-highlight: $white; //if $highlight is used for background of say a button, this color goes on top. Good for buttons
 
 /*------- Inputs --------*/
-$color-input: $white;
+$color-input: $dark-purple;
 $background-input: $transparent-white;
+$border-color-input: $purple;
 
+//the following variables are used by the default styling included. feel free to change
 /*------- Default Content Headers --------*/
-$color-header: $off-white;
-$background-header: $blue-purple-gradient; //when there is just text in header
-$background-header-with-image: rgba($dark-blue, .4); //when there is an image in header, theres this faded blue and text on top.
+$color-header: $off-white; //text in a header
+$background-header: $blue-purple-gradient; //when there is just text in header, image will use color below on top
+$background-header-with-image: rgba($dark-blue, .7); //when there is an image in header, theres this faded blue and text on top.
 
 /*------- Default Content --------*/
 $color-title: $dark-blue;
@@ -110,7 +112,7 @@ $color-footer: $white;
 $background-footer: $dark-purple;
 
 /*--------------------------------------------------------------
-# Applied menu and site top Colors/Backgrounds
+# Applied menu and site top Colors and Backgrounds
  - All this stuff can be found in menus.scss
 --------------------------------------------------------------*/
 
@@ -122,16 +124,16 @@ $site-top-border-bottom: 1px solid $transparent-white;
 $color-logo: $white;
 
 //Site top positioning
-$site-top-position: absolute; //relative or absolute ro fixed
-$header-top-padding: 60px; //useful if making your site top absolute on desktop. if so set to size of header top padding so header is below.
+$site-top-position: absolute; //relative or absolute
+$header-top-padding: 50px; //if absolute chosen above, use a padding to push down content
 
 //menu toggle buttons
-$background-menu-toggle: transparent; //also for sidebar toggle
-$color-menu-toggle: $off-white;
+$background-menu-toggle: transparent; //also used for sidebar toggle
+$color-menu-toggle: $off-white; //color of icon
 
 //when toggled on
-$color-menu-toggled: $white; //only applies if not using cool-menu
-$color-sidebar-toggled: $white;
+$color-menu-toggled: $white;
+$color-sidebar-toggled: $white; //cool sidebar
 
 /*------- Desktop menus --------*/
 
@@ -143,8 +145,8 @@ $color-menu-link: $white;
 $background-menu-link: transparent;
 
 //Desktop Menu Links Hovered
-$color-menu-link-hover: $purple;
-$background-menu-link-hover: transparent;
+$color-menu-link-active: $blue;
+$background-menu-link-active: transparent;
 
 //Submenus
 $background-sub-menu: $dark-blue; //background of the submenu dropdown
@@ -156,16 +158,15 @@ $color-sub-menu-link-hover: $purple;
 $background-sub-menu-link-hover: transparent;
 
 /*------- Mobile Menu --------*/
-
 //Mobile Popout Background Color
-$background-mobile-popout: $blue-purple-gradient;
+$background-mobile-popout: linear-gradient(45deg, #2D1754 0%, #2BAEC8 100%);;
 
 //Links
 $color-mobile-menu-link: $white;
 $background-mobile-menu-link: $purple-overlay;
 
 //for top level current/clicked/focused anchors
-$color-mobile-menu-link-active: $purple;
+$color-mobile-menu-link-active: $white;
 $background-mobile-menu-link-active: $purple-overlay;
 
 //submenus
@@ -179,4 +180,4 @@ $background-mobile-sub-menu-link: transparent;
 $background-mobile-sub-menu-link-active: transparent;
 $color-mobile-sub-menu-link-active: $off-white;
 
-//head spinning yet?
+//head spinning yet? :D

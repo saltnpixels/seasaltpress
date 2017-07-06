@@ -154,6 +154,7 @@ ul.menu, .menu > ul { //when there is a menu its ul.menu and when its defaulting
 			text-decoration: none;
 			transition: all .5s;
 			font-weight: 700;
+			outline: none;
 		}
 	}
 
@@ -164,19 +165,19 @@ ul.sub-menu {
 	margin: 0;
 }
 
+.site-top, body .sidebar-toggle {
+	position: $site-top-position;
+}
+
+.page-header, .single .entry-header, .page .entry-header {
+	padding-top: $header-top-padding;
+}
+
 /*--------------------------------------------------------------
 # Desktop Menus
 --------------------------------------------------------------*/
 
 @media (min-width: $mobile-nav-width) {
-
-	.site-top, body .sidebar-toggle {
-		position: $site-top-position;
-	}
-
-	.page-header, .single .entry-header {
-		padding-top: $header-top-padding;
-	}
 
 	.site-top-inner-container > * { //each flexed item
 		padding: 0 $gutters;
@@ -208,8 +209,8 @@ ul.sub-menu {
 
 		//desktop hover links
 		li a:hover, .current-menu-item > a, li.focus > a {
-			color: $color-menu-link-hover;
-			background: $background-menu-link-hover;
+			color: $color-menu-link-active;
+			background: $background-menu-link-active;
 		}
 	}
 

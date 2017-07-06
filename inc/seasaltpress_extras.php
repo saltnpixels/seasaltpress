@@ -6,8 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WordPress
- * @subpackage Sea_Salt_Press
+* @package Sea_Salt_Press
  * @since 1.0
  */
  
