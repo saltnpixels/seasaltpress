@@ -4,8 +4,8 @@
 	padding: 0 15px;
 }
 
-.mce-content-body:not(.page-template-page-blank){
-	@extend .content-column;
+.mce-content-body:not(.page-template-page-blank, .page-template-page-blank-sidebar){
+	@extend .content-width;
 	padding-left: $gutters !important;
 	padding-right: $gutters !important;
 }

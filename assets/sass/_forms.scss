@@ -54,15 +54,22 @@ input[type="checkbox"] {
 --------------------------------------------------------------*/
 
 button,
-.button,
+a.button,
 input[type="button"],
 input[type="submit"] {
 	border: none;
-	background: $highlight;
-	color: $on-highlight;
 	padding: 3px 10px;
 	transition: all .5s;
 	cursor: pointer;
+	text-align: center;
+	color: $on-highlight;
+	background: transparent;
+}
+
+.button {
+	background: $highlight;
+	border-radius: 50px;
+	display: inline-block;
 
 	&.focus {
 		background: shade($highlight, 15%);
@@ -73,16 +80,15 @@ input[type="submit"] {
 	}
 }
 
+a.button:visited {
+	color: $on-highlight;
+}
+
 //hover on buttons, not for mobile
 @media(min-width: $mobile-nav-width) {
-	button,
-	.button,
-	input[type="button"],
-	input[type="submit"] {
-
-		&:hover {
-			background: shade($highlight, 15%);
-		}
+	.button {
+		background: shade($highlight, 15%);
+		color: $on-highlight;
 	}
 }
 
@@ -121,36 +127,8 @@ input[type="submit"] {
 
 	.search-submit {
 		margin-left: -5px;
-
+		background: $highlight;
 	}
 }
 
-
-//for sesaltrpesssite only
-.dark input[type="text"]{
-	color: $white;
-	border: 1px solid transparent;
-
-	&::-webkit-input-placeholder {
-		color: white;
-		font-family: $font-main;
-	}
-
-	&:-moz-placeholder {
-		color: white;
-		font-family: $font-main;
-	}
-
-	&::-moz-placeholder {
-		color: white;
-		font-family: $font-main;
-		opacity: 1;
-		/* Since FF19 lowers the opacity of the placeholder by default */
-	}
-
-	&:-ms-input-placeholder {
-		color: white;
-		font-family: $font-main
-	}
-}
 

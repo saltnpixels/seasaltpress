@@ -30,6 +30,7 @@ get_header(); ?>
 				}
 
 				$template = get_page_template_slug( $archive_header_page );
+				//defaults to right side. Need to check if it should be on left.
 				if ( $template == 'sidebar-left.php' ) {
 					$template_class = 'sidebar-left';
 				}
@@ -60,6 +61,7 @@ get_header(); ?>
 
 			<?php
 			if ( have_posts() ) :
+				//javascript will put this div inside a div content-sidebar-holder if regular sidebar is wanted and sidebar will be moved inside
 				echo '<div class="posts-holder ' . $template_class . '">';
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();

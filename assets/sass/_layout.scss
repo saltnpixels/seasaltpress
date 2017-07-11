@@ -2,15 +2,15 @@
 # Sticky footer work
 --------------------------------------------------------------*/
 #page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
 }
 
 .site-content {
-  flex: 1;
+	flex: 1;
 }
 
 
@@ -54,18 +54,17 @@
 .flex-grid{
 	display: flex;
 	flex-wrap: wrap;
-
-	.col{
-		margin-bottom: $baseline;
-	}
 }
 
 .col{
 	flex: 1;
 	@extend .gutters;
+	margin-bottom: $baseline;
 }
 
-
+.no-bottom-margin{
+	margin-bottom: 0;
+}
 
 .has-inner-cols{
 	padding-right: 0;
@@ -79,6 +78,7 @@
 
 	}
 }
+
 
 /*--------------------------------------------------------------
 # Column Layout
@@ -109,20 +109,20 @@
 .col-1-6,
 .col-5-6,
 .col-full{
-  float: left;
-  @extend .gutters;
-
+	float: left;
+	@extend .gutters;
+	margin-bottom: $baseline;
 	//if they dont have a parent of flex they need the floats cleared.
-  *:not(.flex) > &{
-  @extend .clear !optional;
-  }
+	*:not(.flex) > &{
+		@extend .clear !optional;
+	}
 
-  //helpful but not necessary
-  .row{
-	  margin-left: -#{$gutters};
+	//helpful but not necessary
+	.row{
+		margin-left: -#{$gutters};
 		margin-right: -#{$gutters};
 		clear: both;
-  }
+	}
 
 	@media( max-width: $mobile-width){
 		&:not(.stay-on-mobile){
@@ -134,7 +134,7 @@
 }
 
 
-.m1{
+.m1, .margin-bottom{
 	margin-bottom: $baseline;
 }
 
@@ -155,15 +155,15 @@
 }
 
 //holds articles in a max width
-.content-column{
+.content-width{
 	@extend .gutters;
-	max-width: $content-column;
+	max-width: $content-width;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 //if its inside flex its not to be centered. but off to side.
-.flex .content-column{
+.flex .content-width{
 	margin-left: 0;
 }
 
@@ -184,7 +184,7 @@ img{
 .icon {
 	display: inline-block;
 	stroke-width: 0;
-  stroke: currentColor;
+	stroke: currentColor;
 	height: 1em;
 	vertical-align: middle;
 	width: 1em;
@@ -212,11 +212,11 @@ svg{
 		width: 100vw;
 		display: block;
 
-	 }
+	}
 
-	 .inside-break-out > p{
-			@extend .gutters;
-	 }
+	.inside-break-out > p{
+		@extend .gutters;
+	}
 }
 
 

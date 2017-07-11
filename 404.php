@@ -23,7 +23,7 @@ get_header(); ?>
 					</header><!-- .page-header -->
 
 
-					<div class="content-column">
+					<div class="content-width">
 						<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'seasaltpress' ); ?></p>
 
 						<?php get_search_form(); ?>

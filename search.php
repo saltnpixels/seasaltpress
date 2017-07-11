@@ -53,7 +53,7 @@ get_header(); ?>
 				echo '</div>';
 
 			else : ?>
-			<div class="content-column">
+			<div class="content-width">
 				<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'seasaltpress' ); ?></p>
 				<?php
 				get_search_form();

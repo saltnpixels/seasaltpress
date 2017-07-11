@@ -9,7 +9,7 @@
 $wrap: 1030px; //max width of site
 $gutters: 15px; //two columns next to each other becomes 30px of gutters when this is 15px
 $baseline: 2 * $gutters; //used mostly for a margin bottom. Matches gutters
-$content-column: 700px; //max width of text content holder. usually has gutters also making the content width really 670. Good for holding Articles.
+$content-width: 700px; //max width of text content holder. usually has gutters also making the content width really 670. Good for holding Articles.
 
 $sidebar-width: 300px; //keeping sidebar from getting too big in flexbox layout
 $cool-sidebar-top-padding: 60px; //should match your site-top height or be bigger. Find your site top height via inspector
@@ -88,9 +88,10 @@ $color-content: $dark-purple; //actual article text
 $background-content: $white; //background behind content
 $background-content-shadow: rgba($dark-blue, .5);
 $post-naviagtion-bg: $dark-blue;
+$color-content-h2: $dark-blue;
 
 /*------- Sidebar --------*/
-$background-sidebar: $dark-purple;
+$background-sidebar: shade($dark-purple, 50%);
 $color-sidebar: $white;
 $color-sidebar-header: $off-white;
 $color-sidebar-highlight: $grey;
@@ -149,13 +150,13 @@ $color-menu-link-active: $blue;
 $background-menu-link-active: transparent;
 
 //Submenus
-$background-sub-menu: $dark-blue; //background of the submenu dropdown
-$color-sub-menu-link: $white;
+$background-sub-menu: $white; //background of the submenu dropdown
+$color-sub-menu-link: $blue;
 $background-sub-menu-link: transparent; //background of each submenu item
 
 //Submenu Link Hovers
-$color-sub-menu-link-hover: $purple;
-$background-sub-menu-link-hover: transparent;
+$color-sub-menu-link-hover: $white;
+$background-sub-menu-link-hover: $purple;
 
 /*------- Mobile Menu --------*/
 //Mobile Popout Background Color

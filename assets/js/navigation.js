@@ -154,19 +154,19 @@
             $($body).addClass('menu-lock'); //somewhat locks on ios... can use return false if needed...
 
             //wrap the inner of #page and transition that with css. This way we dont have to animate #page,
-            //#page keeps overflow hidden so on ios you cant scroll all over.
+            //#page keeps overflow hidden so on ios you cant scroll all over. This was needed.
             page.wrapInner("<div class='page-holder' />");
 
 
             //toggle the transitions and click action one AFTER the wrap is made
             setTimeout(function () {
                 page.addClass('mobile-menu-open');
-                siteNavContain.addClass('open'); //shows the menu
+                siteNavContain.addClass('open'); //shows the menu removes hidden
 
                 $('.page-holder').one('click', function (e) {
 
                     if (!$(e.target).closest('.menu-toggle').length) {
-                        menuToggle.trigger('click'); //recursively calls togglecoolmenu
+                        menuToggle.trigger('click'); //recursively calls togglecoolmenu to close
                     }
                 });
 
@@ -191,13 +191,13 @@
     /*--------------------------------------------------------------
      # Resize for cool menu and logo in middle of menu
      --------------------------------------------------------------*/
-    //this code runs on resize and move the cool menu into place. It also is responsible for a logo in middle of menu if thatw as chosen in customizer
+    //this code runs on resize and moves the cool menu into place. It also is responsible for a logo in middle of menu if thats as chosen in customizer
     var mainNavigationLi = $('.main-navigation ul.menu>li, .main-navigation .menu>ul>li');
 
     function resizeMobileMenu() {
 
         if ($(window).width() < $mobileMenuWidth) {
-            //if the body doesnt have the mobile popout already
+            //if the body doesn't have the mobile popout already, put it there.
             if (!$('body>.mobile-popout').length && $body.hasClass('cool-menu')) {
                 $(siteNavContain.prependTo($body));
             }
@@ -214,12 +214,12 @@
 
             if ($('body>.mobile-popout').length && $body.hasClass('cool-menu')) {
                 $(siteNavContain.appendTo('.site-top-inner-container'));
+                siteNavigation.find('.sub-menu').attr('style',''); //may have hidden from dropdown mobile version if sub menu was closed
                 //close menu and unwrap page
                 if (menuToggle.hasClass('toggled-on')) {
                     $('.page-holder').trigger('click'); //turns this off and closes everything in one fell swoop
                     siteNavContain.toggleClass('open'); //only remove toggle on and hide menu once page holder finishes its transition to cover it.
                     $('.page-holder').children().unwrap('.page-holder');
-
                 }
             }
 
