@@ -1502,7 +1502,7 @@ input[type="checkbox"] {
 # Buttons
 --------------------------------------------------------------*/
 button,
-a.button,
+.button,
 input[type="button"],
 input[type="submit"] {
   border: none;
@@ -1515,7 +1515,7 @@ input[type="submit"] {
 
 .button {
   background: #A46AE6;
-  border-radius: 50px;
+  border-radius: 3px;
   display: inline-block; }
   .button.focus {
     background: #8b5ac4; }
