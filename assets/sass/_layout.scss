@@ -113,7 +113,7 @@
 	@extend .gutters;
 	margin-bottom: $baseline;
 	//if they dont have a parent of flex they need the floats cleared.
-	*:not(.flex) > &{
+	*:not(.flex) > &, *:not(.flex-grid) > &{
 		@extend .clear !optional;
 	}
 
