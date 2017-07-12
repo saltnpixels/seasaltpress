@@ -21,7 +21,6 @@
 	max-width: $wrap;
 	margin: auto;
 	clear: both;
-	@extend .clear;
 }
 
 
@@ -113,7 +112,7 @@
 	@extend .gutters;
 	margin-bottom: $baseline;
 	//if they dont have a parent of flex they need the floats cleared.
-	*:not(.flex) > &, *:not(.flex-grid) > &{
+	*:not([class*="flex"]) > & {
 		@extend .clear !optional;
 	}
 
