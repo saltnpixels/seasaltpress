@@ -1822,7 +1822,7 @@ figcaption {
 .single .entry-content, .page .entry-content {
   padding-top: 30px; }
 
-.page-template-page-blank .single .entry-content, .page-template-page-blank .page .entry-content, .page-template-page-blank-sidebar .single .entry-content, .page-template-page-blank-sidebar .page .entry-content {
+.page-template-page-blank.single .entry-content, .page-template-page-blank.page .entry-content, .page-template-page-blank-sidebar.single .entry-content, .page-template-page-blank-sidebar.page .entry-content {
   max-width: 100%;
   padding: 0;
   padding-top: 30px; }

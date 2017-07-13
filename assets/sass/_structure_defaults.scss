@@ -103,7 +103,7 @@
 
 //on page blank template, articles are full sized.
 .page-template-page-blank, .page-template-page-blank-sidebar {
-	.single .entry-content, .page .entry-content {
+	&.single .entry-content, &.page .entry-content {
 		max-width: 100%;
 		padding: 0;
 		padding-top: $baseline;
