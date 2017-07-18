@@ -176,7 +176,7 @@ $wp_customize->add_setting( 'seasaltpress_archive_header_' . $post_type->name,
 $wp_customize->add_control( 'seasaltpress_archive_header_' . $post_type->name, array(
   'label' => __( 'Archive Header For ', 'seasaltpress' ) . ucwords($post_type->labels->singular_name),
   'type' => 'dropdown-pages',
-  'allow_addition' => true,
+//  'allow_addition' => true,
   'section' => 'post_types',
   'description' => __('Set a page to be used to display the header for this archive. Note: Post type must have an archive page.', 'seasaltpress'),
 ) );

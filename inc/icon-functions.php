@@ -4,6 +4,7 @@
  *
  * @package Sea_Salt_Press
  * @since 1.0
+ * Based on Twenty Seventeen
  */
 
 /**
