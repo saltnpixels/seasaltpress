@@ -22,7 +22,7 @@ if ( $archive_header->have_posts() ) : ?>
 
 
 		echo '<script>' . get_post_meta($id, 'seasaltpress_extra_scripts', true) . '</script>';
-		echo '<styles>' . get_post_meta($id, 'seasaltpress_extra_styles', true) . '</styles>';
+		echo '<style>' . get_post_meta($id, 'seasaltpress_extra_styles', true) . '</style>';
 
 		?>
 
