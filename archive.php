@@ -35,7 +35,6 @@ get_header(); ?>
 					$template_class = 'sidebar-left';
 				}
 			} else {
-
 				//default header for archives
 
 				//if its not the front page give title h1 

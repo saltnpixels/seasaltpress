@@ -211,10 +211,11 @@
         }
         //else its desktop
         else {
+            siteNavigation.find('.sub-menu').attr('style',''); //may have hidden from dropdown mobile version if sub menu was closed
 
             if ($('body>.mobile-popout').length && $body.hasClass('cool-menu')) {
                 $(siteNavContain.appendTo('.site-top-inner-container'));
-                siteNavigation.find('.sub-menu').attr('style',''); //may have hidden from dropdown mobile version if sub menu was closed
+
                 //close menu and unwrap page
                 if (menuToggle.hasClass('toggled-on')) {
                     $('.page-holder').trigger('click'); //turns this off and closes everything in one fell swoop

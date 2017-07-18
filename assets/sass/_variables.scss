@@ -62,7 +62,7 @@ $blue-purple-gradient: linear-gradient(90deg, #311F37 7%, #27315C 67%);
 
 /*------- Body --------*/
 $color-text-main: $dark-blue; //main color of text
-$color-text-secondary: $grey; //metadata, dates...
+$color-text-secondary: $grey; //metadata, dates, figcaption, media...
 $background-body: $white; //main background
 
 /*------- Links and Buttons --------*/
@@ -75,7 +75,7 @@ $color-input: $dark-purple;
 $background-input: $transparent-white;
 $border-color-input: $purple;
 
-//the following variables are used by the default styling included. feel free to change
+//the following variables are used by the default styling included in post_types.scss. feel free to change
 /*------- Default Content Headers --------*/
 $color-header: $off-white; //text in a header
 $background-header: $blue-purple-gradient; //when there is just text in header, image will use color below on top

@@ -1,3 +1,5 @@
+//First try editing the variables or adding some styles to the areas where there are variables before doing a major makeover.
+
 /*--------------------------------------------------------------
 # Site Top, Logo and Mobile popout Layout
 --------------------------------------------------------------*/
@@ -10,8 +12,9 @@
 }
 
 //site logo
-#page .site-logo {
+body .site-logo {
 	position: relative;
+
 	max-width: 100%;
 	display: flex;
 	align-items: center;
@@ -48,6 +51,9 @@
 /*--------------------------------------------------------------
 ## Logo and menu positions from WP Customizer
 --------------------------------------------------------------*/
+.custom-logo-link + .site-title{
+  display: none;
+}
 
 //no logo. Center menu and hide logo on customizer. Elsewhere no logo will even show.
 .no-logo > .site-logo {
