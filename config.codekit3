@@ -1828,50 +1828,6 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
-	"\/assets\/images\/arrow.png": {
-		"ft": 32768,
-		"iS": 451,
-		"oA": 0,
-		"oAP": "\/assets\/images\/arrow.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/assets\/images\/dark_leather.png": {
-		"ft": 32768,
-		"iS": 74431,
-		"oA": 0,
-		"oAP": "\/assets\/images\/dark_leather.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/assets\/images\/darkdenim3.png": {
-		"ft": 32768,
-		"iS": 22600,
-		"oA": 0,
-		"oAP": "\/assets\/images\/darkdenim3.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/assets\/images\/gf-creditcard-icons.png": {
-		"ft": 32768,
-		"iS": 75752,
-		"oA": 0,
-		"oAP": "\/assets\/images\/gf-creditcard-icons.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
 	"\/assets\/js\/custom-admin.js": {
 		"ft": 64,
 		"mi": 1,
@@ -2096,19 +2052,6 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/_forms.css",
-		"oF": 0,
-		"oS": 0,
-		"uL": 1
-		},
-	"\/assets\/sass\/_gforms.scss": {
-		"aP": 1,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 0,
-		"oA": 1,
-		"oAP": "\/_gforms.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -2440,6 +2383,24 @@
 		"oA": 2,
 		"oAP": "\/page.php",
 		"oF": 0
+		},
+	"\/README.md": {
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"eLB": 0,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 0,
+		"oAP": "\/README.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
 		},
 	"\/rtl-min.css": {
 		"aP": 1,

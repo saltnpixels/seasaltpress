@@ -11,15 +11,16 @@ License: GNU General Public License v3.0
 Text Domain: seasaltpress
 Tags: custom-menu, custom-logo, editor-style, featured-images, footer-widgets
 Commercial License for commercial use
+Based on underscores and Twenty Seventeen
 */
 /*--------------------------------------------------------------
-1.0 Mixins
+Mixins
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 Mixins
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-2.0 Variables
+Variables
 --------------------------------------------------------------*/
 /**
  * Here you can add or change variables that will affect layout, color and backgrounds.
@@ -54,10 +55,10 @@ Mixins
 /*------- Desktop menus --------*/
 /*------- Mobile Menu --------*/
 /*--------------------------------------------------------------
-3.0 Normalize, Accessibility, Alignments, Clearings
+Normalize, Accessibility, Alignments, Clearings
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-1.0 Normalize
+Normalize
 Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
 --------------------------------------------------------------*/
 html {
@@ -256,7 +257,7 @@ template {
   display: none; }
 
 /*--------------------------------------------------------------
-2.0 Accessibility
+Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
 .screen-reader-text {
@@ -292,7 +293,7 @@ template {
   display: none; }
 
 /*--------------------------------------------------------------
-3.0 Alignments
+Alignments
 --------------------------------------------------------------*/
 .alignleft {
   display: inline;
@@ -314,9 +315,9 @@ template {
   margin-bottom: .5em; }
 
 /*--------------------------------------------------------------
-4.0 Clearings
+Clearings
 --------------------------------------------------------------*/
-.clear:before, *:not([class*="flex"]) > .col-1-2:before, *:not([class*="flex"]) > .col-1-3:before, *:not([class*="flex"]) > .col-2-3:before, *:not([class*="flex"]) > .col-1-4:before, *:not([class*="flex"]) > .col-3-4:before, *:not([class*="flex"]) > .col-1-5:before, *:not([class*="flex"]) > .col-2-5:before, *:not([class*="flex"]) > .col-3-5:before, *:not([class*="flex"]) > .col-4-5:before, *:not([class*="flex"]) > .col-1-6:before, *:not([class*="flex"]) > .col-5-6:before, *:not([class*="flex"]) > .col-full:before, .gfield:not(.separate-fields) .ginput_complex:before, .clear-multi:before, .gform_card_icon_container:before,
+.clear:before, *:not([class*="flex"]) > .col-1-2:before, *:not([class*="flex"]) > .col-1-3:before, *:not([class*="flex"]) > .col-2-3:before, *:not([class*="flex"]) > .col-1-4:before, *:not([class*="flex"]) > .col-3-4:before, *:not([class*="flex"]) > .col-1-5:before, *:not([class*="flex"]) > .col-2-5:before, *:not([class*="flex"]) > .col-3-5:before, *:not([class*="flex"]) > .col-4-5:before, *:not([class*="flex"]) > .col-1-6:before, *:not([class*="flex"]) > .col-5-6:before, *:not([class*="flex"]) > .col-full:before,
 .clear:after,
 *:not([class*="flex"]) > .col-1-2:after,
 *:not([class*="flex"]) > .col-1-3:after,
@@ -330,9 +331,6 @@ template {
 *:not([class*="flex"]) > .col-1-6:after,
 *:not([class*="flex"]) > .col-5-6:after,
 *:not([class*="flex"]) > .col-full:after,
-.gfield:not(.separate-fields) .ginput_complex:after,
-.clear-multi:after,
-.gform_card_icon_container:after,
 .entry-content:before,
 .entry-content:after,
 .entry-footer:before,
@@ -375,9 +373,6 @@ template {
 *:not([class*="flex"]) > .col-1-6:after,
 *:not([class*="flex"]) > .col-5-6:after,
 *:not([class*="flex"]) > .col-full:after,
-.gfield:not(.separate-fields) .ginput_complex:after,
-.clear-multi:after,
-.gform_card_icon_container:after,
 .entry-content:after,
 .entry-footer:after,
 .comment-content:after,
@@ -393,7 +388,7 @@ template {
   clear: both; }
 
 /*--------------------------------------------------------------
-# Basic Layout
+# Basic Layout Added here
 --------------------------------------------------------------*/
 html {
   box-sizing: border-box; }
@@ -419,8 +414,11 @@ html * {
   -webkit-overflow-scrolling: touch; }
 
 /*--------------------------------------------------------------
-4.0 Layout  - Grid system
+Layout  - Grid system
 --------------------------------------------------------------*/
+/*
+ * You probably should not touch this file :) its the layout crap.
+ */
 /*--------------------------------------------------------------
 # Sticky footer work
 --------------------------------------------------------------*/
@@ -668,7 +666,7 @@ svg {
     display: block; }
 
 /*--------------------------------------------------------------
-5.0 Lists and Tables
+Lists and Tables
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 Lists
@@ -726,7 +724,7 @@ td:last-child {
   padding-right: 0; }
 
 /*--------------------------------------------------------------
-6.0 Menus
+Menus
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Site Top, Logo and Mobile popout Layout
@@ -738,7 +736,7 @@ td:last-child {
   z-index: 10;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 
-#page .site-logo {
+body .site-logo {
   position: relative;
   max-width: 100%;
   display: -webkit-box;
@@ -750,9 +748,9 @@ td:last-child {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  #page .site-logo h1, #page .site-logo p {
+  body .site-logo h1, body .site-logo p {
     margin: 0; }
-  #page .site-logo a {
+  body .site-logo a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -765,7 +763,7 @@ td:last-child {
     font-size: 1.5rem;
     font-weight: normal;
     padding: 5px 0; }
-  #page .site-logo img {
+  body .site-logo img {
     display: block; }
 
 .site-top .mobile-popout {
@@ -779,6 +777,9 @@ td:last-child {
 /*--------------------------------------------------------------
 ## Logo and menu positions from WP Customizer
 --------------------------------------------------------------*/
+.custom-logo-link + .site-title {
+  display: none; }
+
 .no-logo > .site-logo {
   display: none; }
 
@@ -1233,7 +1234,7 @@ ul.sub-menu {
 # MENU OVERRIDES BELOW
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-7.0 Elements
+Elements
 --------------------------------------------------------------*/
 /*
  * This is where you can style elements that appear across your website and are not specific.
@@ -1293,7 +1294,7 @@ hr {
     font-size: 0.6rem; }
 
 /*--------------------------------------------------------------
-8.0 Typography
+Typography
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Typography Basics
@@ -1434,7 +1435,7 @@ a:active {
   outline: 0; }
 
 /*--------------------------------------------------------------
-9.0 Forms
+Forms
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Global Forms
@@ -1563,7 +1564,7 @@ a.button:visited {
     background: #A46AE6; }
 
 /*--------------------------------------------------------------
-10.0 Media
+Media
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Entry Images
@@ -1731,7 +1732,7 @@ figcaption {
     width: 100%; }
 
 /*--------------------------------------------------------------
-11.0 Posts and Pages
+Posts and Pages
 --------------------------------------------------------------*/
 /*
  * This page is used to make default layout for major elements on the site including headers, content and sidebars.
@@ -2110,7 +2111,7 @@ body .sidebar-toggle {
     color: inherit; }
 
 /*--------------------------------------------------------------
-12.0 Comments
+Comments
 --------------------------------------------------------------*/
 /*
 	This file is for styling your comment sections
@@ -2155,7 +2156,7 @@ body .sidebar-toggle {
   font-size: 0.7rem; }
 
 /*--------------------------------------------------------------
-13.0 Sidebar
+Sidebar
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Sidebar Styles
@@ -2236,416 +2237,3 @@ body .sidebar-toggle {
 @media (max-width: 1000px) {
   .js #secondary {
     background: #18101d; } }
-
-/*--------------------------------------------------------------
-# Gravity Forms Normalize
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Normalizing Gravity Forms
---------------------------------------------------------------*/
-.gfield_visibility_hidden {
-  visibility: hidden;
-  position: absolute;
-  left: -9999px; }
-
-.gform_heading, .gform_footer {
-  text-transform: capitalize;
-  padding: 0 10px; }
-
-.gform_footer .button .icon {
-  margin-left: 5px; }
-
-.gform_footer {
-  margin-bottom: 30px; }
-
-body .gfield {
-  margin-bottom: 30px;
-  padding: 0 10px; }
-
-.gfield_description {
-  font-size: 16px;
-  font-size: 0.8rem; }
-
-.gfield:not(.separate-fields) .ginput_complex {
-  margin-left: -10px;
-  margin-right: -10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
-  .gfield:not(.separate-fields) .ginput_complex .name_suffix, .gfield:not(.separate-fields) .ginput_complex .name_prefix {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 100px;
-            flex: 0 0 100px; }
-  .gfield:not(.separate-fields) .ginput_complex .ginput_full {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 100%;
-            flex: 1 0 100%; }
-  .gfield:not(.separate-fields) .ginput_complex .ginput_cardinfo_left, .gfield:not(.separate-fields) .ginput_complex .ginput_cardinfo_right, .gfield:not(.separate-fields) .ginput_complex .ginput_left, .gfield:not(.separate-fields) .ginput_complex .ginput_right {
-    width: 50%;
-    padding: 0 10px; }
-  .gfield:not(.separate-fields) .ginput_complex > span {
-    padding-left: 10px;
-    padding-right: 10px; }
-
-.ginput_complex > span {
-  display: block;
-  margin-bottom: 15px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto; }
-  .ginput_complex > span:last-child, .ginput_complex > span.name_first {
-    margin-bottom: 0; }
-  .ginput_complex > span label {
-    font-size: 12px;
-    font-size: 0.6rem; }
-
-/*--------------------------------------------------------------
-# Checkbox and Radios
---------------------------------------------------------------*/
-.gform_fields, .gfield_radio, .gfield_checkbox {
-  list-style: none;
-  margin: 0; }
-
-.gfield_radio li, .gfield_checkbox li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
-/*--------------------------------------------------------------
-# Time input
---------------------------------------------------------------*/
-.clear-multi {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
-.ginput_container_time input {
-  width: 3em;
-  float: left; }
-
-.ginput_container_time i {
-  font-style: normal;
-  float: left;
-  padding: 0 3px; }
-
-.ginput_container_time label {
-  font-size: 12px;
-  font-size: 0.6rem;
-  clear: both; }
-
-.gfield_time_ampm {
-  margin-left: 5px;
-  position: relative;
-  bottom: .5rem; }
-
-/*--------------------------------------------------------------
-# List item input
---------------------------------------------------------------*/
-.add_list_item, .delete_list_item {
-  width: 15px; }
-
-.gfield_list_icons {
-  width: 48px;
-  padding-left: 4px; }
-
-.gfield_list_icons, .gfield_list_icons img {
-  vertical-align: middle; }
-
-.gfield_list_cell {
-  vertical-align: baseline; }
-
-/*--------------------------------------------------------------
-# Products and totals
---------------------------------------------------------------*/
-body .ginput_quantity {
-  display: inline-block;
-  width: 100px; }
-
-.ginput_product_price {
-  margin-right: 5px; }
-
-.gform_card_icon {
-  margin-right: 4px;
-  text-indent: -9000px;
-  background-image: url("assets/images/gf-creditcard-icons.png");
-  background-repeat: no-repeat;
-  width: 36px;
-  height: 32px;
-  float: left; }
-
-.gform_card_icon_container {
-  margin-bottom: 5px; }
-
-.ginput_complex .ginput_cardextras {
-  margin-left: -10px;
-  margin-right: -10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-.ginput_card_expiration_container {
-  display: block; }
-
-.ginput_cardinfo_right select {
-  width: auto;
-  margin-right: 15px; }
-
-.ginput_cardinfo_right {
-  position: relative; }
-  .ginput_cardinfo_right input {
-    padding-right: 40px; }
-
-.ginput_card_security_code_icon {
-  width: 32px;
-  height: 23px;
-  background-image: url("assets/images/gf-creditcard-icons.png");
-  background-repeat: no-repeat;
-  background-position: 0 -128px;
-  position: absolute;
-  top: .4em;
-  right: 15px;
-  display: block; }
-
-.gform_card_icon_visa {
-  background-position: 0 0; }
-  .gform_card_icon_visa.gform_card_icon_selected {
-    background-position: 0 -32px; }
-  .gform_card_icon_visa.gform_card_icon_inactive {
-    background-position: 0 -64px; }
-
-.gform_card_icon_style2 .gform_card_iconvisa {
-  background-position: 0 -192px; }
-  .gform_card_icon_style2 .gform_card_iconvisa.gform_card_icon_selected {
-    background-position: 0 -224px; }
-  .gform_card_icon_style2 .gform_card_iconvisa.gform_card_icon_inactive {
-    background-position: 0 -256px; }
-
-.gform_card_icon_mastercard {
-  background-position: -36px 0; }
-  .gform_card_icon_mastercard.gform_card_icon_selected {
-    background-position: -36px -32px; }
-  .gform_card_icon_mastercard.gform_card_icon_inactive {
-    background-position: -36px -64px; }
-
-.gform_card_icon_style2 .gform_card_iconmastercard {
-  background-position: -36px -192px; }
-  .gform_card_icon_style2 .gform_card_iconmastercard.gform_card_icon_selected {
-    background-position: -36px -224px; }
-  .gform_card_icon_style2 .gform_card_iconmastercard.gform_card_icon_inactive {
-    background-position: -36px -256px; }
-
-.gform_card_icon_amex {
-  background-position: -72px 0; }
-  .gform_card_icon_amex.gform_card_icon_selected {
-    background-position: -72px -32px; }
-  .gform_card_icon_amex.gform_card_icon_inactive {
-    background-position: -72px -64px; }
-
-.gform_card_icon_style2 .gform_card_iconamex {
-  background-position: -72px -192px; }
-  .gform_card_icon_style2 .gform_card_iconamex.gform_card_icon_selected {
-    background-position: -72px -224px; }
-  .gform_card_icon_style2 .gform_card_iconamex.gform_card_icon_inactive {
-    background-position: -72px -256px; }
-
-.gform_card_icon_discover {
-  background-position: -108px 0; }
-  .gform_card_icon_discover.gform_card_icon_selected {
-    background-position: -108px -32px; }
-  .gform_card_icon_discover.gform_card_icon_inactive {
-    background-position: -108px -64px; }
-
-.gform_card_icon_style2 .gform_card_icondiscover {
-  background-position: -108px -192px; }
-  .gform_card_icon_style2 .gform_card_icondiscover.gform_card_icon_selected {
-    background-position: -108px -224px; }
-  .gform_card_icon_style2 .gform_card_icondiscover.gform_card_icon_inactive {
-    background-position: -108px -256px; }
-
-.gform_card_icon_maestro {
-  background-position: -144px 0; }
-  .gform_card_icon_maestro.gform_card_icon_selected {
-    background-position: -144px -32px; }
-  .gform_card_icon_maestro.gform_card_icon_inactive {
-    background-position: -144px -64px; }
-
-.gform_card_icon_style2 .gform_card_iconmaestro {
-  background-position: -144px -192px; }
-  .gform_card_icon_style2 .gform_card_iconmaestro.gform_card_icon_selected {
-    background-position: -144px -224px; }
-  .gform_card_icon_style2 .gform_card_iconmaestro.gform_card_icon_inactive {
-    background-position: -144px -256px; }
-
-.gform_card_icon_jcb {
-  background-position: -180px 0; }
-  .gform_card_icon_jcb.gform_card_icon_selected {
-    background-position: -180px -32px; }
-  .gform_card_icon_jcb.gform_card_icon_inactive {
-    background-position: -180px -64px; }
-
-.gform_card_icon_style2 .gform_card_iconjcb {
-  background-position: -180px -192px; }
-  .gform_card_icon_style2 .gform_card_iconjcb.gform_card_icon_selected {
-    background-position: -180px -224px; }
-  .gform_card_icon_style2 .gform_card_iconjcb.gform_card_icon_inactive {
-    background-position: -180px -256px; }
-
-/*--------------------------------------------------------------
-# Errors and messages
---------------------------------------------------------------*/
-.validation_error {
-  margin: 0 10px 20px;
-  color: white;
-  background: rgba(139, 0, 0, 0.8);
-  padding: 10px; }
-
-.gfield_error {
-  border-top: 1px solid rgba(139, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(139, 0, 0, 0.4); }
-
-.validation_message {
-  color: darkred;
-  font-size: 14px;
-  font-size: 0.7rem;
-  margin-top: 5px; }
-
-/*--------------------------------------------------------------
-# Date Picker jquery ui crap
---------------------------------------------------------------*/
-/* DatePicker Container */
-.ui-datepicker {
-  width: 216px;
-  height: auto;
-  margin: 5px auto 0;
-  font-size: 14px;
-  font-size: 0.7rem;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); }
-  .ui-datepicker select {
-    display: inline-block;
-    width: auto;
-    font-size: 14px;
-    color: white;
-    background: black; }
-
-.ui-datepicker a {
-  text-decoration: none; }
-
-/* DatePicker Table */
-.ui-datepicker table {
-  width: 100%;
-  margin-bottom: 0; }
-
-.ui-datepicker-header {
-  background: black;
-  color: #e0e0e0;
-  font-weight: bold;
-  box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, 0.2);
-  text-shadow: 1px -1px 0px #000;
-  line-height: 30px;
-  border-width: 1px 0 0 0;
-  border-style: solid;
-  border-color: #111; }
-
-.ui-datepicker-title {
-  text-align: center; }
-
-.ui-datepicker-prev, .ui-datepicker-next {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  cursor: pointer;
-  background-image: url("assets/images/arrow.png");
-  background-repeat: no-repeat;
-  line-height: 600%;
-  overflow: hidden; }
-
-.ui-datepicker-prev {
-  float: left;
-  background-position: center -30px; }
-
-.ui-datepicker-next {
-  float: right;
-  background-position: center 0px; }
-
-.ui-datepicker thead {
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #bbb; }
-
-.ui-datepicker th {
-  text-transform: uppercase;
-  font-size: 6pt;
-  padding: 5px 0;
-  color: #666666;
-  text-shadow: 1px 0px 0px #fff;
-  -webkit-filter: dropshadow(color=#fff, offx=1, offy=0);
-          filter: dropshadow(color=#fff, offx=1, offy=0);
-  text-align: center; }
-
-.ui-datepicker tbody td {
-  padding: 0;
-  border-right: 1px solid #bbb;
-  background: white;
-  padding: 0; }
-
-.ui-datepicker tbody td:last-child {
-  border-right: 0px; }
-
-.ui-datepicker tbody tr {
-  border-bottom: 1px solid #bbb; }
-
-.ui-datepicker tbody tr:last-child {
-  border-bottom: 0px; }
-
-.ui-datepicker td span, .ui-datepicker td a {
-  display: inline-block;
-  font-weight: bold;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  color: #666666;
-  text-shadow: 1px 1px 0px #fff;
-  -webkit-filter: dropshadow(color=#fff, offx=1, offy=1);
-          filter: dropshadow(color=#fff, offx=1, offy=1); }
-
-.ui-datepicker-calendar .ui-state-default {
-  background: #ededed;
-  background: linear-gradient(top, #ededed 0%, #dedede 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dedede', GradientType=0);
-  box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, 0.5); }
-
-.ui-datepicker-calendar .ui-state-hover {
-  background: #f7f7f7; }
-
-.ui-datepicker-calendar .ui-state-active {
-  background: #6eafbf;
-  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  color: #e0e0e0;
-  text-shadow: 0px 1px 0px #4d7a85;
-  -webkit-filter: dropshadow(color=#4d7a85, offx=0, offy=1);
-          filter: dropshadow(color=#4d7a85, offx=0, offy=1);
-  border: 1px solid #55838f;
-  position: relative; }
-
-.ui-datepicker-unselectable .ui-state-default {
-  background: #f4f4f4;
-  color: #b4b3b3; }
-
-.ui-datepicker-calendar td:first-child .ui-state-active {
-  margin-left: 0; }
-
-.ui-datepicker-calendar td:last-child .ui-state-active {
-  margin-right: 0; }
-
-.ui-datepicker-calendar tr:last-child .ui-state-active {
-  height: 29px;
-  margin-bottom: 0; }
