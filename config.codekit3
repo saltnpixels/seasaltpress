@@ -1852,7 +1852,7 @@
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/customize-preview-min.js",
 		"oF": 0,
-		"sC": 0,
+		"sC": 1,
 		"tS": 0
 		},
 	"\/assets\/js\/emmet.js": {
@@ -2384,6 +2384,12 @@
 		"oAP": "\/page.php",
 		"oF": 0
 		},
+	"\/README.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/README.html",
+		"oF": 0
+		},
 	"\/README.md": {
 		"cS": 0,
 		"eF": 1,
@@ -2421,6 +2427,23 @@
 		"oAP": "\/rtl-min.css",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/screenshot.png": {
+		"ft": 32768,
+		"iS": 621126,
+		"oA": 0,
+		"oAP": "\/screenshot.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/screenshot.png.bak": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/screenshot.png.bak",
+		"oF": 0
 		},
 	"\/search.php": {
 		"ft": 8192,

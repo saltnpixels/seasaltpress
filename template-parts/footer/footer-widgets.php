@@ -29,13 +29,13 @@ if ( is_active_sidebar( 'sidebar-2' ) ||
 			</div>
 		<?php } 
 		if ( is_active_sidebar( 'sidebar-4' ) ) { ?>
-			<div class="widget-column col footer-widget-2">
-				<?php dynamic_sidebar( 'sidebar-3' ); ?>
+			<div class="widget-column col footer-widget-3">
+				<?php dynamic_sidebar( 'sidebar-4' ); ?>
 			</div>
 		<?php } 
 		if ( is_active_sidebar( 'sidebar-5' ) ) { ?>
-			<div class="widget-column col footer-widget-2">
-				<?php dynamic_sidebar( 'sidebar-3' ); ?>
+			<div class="widget-column col footer-widget-4">
+				<?php dynamic_sidebar( 'sidebar-5' ); ?>
 			</div>
 		<?php } ?>
 	</aside><!-- .widget-area -->
