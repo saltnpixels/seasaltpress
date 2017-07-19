@@ -36,11 +36,15 @@ swapImgToSvg('.custom-logo-link img');
     // Collect information from customize-controls.js about which panels are opening.
 
     // Site title and description.
-    wp.customize('blogname', function (value) {
-        value.bind(function (to) {
-            $('.site-title a').text(to);
-        });
-    });
+    wp.customize( 'blogname', function( value ) {
+
+        // If logo isn't set then bind site-title for live update.
+        if ( ! parent.wp.customize( 'custom_logo' )() ) {
+            value.bind( function( to ) {
+                $( '.site-title a' ).text( to );
+            } );
+        }
+    } );
 
     wp.customize('blogdescription', function (value) {
 
