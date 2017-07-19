@@ -777,9 +777,6 @@ body .site-logo {
 /*--------------------------------------------------------------
 ## Logo and menu positions from WP Customizer
 --------------------------------------------------------------*/
-.custom-logo-link + .site-title {
-  display: none; }
-
 .no-logo > .site-logo {
   display: none; }
 

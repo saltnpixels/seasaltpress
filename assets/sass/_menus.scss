@@ -51,10 +51,6 @@ body .site-logo {
 /*--------------------------------------------------------------
 ## Logo and menu positions from WP Customizer
 --------------------------------------------------------------*/
-.custom-logo-link + .site-title{
-  display: none;
-}
-
 //no logo. Center menu and hide logo on customizer. Elsewhere no logo will even show.
 .no-logo > .site-logo {
 	display: none;
