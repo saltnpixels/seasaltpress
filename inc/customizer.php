@@ -239,7 +239,8 @@ function seasaltpress_is_view_with_layout_option() {
  * Bind JS handlers to instantly live-preview changes.
  */
 function seasaltpress_customize_preview_js() {
-	wp_enqueue_script( 'seasaltpress-customize-preview', get_theme_file_uri( '/assets/js/customize-preview.js' ), array( 'customize-preview' ), '1.0', true );
+	wp_enqueue_script( 'seasaltpress-customize-preview', get_theme_file_uri( '/assets/js/min/customize-preview.min.js'
+	), array( 'customize-preview' ), '1.0', true );
 }
 add_action( 'customize_preview_init', 'seasaltpress_customize_preview_js' );
 
@@ -247,7 +248,7 @@ add_action( 'customize_preview_init', 'seasaltpress_customize_preview_js' );
  * Load dynamic logic for the customizer controls area.
  */
 function seasaltpress_panels_js() {
-	wp_enqueue_script( 'seasaltpress-customize-controls', get_theme_file_uri( '/assets/js/customize-controls.js' ), array(), '1.0', true );
+	wp_enqueue_script( 'seasaltpress-customize-controls', get_theme_file_uri( '/assets/js/min/customize-controls.min.js' ), array(), '1.0', true );
 }
 //add_action( 'customize_controls_enqueue_scripts', 'seasaltpress_panels_js' );
 

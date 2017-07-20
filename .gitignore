@@ -1,4 +1,6 @@
 node_modules/
+seasaltpress.pot/
+.idea/
 node_module/
 # OS generated files #
 ######################

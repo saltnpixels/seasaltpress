@@ -344,7 +344,7 @@ function seasaltpress_scripts() {
 
 
 	//any javascript file in assets/js that ends with custom.min will be lumped into this file.
-	wp_enqueue_script( 'seasaltpress-custom', get_theme_file_uri( '/assets/js/min/custom.min.js' ), array( 'jquery', 'jquery-touch' ),
+	wp_enqueue_script( 'seasaltpress-custom', get_theme_file_uri( '/assets/js/min/custom.min.js' ), array( 'jquery'),
 		'1.0', true );
 
 	//AJAX ready
@@ -430,4 +430,4 @@ require get_parent_theme_file_path( '/inc/seasaltpress_custom_fields.php' );
 /**
  * Add Gravity Forms Extras
  */
-require get_parent_theme_file_path( '/inc/seasaltpress_gform_extras.php' );
+//require get_parent_theme_file_path( '/inc/seasaltpress_gform_extras.php' );

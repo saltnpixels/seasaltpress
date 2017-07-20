@@ -269,7 +269,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     function initMainNavigation(container) {
 
         // Add dropdown toggle that displays child menu items. Used on mobile and screenreaders.
-        var dropdownToggle = $('<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false }).append(seasaltpressScreenReaderText.icon).append($('<span />', { 'class': 'screen-reader-text', text: seasaltpressScreenReaderText.expand }));
+        var dropdownToggle = $('<button />', { 'class': 'dropdown-toggle', 'aria-expanded': false })
+        .append(seasaltpressScreenReaderText.icon) //adds button to open submenu items
+        .append($('<span />', { 'class': 'screen-reader-text', text: seasaltpressScreenReaderText.expand }));
 
         container.find('.menu-item-has-children > a, .page_item_has_children > a').after(dropdownToggle);
 
