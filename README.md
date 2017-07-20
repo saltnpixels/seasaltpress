@@ -19,13 +19,19 @@ If you have never used Gulp, don't worry, it's easy. First make sure you have no
 
 Once installed you need to install Gulp. Use this command:
 
-```npm install --global gulp-cli```
+```
+npm install --global gulp-cli
+```
 
 Now _make sure you are in the theme root folder_ where the file package.json resides. Because there is already a package.json file and a Gulp file, all that's left for you to do is install it.
-```npm install```
+```
+npm install
+```
  
 This will install npm with all the necessary dependencies. Now Gulp is ready to watch your files and update your javascript.
-```gulp```
+```
+gulp
+```
 
 To Learn More view this great guide by [Ahmad Awais](https://github.com/ahmadawais/WPGulp).
 WPGulp is being used although it has been modified. 
@@ -101,10 +107,15 @@ The structure for the headers, and content are found in structure defaults.scss.
 ## Icons
 Twenty Seventeen had a great function for svg icons, but was only available within the theme itself. Here is how to use it:
  
- ```[your_theme_name]__get_svg( array('icon' => 'name of icon'));```
+ ```
+ [your_theme_name]__get_svg( array('icon' => 'name of icon'));
+ ```
+ 
 If you install the plugin [Iodine](https://github.com/saltnpixels/Iodine) you can use them in a shortcode!
 
-```[svg icon="name of icon"]```
+```
+[svg icon="name of icon"]
+```
 
 You may need to add slight styling per icon to nudge it up or down. See elements.scss for example.
 
@@ -121,3 +132,44 @@ You can add basic custom fields via the file seasaltpress_custom_fields.php in f
 
 Some fields have been added by default. 
 You can remove this folder from functions.php (bottom), although the template parts still look to see if the extra header content exists. However because it doesn't it will ignore and should not get in your way.
+
+
+## Javascript
+Jquery 3.0 has been added to the front end automatically for you as well as some touch event with jquery mobile.
+All the other javascript files have been concatenated into one file called custom.min.js
+
+You can add to this by making a file in the js folder and making sure it ends with custom.js. If you don't end it with custom.js it will just minify it and you will need to enqueue the file yourself in funcitons.php
+
+custom.js has some variables localized and is set and ready to use ajax in your javascript. Here is an example:
+### AJAX Ready to go
+```js
+$('button').on('click', doSomething);
+  function doSomething(e){
+    e.preventDefault();
+   
+   var data = {
+       'action': 'function_name', //the function in php functions to call
+       'nonce': frontEndAjax.nonce, //this variable is all set for you to use
+       //add more data you want to send back
+   };
+   
+   $.post(frontEndAjax.ajaxurl, data, function( response ) {
+     //do something with info you get back
+   }, 'json');
+ }
+```
+
+In functions.php you can then make a function that this will call and send back data
+```php
+<?php
+add_action( 'wp_ajax_add_function_name', 'function_name' ); //for logged in ajax
+add_action( 'wp_ajax_nopriv_add_function_name', 'function_name' ); //for non logged in users
+function function_name(){
+    check_ajax_referer('ajax_nonce', 'nonce');
+    //do whatever you want
+    $response = array(); //send back info
+
+    wp_send_json( $response );
+}
+?>
+```
