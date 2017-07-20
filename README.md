@@ -165,7 +165,7 @@ In functions.php you can then make a function that this will call and send back 
 add_action( 'wp_ajax_add_function_name', 'function_name' ); //for logged in ajax
 add_action( 'wp_ajax_nopriv_add_function_name', 'function_name' ); //for non logged in users
 function function_name(){
-    check_ajax_referer('ajax_nonce', 'nonce');
+    check_ajax_referer( 'ajax_nonce', 'nonce' );
     //do whatever you want
     $response = array(); //send back info
 
