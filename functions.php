@@ -186,7 +186,7 @@ function seasaltpress_google_fonts_url() {
  *
  * @since Sea Salt Press 1.0
  *
- * @param array  $urls URLs to print for resource hints.
+ * @param array $urls URLs to print for resource hints.
  * @param string $relation_type The relation type the URLs are printed.
  *
  * @return array $urls           URLs to print for resource hints.
@@ -331,51 +331,46 @@ function seasaltpress_scripts() {
 
 	//jQuery 3.0
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', false, '1.8.1' );
+	wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', false, '3.0.1' );
 	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.0.0.min.js', array( 'jquery' ), false );
+	wp_enqueue_script( 'jquery-migrate-3', 'https://code.jquery.com/jquery-migrate-3.0.0.min.js', array( 'jquery' ),
+		false );
 
 	//mobile touch events
-	wp_enqueue_script( 'jquery-touch', get_template_directory_uri() . '/assets/js/min/jquery.mobile.custom.min.js', array(
+	wp_enqueue_script( 'jquery-touch', get_template_directory_uri() . '/assets/js/min/jquery.mobile.min.js', array(
 		'jquery',
-		'jquery-migrate'
+		'jquery-migrate-3'
 	), false );
 
+
+	//any javascript file in assets/js that ends with custom.min will be lumped into this file.
+	wp_enqueue_script( 'seasaltpress-custom', get_theme_file_uri( '/assets/js/min/custom.min.js' ), array( 'jquery', 'jquery-touch' ),
+		'1.0', true );
+
 	//AJAX ready
-	wp_localize_script( 'seasaltpress-global', 'frontEndAjax', array(
+	wp_localize_script( 'seasaltpress-custom', 'frontEndAjax', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		'nonce'   => wp_create_nonce( 'ajax_nonce' ),
-	) );
+	));
 
-	wp_enqueue_script( 'seasaltpress-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
-
-	$seasaltpress_l10n = array(
-		'quote' => seasaltpress_get_svg( array( 'icon' => 'quote-right' ) ),
-	);
-
-
-	wp_enqueue_script( 'seasaltpress-navigation', get_theme_file_uri( '/assets/js/min/navigation-min.js' ), array(), '1.0', true );
-	$seasaltpress_l10n['expand']       = __( 'Expand child menu', 'seasaltpress' );
-	$seasaltpress_l10n['collapse']     = __( 'Collapse child menu', 'seasaltpress' );
-	$seasaltpress_l10n['icon']         = seasaltpress_get_svg( array(
-		'icon'     => 'angle-down',
-		'fallback' => true
-	) );
-	$seasaltpress_l10n['sidebar_icon'] = seasaltpress_get_svg( array( 'icon' => 'sidebar' ) );
+	wp_localize_script( 'seasaltpress-custom', 'seasaltpressScreenReaderText', array(
+			'quote'        => seasaltpress_get_svg( array( 'icon' => 'quote-right' ) ),
+			'expand'       => __( 'Expand child menu', 'seasaltpress' ),
+			'collapse'     => __( 'Collapse child menu', 'seasaltpress' ),
+			'icon'         => seasaltpress_get_svg( array(
+				'icon'     => 'angle-down',
+				'fallback' => true
+			) ),
+			'sidebar_icon' => seasaltpress_get_svg( array( 'icon' => 'sidebar' ) )
+	));
 
 
-	wp_enqueue_script( 'seasaltpress-global', get_theme_file_uri( '/assets/js/min/global-min.js' ), array( 'jquery' ), '1.0', true );
 
-	wp_enqueue_script( 'jquery-scrollto', get_theme_file_uri( '/assets/js/jquery.scrollTo.js' ), array( 'jquery' ), '2.1.2', true );
 
-	wp_localize_script( 'seasaltpress-skip-link-focus-fix', 'seasaltpressScreenReaderText', $seasaltpress_l10n );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-	//carousel for seasaltpress site
-	wp_enqueue_script( 'slick-carousel', get_theme_file_uri( '/assets/js/min/slick.min.js' ), array( 'jquery' ) );
 
 	//add your styles and scripts here
 }
@@ -388,8 +383,8 @@ add_action( 'wp_enqueue_scripts', 'seasaltpress_scripts' );
  */
 function load_custom_wp_admin_style() {
 	if ( ! is_customize_preview() ) {
-		wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet-min.js' ), array(), '1.0.0', true );
-		wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin-min.js' ), array( 'seasaltpress_emmet' ), '1.0.0', true );
+		wp_enqueue_script( 'seasaltpress_emmet', get_theme_file_uri( '/assets/js/min/emmet.min.js' ), array(), '1.0.0', true );
+		wp_enqueue_script( 'custom_wp_admin_js', get_theme_file_uri( '/assets/js/min/custom-admin.min.js' ), array( 'seasaltpress_emmet' ), '1.0.0', true );
 	}
 }
 
