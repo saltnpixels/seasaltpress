@@ -38,7 +38,7 @@ $form-baseline: 30px;  //the margin bottom under gfields
 # Basic styling for some elements
 --------------------------------------------------------------*/
 .gfield_description {
-  @include gf-font-size(.8);
+  @include font-size(.8);
 }
 
 
@@ -94,7 +94,7 @@ body .gfield {
   }
   //sublabels
   label {
-    @include gf-font-size(.6);
+    @include font-size(.6);
   }
 }
 
@@ -135,7 +135,7 @@ body .gfield {
   }
 
   label {
-    @include gf-font-size(.6);
+    @include font-size(.6);
     clear: both;
   }
 
@@ -282,7 +282,7 @@ $position-x: 0;
 
 .validation_message {
   color: darkred;
-  @include gf-font-size(.7);
+  @include font-size(.7);
   margin-top: 5px;
 }
 
@@ -295,7 +295,7 @@ $position-x: 0;
   width: 216px;
   height: auto;
   margin: 5px auto 0;
-  @include gf-font-size(.7);
+  @include font-size(.7);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
 
   select {
