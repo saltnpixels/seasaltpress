@@ -3,7 +3,6 @@ A simple starter theme for developers.
 Based on Underscores and Twenty-Seventeen.
 
 The goal of Seasaltpress was to help one create sites with WordPress from scratch without spending too much time setting things up or dealing with the small things.
-
 Check out the site [Seasalt.Press](http://seasalt.press) to see it in action and to learn more!!
 
 WPGulp has been added and modified. You can learn more about it here. [https://github.com/ahmadawais/WPGulp](https://github.com/ahmadawais/WPGulp)
