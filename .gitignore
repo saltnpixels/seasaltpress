@@ -1,4 +1,4 @@
-node-modules/
+node_modules/
 node_module/
 # OS generated files #
 ######################
@@ -9,3 +9,4 @@ node_module/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
