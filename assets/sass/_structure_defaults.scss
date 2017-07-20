@@ -8,7 +8,7 @@
 # Default Headers Layout.
 --------------------------------------------------------------*/
 
-/*------- Default Headers --------*/
+/*------- Default Single Headers --------*/
 /*
 	- An ideal setup for headers with a background image.
 	- The text inside is centered vertically and horizontally
@@ -53,10 +53,10 @@
 /**
 	- Featured image inside a posts header and used on single and pages
  */
-.featured-image {
+.featured-image, .cover-image {
 	display: block;
 	width: 100%;
-	height: 300px; //default height for archive of posts. overridden above for singles to be 40vh.
+	height: 300px; //default height. overridden below if image is behind.
 
 	img {
 		object-fit: cover;
