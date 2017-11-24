@@ -22,11 +22,6 @@ $form-baseline: 30px;  //the margin bottom under gfields
   padding: 0 $form-gutters; //padding on both sides
 }
 
-//if using an icon in the submit button which is really only possible if you change the submit to a type <button>
-//this is done in gform_extras
-.gform_footer .button .icon {
-  margin-left: 5px;
-}
 
 .gform_footer {
   margin-bottom: $form-baseline;

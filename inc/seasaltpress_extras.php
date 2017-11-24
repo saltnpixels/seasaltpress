@@ -184,13 +184,13 @@ add_filter( 'login_headerurl', 'the_url' );
  *
  */
 function disable_admin_bar() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		add_filter( 'show_admin_bar', '__return_false' );
+	if ( ! current_user_can( 'manage_options' ) || is_singular('pwm_messages') ) {
+		return false;
 	}
+	return true;
 }
 
-add_action( 'after_setup_theme', 'disable_admin_bar' );
-
+add_action( 'show_admin_bar', 'disable_admin_bar' );
 
 /**
  * Redirect back to homepage and not allow access to WP Admin. Except admins and ajax

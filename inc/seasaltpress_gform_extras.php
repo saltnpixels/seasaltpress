@@ -15,9 +15,9 @@ add_filter( 'gform_submit_button', 'form_submit_button', 10, 2 );
 function form_submit_button( $button, $form ) {
 	$button = str_replace( "input", "button", $button );
 	$button = str_replace( "/", "", $button );
-	$button .= " <span>{$form['button']['text']}" . seasaltpress_get_svg( array( 'icon' => 'arrow-circle-o-right') )  . "</span></button>"; //change the text or icon here
-
+	$button .= do_shortcode(" <span>{$form['button']['text']}</span></button>");
 	return $button;
 }
+
 
 
